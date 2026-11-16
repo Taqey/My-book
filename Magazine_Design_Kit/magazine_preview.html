@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>From Zero to Hero — Textbook Template</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Default Unit Theme (Unit 5: Blue / Cyan) */
+      --unit-primary: #2563eb;
+      --unit-primary-dark: #1d4ed8;
+      --unit-accent: #0ea5e9;
+      --unit-light: #38bdf8;
+      --unit-soft-bg: #eff6ff;
+      --unit-soft-border: #bfdbfe;
+      --unit-badge-bg: #dbeafe;
+      --unit-gradient: linear-gradient(135deg, #2563eb, #0ea5e9);
+      --dark: #0f172a;
+      --slate: #334155;
+      --slate-light: #64748b;
+    }
+
+    /* Unit 5 Theme: Blue */
+    .theme-unit-5 {
+      --unit-primary: #2563eb;
+      --unit-primary-dark: #1d4ed8;
+      --unit-accent: #0ea5e9;
+      --unit-light: #38bdf8;
+      --unit-soft-bg: #eff6ff;
+      --unit-soft-border: #bfdbfe;
+      --unit-badge-bg: #dbeafe;
+      --unit-gradient: linear-gradient(135deg, #2563eb, #0ea5e9);
+    }
+
+    /* Unit 6 Theme: Purple / Violet */
+    .theme-unit-6 {
+      --unit-primary: #7c3aed;
+      --unit-primary-dark: #6d28d9;
+      --unit-accent: #a855f7;
+      --unit-light: #c084fc;
+      --unit-soft-bg: #f5f3ff;
+      --unit-soft-border: #ddd6fe;
+      --unit-badge-bg: #ede9fe;
+      --unit-gradient: linear-gradient(135deg, #7c3aed, #a855f7);
+    }
+
+    /* Unit 7 Theme: Emerald / Teal */
+    .theme-unit-7 {
+      --unit-primary: #059669;
+      --unit-primary-dark: #047857;
+      --unit-accent: #10b981;
+      --unit-light: #34d399;
+      --unit-soft-bg: #ecfdf5;
+      --unit-soft-border: #a7f3d0;
+      --unit-badge-bg: #d1fae5;
+      --unit-gradient: linear-gradient(135deg, #059669, #10b981);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #090d16;
+      color: var(--slate);
+      padding: 36px 18px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1350px;
+      margin: 0 auto;
+    }
+
+    /* Magazine Two-Page Spread Grid */
+    .magazine-spread {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 1050px) {
+      .magazine-spread { grid-template-columns: 1fr; }
+    }
+
+    /* Standard Page */
+    .page {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 34px 32px 28px 32px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.55);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* =========================================================
+       1. LESSON COVER PAGE (VARIATION 6 STYLE)
+       ========================================================= */
+    .lesson-cover-page {
+      border-radius: 22px;
+      padding: 40px 38px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65);
+      border: 1px solid var(--unit-light);
+      background: #0b132b;
+      color: #fff;
+      min-height: 760px;
+    }
+
+    .banner-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .v6-scrim {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(
+        180deg,
+        rgba(8, 15, 35, 0.92) 0%,
+        rgba(8, 15, 35, 0.65) 36%,
+        rgba(8, 15, 35, 0.08) 65%,
+        rgba(8, 15, 35, 0.25) 100%
+      );
+    }
+
+    .unit-pill {
+      position: relative;
+      z-index: 2;
+      align-self: flex-start;
+      background: rgba(15, 23, 42, 0.55);
+      backdrop-filter: blur(10px);
+      border: 1.5px solid var(--unit-light);
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+
+    .v6-hero {
+      position: relative;
+      z-index: 2;
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .v6-text-col { min-width: 0; }
+
+    .v6-watermark {
+      font-size: 7.2rem;
+      font-weight: 900;
+      line-height: 0.85;
+      color: transparent;
+      -webkit-text-stroke: 2.5px var(--unit-light);
+      opacity: 0.55;
+      pointer-events: none;
+      user-select: none;
+      padding-top: 4px;
+    }
+
+    .v6-num {
+      font-size: 1.2rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--unit-light);
+      margin-bottom: 6px;
+    }
+
+    .v6-title {
+      font-size: 2.45rem;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 14px;
+      color: #fff;
+      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+    }
+
+    .v6-sub {
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: #e2e8f0;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    /* =========================================================
+       2. LESSON EXPLANATION PAGE ELEMENTS
+       ========================================================= */
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #f1f5f9;
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--slate-light);
+    }
+
+    .badge-unit {
+      background: var(--unit-gradient);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    .lesson-title {
+      font-size: 1.65rem;
+      font-weight: 900;
+      color: var(--dark);
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+
+    .lead-paragraph {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 16px;
+      border-left: 4px solid var(--unit-primary);
+      padding-left: 14px;
+      line-height: 1.5;
+    }
+
+    .magazine-cols {
+      column-count: 2;
+      column-gap: 20px;
+      margin-bottom: 16px;
+      font-size: 0.86rem;
+      text-align: justify;
+      line-height: 1.5;
+    }
+
+    .dropcap::first-letter {
+      font-size: 2.8rem;
+      float: left;
+      line-height: 0.75;
+      padding-right: 8px;
+      padding-top: 4px;
+      color: var(--unit-primary);
+      font-weight: 900;
+    }
+
+    /* Lightbulb Notes Box */
+    .note-lightbulb-box {
+      background: var(--unit-soft-bg);
+      border: 1.5px solid var(--unit-soft-border);
+      border-radius: 16px;
+      padding: 14px 18px;
+      margin: 12px 0;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .mascot-thumb-transparent {
+      width: 75px;
+      height: 75px;
+      object-fit: contain;
+      flex-shrink: 0;
+      filter: drop-shadow(0 4px 8px rgba(15, 23, 42, 0.15));
+    }
+
+    .note-text-area { flex: 1; }
+
+    .note-badge-title {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 900;
+      color: #ffffff;
+      background: var(--unit-primary);
+      padding: 2px 10px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 6px;
+    }
+
+    .note-body {
+      font-size: 0.88rem;
+      color: #1e293b;
+      line-height: 1.45;
+      font-weight: 600;
+      font-family: 'Cairo', 'Plus Jakarta Sans', sans-serif;
+    }
+
+    /* Comparison Table Section */
+    .comparison-section {
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 14px;
+      margin: 12px 0;
+    }
+
+    .comparison-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    .comparison-header img {
+      width: 65px;
+      height: 65px;
+      object-fit: contain;
+      flex-shrink: 0;
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
+    }
+
+    .comparison-intro h4 {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    .comparison-intro p {
+      font-size: 0.8rem;
+      color: var(--slate-light);
+      font-family: 'Cairo', sans-serif;
+      font-weight: 700;
+    }
+
+    .styled-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 10px;
+      overflow: hidden;
+      font-size: 0.82rem;
+    }
+
+    .styled-table thead tr {
+      background: #1e293b;
+      color: #ffffff;
+      text-align: left;
+    }
+
+    .styled-table th, .styled-table td {
+      padding: 8px 12px;
+    }
+
+    .styled-table tbody tr {
+      background: #ffffff;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .styled-table tbody tr:nth-of-type(even) {
+      background: #f1f5f9;
+    }
+
+    /* Flow & Mechanism Box (Arrow Process Diagram) */
+    .egy-reflection-box {
+      direction: rtl;
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(135deg, #fefce8 0%, #fef08a 100%);
+      border: 2px solid #eab308;
+      border-radius: 16px;
+      padding: 14px 16px;
+      margin: 12px 0;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      box-shadow: 0 4px 15px rgba(234, 179, 8, 0.15);
+    }
+
+    .reflection-thumb-transparent {
+      width: 76px;
+      height: 76px;
+      object-fit: contain;
+      flex-shrink: 0;
+      filter: drop-shadow(0 4px 10px rgba(202, 138, 4, 0.3));
+    }
+
+    .egy-reflection-text { flex: 1; min-width: 0; }
+
+    .egy-reflection-header {
+      font-size: 0.9rem;
+      font-weight: 900;
+      color: #854d0e;
+      margin-bottom: 10px;
+    }
+
+    /* Arrow Process Diagram */
+    .arrow-process-diagram {
+      display: flex;
+      align-items: stretch;
+      justify-content: space-between;
+      gap: 6px;
+      direction: rtl;
+    }
+
+    .process-step-node {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1.5px solid #eab308;
+      border-radius: 10px;
+      padding: 8px 10px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 3px 8px rgba(133, 77, 14, 0.08);
+    }
+
+    .process-step-title {
+      font-size: 0.78rem;
+      font-weight: 900;
+      color: #854d0e;
+      margin-bottom: 3px;
+      line-height: 1.3;
+    }
+
+    .process-step-desc {
+      font-size: 0.72rem;
+      color: #713f12;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    .process-arrow-connector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ca8a04;
+      flex-shrink: 0;
+      padding: 0 2px;
+    }
+
+    .process-arrow-connector svg {
+      width: 20px;
+      height: 20px;
+      stroke: #ca8a04;
+      stroke-width: 2.8;
+      fill: none;
+    }
+
+    /* =========================================================
+       3. CLASSWORK & HOMEWORK PAGES (THINKING MASCOT AT TOP)
+       ========================================================= */
+    .work-hero-banner {
+      background: var(--unit-soft-bg);
+      border: 1.5px solid var(--unit-soft-border);
+      border-radius: 16px;
+      padding: 12px 18px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .work-hero-mascot {
+      width: 92px;
+      height: 92px;
+      object-fit: contain;
+      flex-shrink: 0;
+      filter: drop-shadow(0 6px 12px rgba(15, 23, 42, 0.18));
+    }
+
+    .work-hero-text h3 {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--unit-primary-dark);
+      letter-spacing: -0.5px;
+      margin-bottom: 2px;
+    }
+
+    .work-hero-text p {
+      font-size: 0.84rem;
+      color: var(--slate);
+      font-weight: 600;
+    }
+
+    .q-type-header {
+      font-size: 0.8rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--unit-primary-dark);
+      background: var(--unit-badge-bg);
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 6px;
+      margin: 8px 0;
+    }
+
+    .quiz-card {
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+    }
+
+    .q-prompt-text {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+
+    .mcq-options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .mcq-choice-item {
+      background: #ffffff;
+      border: 1.5px solid #cbd5e1;
+      padding: 7px 10px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .circle-letter {
+      width: 24px;
+      height: 24px;
+      min-width: 24px;
+      border-radius: 50%;
+      background: var(--unit-soft-bg);
+      color: var(--unit-primary-dark);
+      font-weight: 800;
+      font-size: 0.76rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid var(--unit-soft-border);
+    }
+
+    .tf-row {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 7px 12px;
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.81rem;
+      font-weight: 600;
+    }
+
+    .tf-circle-btn {
+      width: 54px;
+      padding: 2px 0;
+      text-align: center;
+      border-radius: 20px;
+      border: 1px solid var(--unit-soft-border);
+      font-size: 0.7rem;
+      font-weight: 800;
+      background: var(--unit-soft-bg);
+      color: var(--unit-primary-dark);
+    }
+
+    .passage-box {
+      background: var(--unit-soft-bg);
+      border: 1px solid var(--unit-soft-border);
+      border-left: 5px solid var(--unit-primary);
+      border-radius: 0 10px 10px 0;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      font-size: 0.81rem;
+      color: var(--dark);
+      line-height: 1.45;
+    }
+
+    .passage-title {
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.73rem;
+      letter-spacing: 0.5px;
+      color: var(--unit-primary-dark);
+      margin-bottom: 2px;
+    }
+
+    .essay-lines {
+      border: 1.5px dashed #cbd5e1;
+      border-radius: 6px;
+      height: 44px;
+      background: repeating-linear-gradient(
+        #ffffff,
+        #ffffff 20px,
+        #e2e8f0 21px
+      );
+      margin-top: 6px;
+    }
+
+    .page-footer {
+      margin-top: auto;
+      padding-top: 12px;
+      border-top: 2px solid #f1f5f9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--slate-light);
+    }
+
+    .page-num {
+      background: var(--unit-primary-dark);
+      color: #fff;
+      padding: 2px 10px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container theme-unit-5">
+
+  <!-- ======================================================== -->
+  <!-- SPREAD 1: LESSON COVER + LESSON EXPLANATION              -->
+  <!-- ======================================================== -->
+  <div class="magazine-spread">
+
+    <!-- PAGE 1: LESSON COVER (VARIATION 6) -->
+    <div class="lesson-cover-page">
+      <img class="banner-bg" src="lesson_covers/banner_5_1.jpg" alt="Lesson 1 3D Banner">
+      <div class="v6-scrim"></div>
+      <span class="unit-pill">Data Collection &amp; Cleaning</span>
+      <div class="v6-hero">
+        <div class="v6-text-col">
+          <div class="v6-num">Lesson 1</div>
+          <h2 class="v6-title">Methods of Data Collection</h2>
+          <p class="v6-sub">
+            Discover how primary surveys, IoT sensors, and secondary datasets power modern AI pipelines—and how to spot sampling bias before it breaks your model.
+          </p>
+        </div>
+        <div class="v6-watermark">01</div>
+      </div>
+    </div>
+
+    <!-- PAGE 2: LESSON EXPLANATION -->
+    <div class="page">
+      <div class="page-header">
+        <span class="badge-unit">Lesson 1</span>
+        <span>Explanation &amp; Concepts</span>
+      </div>
+
+      <h2 class="lesson-title">Data Gathering &amp; Sampling Bias: Behind the AI Models</h2>
+
+      <div class="lead-paragraph">
+        Any intelligent system is only as smart as the raw data you feed into it. If your collection pipeline contains skewed samples, the model will output confident errors.
+      </div>
+
+      <div class="magazine-cols">
+        <p class="dropcap">T</p>
+        <p>
+          he mechanism of training machine learning systems depends on true representativeness. 
+          When we collect <strong>Primary Data</strong> via controlled field studies, we dictate the exact parameters.
+        </p>
+        <p>
+          However, relying purely on <strong>Secondary Data</strong> (e.g. scraped social feeds or uncurated public logs) exposes the model to silent systematic skewing.
+        </p>
+      </div>
+
+      <!-- Lightbulb Note Box -->
+      <div class="note-lightbulb-box">
+        <img class="mascot-thumb-transparent" src="mascots_transparent_bg/mascot_lightbulb_transparent.png" alt="Lightbulb Pose">
+        <div class="note-text-area">
+          <div class="note-badge-title">Notes</div>
+          <div class="note-body">
+            "جمع بيانات كتير غلط أسوأ 100 مرة من جمع عينة صغيرة بس دقيقة وممثلة صح للواقع!"
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparison Table Section -->
+      <div class="comparison-section">
+        <div class="comparison-header">
+          <img src="mascots_transparent_bg/mascot_comparison_transparent.png" alt="Comparison Mascot">
+          <div class="comparison-intro">
+            <h4>Primary vs Secondary Data Pipeline</h4>
+            <p>مقارنة بين مصادر البيانات الأساسية والثانوية</p>
+          </div>
+        </div>
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Collection Mechanism</th>
+              <th>Advantage</th>
+              <th>Primary Limitation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="color: #0369a1;">Primary</strong></td>
+              <td>Surveys, Sensors, Live Tests</td>
+              <td>Targeted &amp; Accurate</td>
+              <td>High cost &amp; Time-consuming</td>
+            </tr>
+            <tr>
+              <td><strong style="color: #be185d;">Secondary</strong></td>
+              <td>Kaggle, Open APIs, Censuses</td>
+              <td>Instant &amp; Free</td>
+              <td>Hidden Sampling Biases</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Flow & Mechanism Box (Arrow Process Diagram) -->
+      <div class="egy-reflection-box">
+        <img class="reflection-thumb-transparent" src="mascots_transparent_bg/mascot_reflection_transparent.png" alt="Reflection Pose">
+        <div class="egy-reflection-text">
+          <div class="egy-reflection-header">
+            <span>خطوات الميكانيزم (Process Flow)</span>
+          </div>
+          <div class="arrow-process-diagram">
+            <div class="process-step-node">
+              <div class="process-step-title">تحديد الهدف</div>
+              <div class="process-step-desc">نحدد المشكلة والسؤال المطلوب إجابته</div>
+            </div>
+            <div class="process-arrow-connector">
+              <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5m0 0l6-6m-6 6l6 6"/></svg>
+            </div>
+            <div class="process-step-node">
+              <div class="process-step-title">اختيار العينة</div>
+              <div class="process-step-desc">عينة عشوائية تمثل كل الفئات بدون تحيز</div>
+            </div>
+            <div class="process-arrow-connector">
+              <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5m0 0l6-6m-6 6l6 6"/></svg>
+            </div>
+            <div class="process-step-node">
+              <div class="process-step-title">التجميع والفلترة</div>
+              <div class="process-step-desc">جمع البيانات ومراجعتها قبل تدريب النموذج</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-footer">
+        <span>Lesson 1: Methods of Data Collection</span>
+        <span class="page-num">02</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- SPREAD 2: CLASSWORK PAGE + HOMEWORK PAGE                 -->
+  <!-- ======================================================== -->
+  <div class="magazine-spread">
+
+    <!-- PAGE 3: CLASSWORK -->
+    <div class="page">
+      <div class="page-header">
+        <span>Lesson 1</span>
+        <span class="badge-unit">In-Class Practice</span>
+      </div>
+
+      <!-- Thinking Mascot beside Classwork Title -->
+      <div class="work-hero-banner">
+        <img class="work-hero-mascot" src="mascots_transparent_bg/mascot_thinking_transparent.png" alt="Thinking Mascot">
+        <div class="work-hero-text">
+          <h3>Classwork</h3>
+          <p>Apply what you just learned through multiple-choice, true/false, case study, and written drills.</p>
+        </div>
+      </div>
+
+      <!-- 1. MCQ -->
+      <div class="q-type-header">1. Choose the Correct Answer (A–D)</div>
+      <div class="quiz-card">
+        <div class="q-prompt-text">
+          <strong>1.</strong> Which scenario represents an example of <strong>Sampling Bias</strong>?
+        </div>
+        <div class="mcq-options-grid">
+          <div class="mcq-choice-item"><div class="circle-letter">A</div><div>Surveying 100 random students by lottery</div></div>
+          <div class="mcq-choice-item"><div class="circle-letter">B</div><div>Polling AI usage strictly on developer forums</div></div>
+          <div class="mcq-choice-item"><div class="circle-letter">C</div><div>Logging CPU temperature every 60 seconds</div></div>
+          <div class="mcq-choice-item"><div class="circle-letter">D</div><div>Analyzing complete national census records</div></div>
+        </div>
+      </div>
+
+      <!-- 2. True / False -->
+      <div class="q-type-header">2. True or False</div>
+      <div class="tf-row">
+        <span><strong>1.</strong> Secondary data is inherently immune to sampling bias.</span>
+        <div style="display: flex; gap: 6px;"><div class="tf-circle-btn">TRUE</div><div class="tf-circle-btn">FALSE</div></div>
+      </div>
+      <div class="tf-row">
+        <span><strong>2.</strong> Increasing sample size alone does not fix systematic bias.</span>
+        <div style="display: flex; gap: 6px;"><div class="tf-circle-btn">TRUE</div><div class="tf-circle-btn">FALSE</div></div>
+      </div>
+
+      <!-- 3. Case Study (MCQ + T/F + Essay) -->
+      <div class="q-type-header">3. Real-World Case Study</div>
+      <div class="passage-box">
+        <div class="passage-title">Case Study: Smart Traffic AI</div>
+        An AI surveillance model trained on 150,000 traffic clips taken exclusively in Alexandria on sunny afternoons experienced a 45% drop in vehicle identification when deployed in rainy winter conditions.
+      </div>
+      <div class="quiz-card">
+        <div class="q-prompt-text"><strong>(a) MCQ:</strong> What caused the 45% accuracy drop in winter?</div>
+        <div class="mcq-options-grid" style="margin-bottom: 8px;">
+          <div class="mcq-choice-item"><div class="circle-letter">A</div><div>Environmental sampling bias</div></div>
+          <div class="mcq-choice-item"><div class="circle-letter">B</div><div>Fast network speed</div></div>
+        </div>
+        <div class="tf-row" style="margin-bottom: 8px;">
+          <span><strong>(b) True/False:</strong> Adding more sunny clips will fix the rain problem.</span>
+          <div style="display: flex; gap: 6px;"><div class="tf-circle-btn">TRUE</div><div class="tf-circle-btn">FALSE</div></div>
+        </div>
+        <div class="q-prompt-text" style="margin-bottom: 4px;"><strong>(c) Essay:</strong> Suggest one way to fix this dataset.</div>
+        <div class="essay-lines"></div>
+      </div>
+
+      <!-- 4. Essay (Direct & Open-Ended) -->
+      <div class="q-type-header">4. Essay Questions (Direct &amp; Open-Ended)</div>
+      <div class="quiz-card" style="margin-bottom: 0;">
+        <div class="q-prompt-text"><strong>1. [Direct]</strong> Define Primary Data and give one example.</div>
+        <div class="essay-lines" style="margin-bottom: 8px;"></div>
+        <div class="q-prompt-text"><strong>2. [Open-Ended]</strong> How would you design an unbiased survey for all high-school students in Egypt?</div>
+        <div class="essay-lines"></div>
+      </div>
+
+      <div class="page-footer">
+        <span>Lesson 1 — Classwork</span>
+        <span class="page-num">03</span>
+      </div>
+    </div>
+
+    <!-- PAGE 4: HOMEWORK -->
+    <div class="page">
+      <div class="page-header">
+        <span>Lesson 1</span>
+        <span class="badge-unit">Take-Home Assignment</span>
+      </div>
+
+      <!-- Thinking Mascot beside Homework Title -->
+      <div class="work-hero-banner">
+        <img class="work-hero-mascot" src="mascots_transparent_bg/mascot_thinking_transparent.png" alt="Thinking Mascot">
+        <div class="work-hero-text">
+          <h3>Homework</h3>
+          <p>Test your mastery independently with these comprehensive review questions.</p>
+        </div>
+      </div>
+
+      <!-- 1. MCQ -->
+      <div class="q-type-header">1. Choose the Correct Answer (A–D)</div>
+      <div class="quiz-card">
+        <div class="q-prompt-text">
+          <strong>1.</strong> Downloading a public Kaggle dataset for your project is considered:
+        </div>
+        <div class="mcq-options-grid">
+          <div class="mcq-choice-item"><div class="circle-letter">A</div><div>Primary Data</div></div>
+          <div class="mcq-choice-item"><div class="circle-letter">B</div><div>Secondary Data</div></div>
+          <div class="mcq-choice-item"><div class="circle-letter">C</div><div>Experimental Data</div></div>
+          <div class="mcq-choice-item"><div class="circle-letter">D</div><div>Live Sensor Data</div></div>
+        </div>
+      </div>
+
+      <!-- 2. True / False -->
+      <div class="q-type-header">2. True or False</div>
+      <div class="tf-row">
+        <span><strong>1.</strong> Primary data usually costs more time and money than secondary data.</span>
+        <div style="display: flex; gap: 6px;"><div class="tf-circle-btn">TRUE</div><div class="tf-circle-btn">FALSE</div></div>
+      </div>
+      <div class="tf-row">
+        <span><strong>2.</strong> Self-selection in online polls can introduce severe bias.</span>
+        <div style="display: flex; gap: 6px;"><div class="tf-circle-btn">TRUE</div><div class="tf-circle-btn">FALSE</div></div>
+      </div>
+
+      <!-- 3. Case Study -->
+      <div class="q-type-header">3. Real-World Case Study</div>
+      <div class="passage-box">
+        <div class="passage-title">Case Study: Hospital Health App</div>
+        A developer surveyed only gym members to predict average daily step counts for a city-wide health app.
+      </div>
+      <div class="quiz-card">
+        <div class="q-prompt-text"><strong>(a) MCQ:</strong> The resulting prediction for the general public will likely be:</div>
+        <div class="mcq-options-grid" style="margin-bottom: 8px;">
+          <div class="mcq-choice-item"><div class="circle-letter">A</div><div>Too high (Overestimated)</div></div>
+          <div class="mcq-choice-item"><div class="circle-letter">B</div><div>Perfectly accurate</div></div>
+        </div>
+        <div class="tf-row" style="margin-bottom: 8px;">
+          <span><strong>(b) True/False:</strong> Gym members represent the entire city population fairly.</span>
+          <div style="display: flex; gap: 6px;"><div class="tf-circle-btn">TRUE</div><div class="tf-circle-btn">FALSE</div></div>
+        </div>
+        <div class="q-prompt-text" style="margin-bottom: 4px;"><strong>(c) Essay:</strong> Who is missing from this sample?</div>
+        <div class="essay-lines"></div>
+      </div>
+
+      <!-- 4. Essay (Direct & Open-Ended) -->
+      <div class="q-type-header">4. Essay Questions (Direct &amp; Open-Ended)</div>
+      <div class="quiz-card" style="margin-bottom: 0;">
+        <div class="q-prompt-text"><strong>1. [Direct]</strong> Mention two advantages of using Secondary Data.</div>
+        <div class="essay-lines" style="margin-bottom: 8px;"></div>
+        <div class="q-prompt-text"><strong>2. [Open-Ended]</strong> When would you refuse to use free secondary data and collect primary data instead?</div>
+        <div class="essay-lines"></div>
+      </div>
+
+      <div class="page-footer">
+        <span>Lesson 1 — Homework</span>
+        <span class="page-num">04</span>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

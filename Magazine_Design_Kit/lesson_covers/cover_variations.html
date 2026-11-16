@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 1 Cover Variations - Pick Your Style</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Cairo:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', 'Cairo', sans-serif;
+      background: #090d16;
+      color: #fff;
+      padding: 36px 24px;
+    }
+
+    .header-bar {
+      max-width: 1400px;
+      margin: 0 auto 32px auto;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 16px;
+      padding: 18px 26px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #38bdf8, #818cf8, #f472b6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .variations-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
+      gap: 34px;
+    }
+
+    @media (max-width: 540px) {
+      .variations-grid { grid-template-columns: 1fr; }
+    }
+
+    .var-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .var-badge {
+      background: #1e293b;
+      border: 1px solid #475569;
+      color: #38bdf8;
+      padding: 6px 18px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    .lesson-cover-page {
+      width: 100%;
+      max-width: 600px;
+      aspect-ratio: 210 / 297;
+      border-radius: 22px;
+      padding: 36px 34px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      background: #0b132b;
+    }
+
+    .banner-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .unit-pill {
+      position: relative;
+      z-index: 2;
+      align-self: flex-start;
+      background: rgba(14, 165, 233, 0.22);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #e0f2fe;
+    }
+
+    /* =================================================
+       VARIATION 1: Classic Editorial Top
+       ================================================= */
+    .v1-scrim {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: linear-gradient(180deg, rgba(8,15,35,0.92) 0%, rgba(8,15,35,0.68) 32%, rgba(8,15,35,0.08) 62%, rgba(8,15,35,0.25) 100%);
+    }
+    .v1-hero { position: relative; z-index: 2; margin-top: 20px; }
+    .v1-num {
+      font-size: 4.3rem; font-weight: 900; line-height: 0.95; letter-spacing: -2px;
+      color: #38bdf8; text-shadow: 0 8px 25px rgba(56,189,248,0.35); margin-bottom: 10px;
+    }
+    .v1-title {
+      font-size: 2.25rem; font-weight: 900; line-height: 1.15; margin-bottom: 12px;
+      text-shadow: 0 4px 16px rgba(0,0,0,0.5);
+    }
+    .v1-sub {
+      font-size: 0.95rem; line-height: 1.55; color: rgba(241,245,249,0.92);
+      text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+    }
+
+    /* =================================================
+       VARIATION 2: Glassmorphic Floating Card
+       ================================================= */
+    .v2-scrim {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: linear-gradient(180deg, rgba(8,15,35,0.55) 0%, rgba(8,15,35,0.05) 55%, rgba(8,15,35,0.35) 100%);
+    }
+    .v2-glass-card {
+      position: relative;
+      z-index: 2;
+      margin-top: 18px;
+      background: rgba(15, 23, 42, 0.62);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(56, 189, 248, 0.38);
+      border-radius: 18px;
+      padding: 22px 24px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    }
+    .v2-num {
+      font-size: 3.8rem; font-weight: 900; line-height: 0.95; letter-spacing: -2px;
+      color: #38bdf8; margin-bottom: 8px;
+    }
+    .v2-title {
+      font-size: 2.1rem; font-weight: 900; line-height: 1.15; margin-bottom: 10px; color: #fff;
+    }
+    .v2-sub {
+      font-size: 0.92rem; line-height: 1.5; color: #cbd5e1;
+    }
+
+    /* =================================================
+       VARIATION 3: Bottom Movie/Magazine Poster
+       ================================================= */
+    .v3-page {
+      justify-content: space-between;
+    }
+    .v3-scrim {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: linear-gradient(180deg, rgba(8,15,35,0.45) 0%, rgba(8,15,35,0.02) 40%, rgba(8,15,35,0.75) 68%, rgba(8,15,35,0.96) 100%);
+    }
+    .v3-hero { position: relative; z-index: 2; }
+    .v3-num {
+      font-size: 4.5rem; font-weight: 900; line-height: 0.95; letter-spacing: -2.5px;
+      color: #38bdf8; text-shadow: 0 6px 24px rgba(56,189,248,0.4); margin-bottom: 8px;
+    }
+    .v3-title {
+      font-size: 2.3rem; font-weight: 900; line-height: 1.12; margin-bottom: 10px;
+    }
+    .v3-sub {
+      font-size: 0.94rem; line-height: 1.55; color: #e2e8f0;
+    }
+
+    /* =================================================
+       VARIATION 4: Neon Gradient + Vertical Accent Bar
+       ================================================= */
+    .v4-scrim {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: linear-gradient(180deg, rgba(8,15,35,0.90) 0%, rgba(8,15,35,0.65) 35%, rgba(8,15,35,0.10) 65%, rgba(8,15,35,0.25) 100%);
+    }
+    .v4-hero { position: relative; z-index: 2; margin-top: 20px; }
+    .v4-num {
+      font-size: 4.4rem; font-weight: 900; line-height: 0.95; letter-spacing: -2px;
+      background: linear-gradient(135deg, #ffffff 0%, #38bdf8 55%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 14px;
+    }
+    .v4-accent-block {
+      border-left: 5px solid #38bdf8;
+      padding-left: 18px;
+    }
+    .v4-title {
+      font-size: 2.2rem; font-weight: 900; line-height: 1.15; margin-bottom: 10px; color: #fff;
+    }
+    .v4-sub {
+      font-size: 0.94rem; line-height: 1.55; color: #cbd5e1;
+    }
+
+    /* =================================================
+       VARIATION 5: Magazine Split Band (Lower Third)
+       ================================================= */
+    .v5-page { justify-content: space-between; padding: 34px 0 34px 0; }
+    .v5-page .unit-pill { margin-left: 34px; }
+    .v5-scrim {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: linear-gradient(180deg, rgba(8,15,35,0.45) 0%, rgba(8,15,35,0.0) 45%, rgba(8,15,35,0.55) 100%);
+    }
+    .v5-band {
+      position: relative; z-index: 2;
+      background: rgba(8, 15, 35, 0.78);
+      backdrop-filter: blur(14px);
+      border-top: 2px solid rgba(56, 189, 248, 0.55);
+      border-bottom: 2px solid rgba(56, 189, 248, 0.55);
+      padding: 22px 32px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 20px;
+      align-items: center;
+    }
+    .v5-num-box {
+      border-right: 2px solid rgba(56, 189, 248, 0.4);
+      padding-right: 18px;
+      text-align: center;
+    }
+    .v5-num-box span {
+      display: block; font-size: 0.75rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 2px; color: #38bdf8;
+    }
+    .v5-num-box strong {
+      font-size: 3.4rem; font-weight: 900; line-height: 0.95; color: #fff;
+    }
+    .v5-title { font-size: 1.65rem; font-weight: 900; line-height: 1.15; margin-bottom: 6px; }
+    .v5-sub { font-size: 0.85rem; line-height: 1.45; color: #cbd5e1; }
+
+    /* =================================================
+       VARIATION 6: Giant Watermark 01 + Crisp Title
+       ================================================= */
+    .v6-scrim {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: linear-gradient(180deg, rgba(8,15,35,0.92) 0%, rgba(8,15,35,0.65) 36%, rgba(8,15,35,0.08) 65%, rgba(8,15,35,0.25) 100%);
+    }
+    .v6-hero { position: relative; z-index: 2; margin-top: 28px; }
+    .v6-watermark {
+      position: absolute;
+      top: -32px;
+      right: -10px;
+      font-size: 9.5rem;
+      font-weight: 900;
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 2px rgba(56, 189, 248, 0.25);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .v6-num {
+      position: relative; z-index: 1;
+      font-size: 1.15rem; font-weight: 900; text-transform: uppercase; letter-spacing: 3px;
+      color: #38bdf8; margin-bottom: 6px;
+    }
+    .v6-title {
+      position: relative; z-index: 1;
+      font-size: 2.55rem; font-weight: 900; line-height: 1.1; margin-bottom: 12px; color: #fff;
+    }
+    .v6-sub {
+      position: relative; z-index: 1;
+      font-size: 0.94rem; line-height: 1.55; color: #e2e8f0;
+    }
+
+    /* =================================================
+       VARIATION 7: Centered Minimalist Poster
+       ================================================= */
+    .v7-page { justify-content: space-between; text-align: center; }
+    .v7-page .unit-pill { align-self: center; }
+    .v7-scrim {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: linear-gradient(180deg, rgba(8,15,35,0.50) 0%, rgba(8,15,35,0.05) 40%, rgba(8,15,35,0.82) 72%, rgba(8,15,35,0.96) 100%);
+    }
+    .v7-hero { position: relative; z-index: 2; }
+    .v7-pill-num {
+      display: inline-block;
+      background: #38bdf8;
+      color: #090d16;
+      font-size: 0.9rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 6px 18px;
+      border-radius: 30px;
+      margin-bottom: 12px;
+      box-shadow: 0 4px 18px rgba(56, 189, 248, 0.45);
+    }
+    .v7-title { font-size: 2.3rem; font-weight: 900; line-height: 1.12; margin-bottom: 10px; }
+    .v7-sub { font-size: 0.92rem; line-height: 1.5; color: #cbd5e1; max-width: 92%; margin: 0 auto; }
+
+    /* =================================================
+       VARIATION 8: HUD Corner Brackets Frame
+       ================================================= */
+    .v8-scrim {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: linear-gradient(180deg, rgba(8,15,35,0.90) 0%, rgba(8,15,35,0.62) 38%, rgba(8,15,35,0.08) 65%, rgba(8,15,35,0.25) 100%);
+    }
+    .v8-hud-box {
+      position: relative; z-index: 2; margin-top: 22px;
+      padding: 20px 22px;
+      background: rgba(15, 23, 42, 0.42);
+      border-left: 3px solid #38bdf8;
+      border-top: 3px solid #38bdf8;
+      border-radius: 14px 0 14px 0;
+    }
+    .v8-hud-box::after {
+      content: "";
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 45px; height: 45px;
+      border-right: 3px solid #38bdf8;
+      border-bottom: 3px solid #38bdf8;
+      border-radius: 0 0 14px 0;
+    }
+    .v8-num {
+      font-size: 3.6rem; font-weight: 900; line-height: 0.95; letter-spacing: -1.5px;
+      color: #38bdf8; margin-bottom: 8px;
+    }
+    .v8-title { font-size: 2.15rem; font-weight: 900; line-height: 1.15; margin-bottom: 10px; }
+    .v8-sub { font-size: 0.92rem; line-height: 1.5; color: #e2e8f0; }
+  </style>
+</head>
+<body>
+
+  <div class="header-bar">
+    <div>
+      <h1>اختار الستايل المفضل لترتيب النصوص على الغلاف (4 Variations)</h1>
+      <p style="font-size: 0.88rem; color: #cbd5e1;">نفس البانر الـ 3D مع 4 طرق مختلفة لتنسيق عنوان الدرس والنص — اختار رقم (1، 2، 3، أو 4) عشان نعممه على الـ 9 دروس</p>
+    </div>
+  </div>
+
+  <div class="variations-grid">
+
+    <!-- VARIATION 1 -->
+    <div class="var-wrapper">
+      <div class="var-badge">Variation 1 • الكلاسيكي العلوي</div>
+      <div class="lesson-cover-page">
+        <img class="banner-bg" src="banner_5_1.jpg" alt="Banner">
+        <div class="v1-scrim"></div>
+        <span class="unit-pill">Unit 5 • Data Collection &amp; Cleaning</span>
+        <div class="v1-hero">
+          <div class="v1-num">Lesson 1</div>
+          <h2 class="v1-title">Methods of Data Collection</h2>
+          <p class="v1-sub">Discover how primary surveys, IoT sensors, and secondary datasets power modern AI pipelines—and how to spot sampling bias before it breaks your model.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- VARIATION 2 -->
+    <div class="var-wrapper">
+      <div class="var-badge">Variation 2 • كارت زجاجي عائم (Glass Card)</div>
+      <div class="lesson-cover-page">
+        <img class="banner-bg" src="banner_5_1.jpg" alt="Banner">
+        <div class="v2-scrim"></div>
+        <span class="unit-pill">Unit 5 • Data Collection &amp; Cleaning</span>
+        <div class="v2-glass-card">
+          <div class="v2-num">Lesson 1</div>
+          <h2 class="v2-title">Methods of Data Collection</h2>
+          <p class="v2-sub">Discover how primary surveys, IoT sensors, and secondary datasets power modern AI pipelines—and how to spot sampling bias before it breaks your model.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- VARIATION 3 -->
+    <div class="var-wrapper">
+      <div class="var-badge">Variation 3 • بوستر سينمائي بالأسفل (Bottom Poster)</div>
+      <div class="lesson-cover-page v3-page">
+        <img class="banner-bg" src="banner_5_1.jpg" alt="Banner">
+        <div class="v3-scrim"></div>
+        <span class="unit-pill">Unit 5 • Data Collection &amp; Cleaning</span>
+        <div class="v3-hero">
+          <div class="v3-num">Lesson 1</div>
+          <h2 class="v3-title">Methods of Data Collection</h2>
+          <p class="v3-sub">Discover how primary surveys, IoT sensors, and secondary datasets power modern AI pipelines—and how to spot sampling bias before it breaks your model.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- VARIATION 4 -->
+    <div class="var-wrapper">
+      <div class="var-badge">Variation 4 • تدرج نيون + شريط جانبي</div>
+      <div class="lesson-cover-page">
+        <img class="banner-bg" src="banner_5_1.jpg" alt="Banner">
+        <div class="v4-scrim"></div>
+        <span class="unit-pill">Unit 5 • Data Collection &amp; Cleaning</span>
+        <div class="v4-hero">
+          <div class="v4-num">Lesson 1</div>
+          <div class="v4-accent-block">
+            <h2 class="v4-title">Methods of Data Collection</h2>
+            <p class="v4-sub">Discover how primary surveys, IoT sensors, and secondary datasets power modern AI pipelines—and how to spot sampling bias before it breaks your model.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VARIATION 5 -->
+    <div class="var-wrapper">
+      <div class="var-badge">Variation 5 • شريط مجلة عرضي (Split Band)</div>
+      <div class="lesson-cover-page v5-page">
+        <img class="banner-bg" src="banner_5_1.jpg" alt="Banner">
+        <div class="v5-scrim"></div>
+        <span class="unit-pill">Unit 5 • Data Collection &amp; Cleaning</span>
+        <div class="v5-band">
+          <div class="v5-num-box">
+            <span>Lesson</span>
+            <strong>01</strong>
+          </div>
+          <div>
+            <h2 class="v5-title">Methods of Data Collection</h2>
+            <p class="v5-sub">Discover how primary surveys, IoT sensors, and secondary datasets power modern AI pipelines—and how to spot sampling bias before it breaks your model.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VARIATION 6 -->
+    <div class="var-wrapper">
+      <div class="var-badge">Variation 6 • رقم ضخم مفرغ خلف العنوان</div>
+      <div class="lesson-cover-page">
+        <img class="banner-bg" src="banner_5_1.jpg" alt="Banner">
+        <div class="v6-scrim"></div>
+        <span class="unit-pill">Unit 5 • Data Collection &amp; Cleaning</span>
+        <div class="v6-hero">
+          <div class="v6-watermark">01</div>
+          <div class="v6-num">Lesson 1</div>
+          <h2 class="v6-title">Methods of Data Collection</h2>
+          <p class="v6-sub">Discover how primary surveys, IoT sensors, and secondary datasets power modern AI pipelines—and how to spot sampling bias before it breaks your model.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- VARIATION 7 -->
+    <div class="var-wrapper">
+      <div class="var-badge">Variation 7 • بوستر وسطي متماثل (Centered)</div>
+      <div class="lesson-cover-page v7-page">
+        <img class="banner-bg" src="banner_5_1.jpg" alt="Banner">
+        <div class="v7-scrim"></div>
+        <span class="unit-pill">Unit 5 • Data Collection &amp; Cleaning</span>
+        <div class="v7-hero">
+          <div class="v7-pill-num">Lesson 1</div>
+          <h2 class="v7-title">Methods of Data Collection</h2>
+          <p class="v7-sub">Discover how primary surveys, IoT sensors, and secondary datasets power modern AI pipelines—and how to spot sampling bias before it breaks your model.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- VARIATION 8 -->
+    <div class="var-wrapper">
+      <div class="var-badge">Variation 8 • إطار زوايا تقني (HUD Frame)</div>
+      <div class="lesson-cover-page">
+        <img class="banner-bg" src="banner_5_1.jpg" alt="Banner">
+        <div class="v8-scrim"></div>
+        <span class="unit-pill">Unit 5 • Data Collection &amp; Cleaning</span>
+        <div class="v8-hud-box">
+          <div class="v8-num">Lesson 1</div>
+          <h2 class="v8-title">Methods of Data Collection</h2>
+          <p class="v8-sub">Discover how primary surveys, IoT sensors, and secondary datasets power modern AI pipelines—and how to spot sampling bias before it breaks your model.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

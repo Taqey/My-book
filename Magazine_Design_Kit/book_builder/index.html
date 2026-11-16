@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"/>
+<title>Book Builder — منشئ محتوى الكتاب</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<style>
+  :root { --bg:#0b1220; --panel:#111a2e; --panel2:#17233d; --line:#243456; --txt:#e8eefc; --mut:#93a4c8; --acc:#3b82f6; --acc2:#22d3ee; --ok:#22c55e; --bad:#ef4444; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--txt); font-family:'Segoe UI','Cairo',Tahoma,sans-serif; font-size:14px; }
+  header { display:flex; align-items:center; gap:12px; padding:10px 18px; background:linear-gradient(90deg,#0f1b34,#12264a); border-bottom:1px solid var(--line); position:sticky; top:0; z-index:10; }
+  header h1 { margin:0; font-size:17px; font-weight:800; }
+  header .sp { flex:1; }
+  .btn { background:var(--panel2); color:var(--txt); border:1px solid var(--line); padding:7px 14px; border-radius:9px; cursor:pointer; font-family:inherit; font-size:13px; font-weight:700; }
+  .btn:hover { border-color:var(--acc); }
+  .btn.pri { background:linear-gradient(90deg,var(--acc),#2563eb); border-color:transparent; color:#fff; }
+  .btn.ok { background:linear-gradient(90deg,#16a34a,#22c55e); border-color:transparent; color:#04210f; }
+  .btn.bad { background:#3b1219; border-color:#7f1d1d; color:#fecaca; }
+  .btn:disabled { opacity:.5; cursor:not-allowed; }
+  main { display:grid; grid-template-columns: 520px 1fr; gap:14px; padding:14px; height:calc(100vh - 58px); }
+  @media (max-width:1100px){ main{ grid-template-columns:1fr; height:auto; } }
+  .col { overflow:auto; height:100%; padding-inline-end:4px; }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:14px; margin-bottom:12px; }
+  .card h3 { margin:0 0 10px; font-size:13px; color:var(--acc2); letter-spacing:.3px; }
+  label.f { display:block; margin:9px 0 4px; color:var(--mut); font-size:12px; font-weight:700; }
+  input[type=text], textarea, select { width:100%; background:#0c1426; color:var(--txt); border:1px solid var(--line); border-radius:9px; padding:8px 10px; font-family:inherit; font-size:13.5px; }
+  textarea { min-height:70px; resize:vertical; line-height:1.5; }
+  input:focus, textarea:focus, select:focus { outline:none; border-color:var(--acc); }
+  .types { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+  .type { background:var(--panel2); border:1px solid var(--line); border-radius:11px; padding:10px 6px; text-align:center; cursor:pointer; font-weight:700; font-size:12.5px; }
+  .type .ic { display:block; font-size:20px; margin-bottom:3px; }
+  .type.on { border-color:var(--acc); background:#16295a; box-shadow:0 0 0 2px #3b82f655; }
+  .row2 { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .item { background:#0e182e; border:1px dashed var(--line); border-radius:11px; padding:10px; margin:8px 0; position:relative; }
+  .item .x { position:absolute; top:6px; inset-inline-end:6px; }
+  .hint { background:#10203f; border:1px solid #1e3a6e; color:#bcd0f5; border-radius:10px; padding:8px 10px; font-size:12px; line-height:1.7; margin:8px 0; }
+  .hint code { background:#0a1328; padding:1px 6px; border-radius:5px; color:#7dd3fc; direction:ltr; display:inline-block; }
+  .tbl { overflow:auto; }
+  .tbl table { border-collapse:collapse; width:100%; }
+  .tbl td, .tbl th { border:1px solid var(--line); padding:3px; min-width:120px; vertical-align:top; }
+  .tbl th { background:#0e1a35; }
+  .tbl textarea { min-height:44px; padding:5px 7px; }
+  .tbl input[type=text] { padding:5px 7px; }
+  .rtlchk { font-size:11px; color:var(--mut); display:block; margin-top:3px; }
+  .msg { padding:8px 12px; border-radius:9px; margin-top:10px; font-weight:700; display:none; }
+  .msg.ok { display:block; background:#0b2a17; color:#86efac; border:1px solid #14532d; }
+  .msg.err { display:block; background:#3b1219; color:#fecaca; border:1px solid #7f1d1d; }
+  iframe { width:100%; border:1px solid var(--line); border-radius:12px; background:#fff; }
+  #pv { height:230px; margin-top:8px; }
+  #book { height:calc(100vh - 86px); background:#090d16; }
+  .tabs { display:flex; gap:8px; margin-bottom:8px; align-items:center; }
+  .tabs .sp { flex:1; }
+  .actions { display:flex; gap:8px; margin-top:10px; flex-wrap:wrap; }
+  .modes { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:12px; }
+  .mode-btn { background:var(--panel); border:1.5px solid var(--line); color:var(--mut); border-radius:12px; padding:10px 8px; font-family:inherit; font-size:13.5px; font-weight:800; cursor:pointer; text-align:center; transition:.15s; }
+  .mode-btn:hover { border-color:var(--acc); color:var(--txt); }
+  .mode-btn.on[data-m="add"] { background:#0b2a17; border-color:#22c55e; color:#86efac; }
+  .mode-btn.on[data-m="edit"] { background:#16295a; border-color:#3b82f6; color:#bfdbfe; }
+  .mode-btn.on[data-m="delete"] { background:#3b1219; border-color:#ef4444; color:#fecaca; }
+</style>
+</head>
+<body>
+<header>
+  <h1>📚 Book Builder — أضف المحتوى بدون تعديل كود</h1>
+  <span class="sp"></span>
+  <button class="btn" id="btnUndo">↩ تراجع عن آخر تعديل</button>
+  <a class="btn" href="/files/from_zero_to_hero_book.html" target="_blank" style="text-decoration:none;">فتح الكتاب ↗</a>
+</header>
+<main>
+  <section class="col">
+    <div class="modes" id="modes">
+      <button type="button" class="mode-btn on" data-m="add">➕ إضافة</button>
+      <button type="button" class="mode-btn" data-m="edit">✏️ تعديل</button>
+      <button type="button" class="mode-btn" data-m="delete">🗑 حذف</button>
+    </div>
+
+    <div class="card" id="cardWhere">
+      <h3 id="whereTitle">١) فين تتحط؟</h3>
+      <div class="hint" id="modeHint" style="display:none;"></div>
+      <label class="f">الدرس</label>
+      <select id="lesson"></select>
+      <label class="f" id="posLabel">المكان داخل الدرس</label>
+      <select id="pos"></select>
+      <div class="actions" id="delActions" style="display:none;">
+        <button class="btn bad" id="btnDel">🗑 امسح العنصر المحدد</button>
+      </div>
+    </div>
+
+    <div class="card" id="cardTypes">
+      <h3>٢) إيه اللي تضيفه؟</h3>
+      <div class="types" id="types"></div>
+    </div>
+
+    <div class="card" id="cardForm">
+      <h3 id="formTitle">٣) املا القيم</h3>
+      <div id="form"></div>
+      <div class="actions">
+        <button class="btn" id="btnPrev">👁 معاينة</button>
+        <button class="btn ok" id="btnAdd">➕ ضيف في الكتاب</button>
+        <button class="btn ok" id="btnSaveEdit" style="display:none;">💾 حفظ التعديل</button>
+      </div>
+      <div class="msg" id="msg"></div>
+      <iframe id="pv" title="preview"></iframe>
+    </div>
+    <div class="msg" id="msgDel"></div>
+  </section>
+  <section class="col" style="overflow:hidden">
+    <div class="tabs"><b>معاينة الكتاب (بتتحدث لوحدها بعد كل إضافة)</b><span class="sp"></span><button class="btn" id="btnReload">🔄 تحديث</button></div>
+    <iframe id="book" src="/files/from_zero_to_hero_book.html"></iframe>
+  </section>
+</main>
+
+<script>
+const $ = (s, r=document) => r.querySelector(s);
+const el = (tag, attrs={}, ...kids) => { const e=document.createElement(tag); for (const k in attrs){ if(k==='class') e.className=attrs[k]; else if(k==='html') e.innerHTML=attrs[k]; else if(k.startsWith('on')) e.addEventListener(k.slice(2),attrs[k]); else e.setAttribute(k,attrs[k]); } kids.forEach(c=>e.append(c)); return e; };
+
+const MATH_HINT = 'كتابة الرياضيات: كسر <code>[البسط / المقام]</code> — النتيجة <code>{{0.25}}</code> — رمز سفلي <code>x_norm</code> — أُس <code>x^2</code> — عريض <code>**كلمة**</code>';
+
+const COMPONENTS = {
+  heading:   { label:'عنوان قسم', icon:'🔖', fields:[ {k:'title', t:'text', l:'نص العنوان', ph:'5. Normalization and Standardization'} ] },
+  paragraph: { label:'فقرة', icon:'📝', fields:[ {k:'en', t:'textarea', l:'الفقرة (إنجليزي) — **كلمة** للتغميق', ph:'Every analysis rests on its **data**.'}, {k:'ar', t:'textarea', l:'شرح خفيف بالعربي (اختياري)'} ] },
+  notes:     { label:'ملاحظة Notes', icon:'💡', fields:[ {k:'label', t:'text', l:'عنوان الصندوق', v:'Notes'}, {k:'en', t:'textarea', l:'الإنجليزي — كل سطر = نقطة في سطر لوحده', ph:'Population = everyone\nSample = the part you ask'}, {k:'ar', t:'textarea', l:'العربي — كل سطر = نقطة في سطر لوحده', ph:'المجتمع = الجميع\nالعيّنة = الجزء اللي بتسأله'} ] },
+  concept:   { label:'كارت مفهوم', icon:'🎯', fields:[ {k:'tag', t:'text', l:'التاج', v:'KEY CONCEPT'}, {k:'title', t:'text', l:'العنوان'}, {k:'en', t:'textarea', l:'الشرح (إنجليزي)'}, {k:'ar', t:'textarea', l:'الشرح (عربي)'} ] },
+  table:     { label:'جدول مقارنة', icon:'📊', custom:'table' },
+  flow:      { label:'مخطط / ميكانيزم', icon:'🔀', fields:[ {k:'header', t:'text', l:'عنوان المخطط', ph:'إزاي بيشتغل؟ (How it works)'}, {k:'steps', t:'list', l:'الخطوات', add:'+ خطوة', init:3, sub:[ {k:'title', t:'text', l:'عنوان الخطوة'}, {k:'desc', t:'text', l:'وصف قصير'} ]} ] },
+  example:   { label:'مثال من الواقع', icon:'🌍', fields:[ {k:'header', t:'text', l:'عنوان المثال', v:'مثال من الواقع'}, {k:'body', t:'textarea', l:'نص المثال (كل سطر في سطر لوحده)'}, {k:'bullets', t:'textarea', l:'نقاط التفصيل (اختياري) — كل سطر: المصطلح = الشرح', ph:'Pivot = إعادة تشكيل البيانات\nJoin = ربط الجداول'} ] },
+  rules:     { label:'قوانين (Rules)', icon:'📐', fields:[ {k:'badge', t:'text', l:'التاج', v:'Rules & Formulas'}, {k:'title_en', t:'text', l:'العنوان إنجليزي'}, {k:'title_ar', t:'text', l:'العنوان عربي'}, {k:'hint', t:'hint', html:MATH_HINT}, {k:'rules', t:'list', l:'القوانين', add:'+ قانون', init:2, sub:[ {k:'name', t:'text', l:'اسم القانون (إنجليزي)'}, {k:'name_ar', t:'text', l:'الاسم عربي'}, {k:'formula', t:'text', l:'القانون', ph:'x_norm = [x - min / max - min]'}, {k:'note_ar', t:'text', l:'شرح مختصر بالعربي'} ]} ] },
+  problems:  { label:'مسائل محلولة', icon:'🧮', fields:[ {k:'badge', t:'text', l:'التاج', v:'Worked Problems'}, {k:'title_en', t:'text', l:'العنوان إنجليزي'}, {k:'title_ar', t:'text', l:'العنوان عربي'}, {k:'hint', t:'hint', html:MATH_HINT + '<br>الخطوات: كل سطر <code>اسم الخطوة | المعادلة</code> مثال: <code>Step 1 | x_norm = [165 - 160 / 180 - 160] = [5 / 20] = {{0.25}}</code>'}, {k:'problems', t:'list', l:'المسائل (كل مسألة تتحل تحت اللي قبلها)', add:'+ مسألة', init:1, sub:[ {k:'name', t:'text', l:'اسم المسألة (إنجليزي)', ph:'Problem 1 — Normalization'}, {k:'name_ar', t:'text', l:'الاسم عربي'}, {k:'given', t:'textarea', l:'المعطيات / السؤال'}, {k:'steps', t:'textarea', l:'خطوات الحل — كل سطر: اسم | معادلة'}, {k:'explain_ar', t:'textarea', l:'شرح الحل بالعربي'} ]} ] },
+  raw:       { label:'HTML مباشر', icon:'🧩', fields:[ {k:'html', t:'textarea', l:'كود العنصر (HTML)'} ] },
+};
+
+let LESSONS = [], currentKind = 'notes', getters = {}, editingTarget = null, currentMode = 'add';
+
+/* ---------------- field builders ---------------- */
+function buildField(f, val) {
+  const wrap = el('div');
+  if (f.t === 'hint') { wrap.append(el('div', {class:'hint', html:f.html})); return {el:wrap, get:()=>undefined}; }
+  if (f.t === 'text' || f.t === 'textarea') {
+    wrap.append(el('label', {class:'f'}, f.l));
+    const inp = f.t === 'text' ? el('input', {type:'text'}) : el('textarea');
+    if (f.ph) inp.placeholder = f.ph;
+    if (val !== undefined) inp.value = val || '';
+    else if (f.v) inp.value = f.v;
+    wrap.append(inp);
+    return {el:wrap, get:()=>inp.value};
+  }
+  if (f.t === 'list') {
+    wrap.append(el('label', {class:'f'}, f.l));
+    const box = el('div'); wrap.append(box);
+    const items = [];
+    const addItem = (rowVal) => {
+      const subs = f.sub.map(sf => buildField(sf, rowVal ? rowVal[sf.k] : undefined));
+      const item = el('div', {class:'item'});
+      const x = el('button', {class:'btn bad x', type:'button', onclick:()=>{ if (items.length>1){ item.remove(); items.splice(items.findIndex(i=>i.item===item),1);} }}, '✕');
+      item.append(x); subs.forEach(s=>item.append(s.el)); box.append(item);
+      items.push({item, subs});
+    };
+    const arr = Array.isArray(val) && val.length ? val : null;
+    if (arr) arr.forEach(rv => addItem(rv));
+    else for (let i=0;i<(f.init||1);i++) addItem(null);
+    wrap.append(el('button', {class:'btn', type:'button', onclick:()=>addItem(null)}, f.add || '+ إضافة'));
+    return {el:wrap, get:()=>items.map(it=>{ const o={}; f.sub.forEach((s,i)=>{o[s.k]=it.subs[i].get();}); return o; })};
+  }
+}
+
+function buildTable(initData) {
+  const wrap = el('div');
+  wrap.append(el('label', {class:'f'}, 'عنوان الجدول'));
+  const title = el('input', {type:'text'}); title.value = initData ? (initData.title || '') : 'Comparison'; wrap.append(title);
+  wrap.append(el('label', {class:'f'}, 'سطر فرعي تحت العنوان'));
+  const sub = el('input', {type:'text'}); sub.value = initData ? (initData.subtitle || '') : 'Key differences at a glance'; wrap.append(sub);
+  const hdrChk = el('input', {type:'checkbox'}); hdrChk.checked = initData ? (initData.with_header !== false) : true;
+  wrap.append(el('label', {class:'rtlchk'}, hdrChk, ' إظهار الشخصية والعنوان فوق الجدول'));
+  wrap.append(el('div', {class:'hint'}, 'الخانة الأولى في كل صف بتتكتب عريضة تلقائي. علّم "عربي" على العمود اللي نصه عربي عشان يتظبط يمين-شمال. **كلمة** للتغميق.'));
+  const holder = el('div', {class:'tbl'}); wrap.append(holder);
+  let cols = (initData && initData.columns && initData.columns.length) ? initData.columns.map(c=>({...c})) : [{name:'Dimension', rtl:false},{name:'Item 1', rtl:false},{name:'Item 2', rtl:false}];
+  let rows = (initData && initData.rows && initData.rows.length) ? initData.rows.map(r=>r.slice()) : [['Description','',''],['مثال واقعي','','']];
+  const sync = () => {
+    holder.querySelectorAll('[data-c]').forEach(i=>{ cols[+i.dataset.c].name = i.value; });
+    holder.querySelectorAll('[data-rtl]').forEach(i=>{ cols[+i.dataset.rtl].rtl = i.checked; });
+    holder.querySelectorAll('[data-r]').forEach(i=>{ rows[+i.dataset.r][+i.dataset.cc] = i.value; });
+  };
+  const draw = () => {
+    holder.innerHTML = '';
+    const t = el('table'); const trh = el('tr');
+    cols.forEach((c,i)=>{
+      const th = el('th'); const inp = el('input',{type:'text','data-c':i}); inp.value=c.name; th.append(inp);
+      const cb = el('input',{type:'checkbox','data-rtl':i}); cb.checked=c.rtl;
+      th.append(el('label',{class:'rtlchk'}, cb, ' عربي'));
+      th.append(el('button',{class:'btn bad',type:'button',onclick:()=>{sync(); if(cols.length>1){cols.splice(i,1); rows.forEach(r=>r.splice(i,1)); draw();}}},'حذف العمود'));
+      trh.append(th);
+    });
+    t.append(trh);
+    rows.forEach((r,ri)=>{
+      const tr = el('tr');
+      const isExampleRow = String(r[0] || '').includes('مثال');
+      cols.forEach((c,ci)=>{
+        const td = el('td'); const ta = el('textarea',{'data-r':ri,'data-cc':ci}); ta.value = r[ci]||''; if (c.rtl || isExampleRow) ta.style.direction='rtl'; td.append(ta); tr.append(td);
+      });
+      const td = el('td'); td.append(el('button',{class:'btn bad',type:'button',onclick:()=>{sync(); if(rows.length>1){rows.splice(ri,1); draw();}}},'✕')); td.style.minWidth='40px'; tr.append(td);
+      t.append(tr);
+    });
+    holder.append(t);
+  };
+  draw();
+  const bar = el('div',{class:'actions'});
+  bar.append(el('button',{class:'btn',type:'button',onclick:()=>{sync(); cols.push({name:'',rtl:false}); rows.forEach(r=>r.push('')); draw();}},'+ عمود'));
+  bar.append(el('button',{class:'btn',type:'button',onclick:()=>{sync(); rows.push(cols.map(()=>'')); draw();}},'+ صف'));
+  wrap.append(bar);
+  return {el:wrap, get:()=>{ sync(); return {title:title.value, subtitle:sub.value, with_header:hdrChk.checked, columns:cols.map(c=>({...c})), rows:rows.map(r=>r.slice())}; }};
+}
+
+function renderForm(initData) {
+  const form = $('#form'); form.innerHTML = ''; getters = {};
+  const comp = COMPONENTS[currentKind];
+  if (comp.custom === 'table') { const t = buildTable(initData); form.append(t.el); getters.__table = t; return; }
+  comp.fields.forEach(f => { const b = buildField(f, initData ? initData[f.k] : undefined); form.append(b.el); getters[f.k] = b; });
+}
+function collect() {
+  const comp = COMPONENTS[currentKind];
+  if (comp.custom === 'table') return getters.__table.get();
+  const d = {}; comp.fields.forEach(f => { const g = getters[f.k].get(); if (g !== undefined) d[f.k] = g; }); return d;
+}
+
+/* ---------------- structure / selects ---------------- */
+function fillLessons(keepLesson, keepPos) {
+  const sel = $('#lesson'); sel.innerHTML = '';
+  LESSONS.forEach(l => sel.append(el('option', {value:l.id}, `الوحدة ${l.unit} — ${l.label}: ${l.title}`)));
+  if (keepLesson != null && LESSONS[keepLesson]) sel.value = keepLesson;
+  fillPos(keepPos);
+}
+function fillPos(keepPos) {
+  const l = LESSONS[+$('#lesson').value]; const sel = $('#pos'); sel.innerHTML = '';
+  if (currentMode === 'add') {
+    sel.append(el('option', {value:'start'}, '⬆ في بداية الدرس'));
+    l.blocks.forEach(b => sel.append(el('option', {value:b.idx}, `بعد: [${b.type}] ${b.text.slice(0,48)}`)));
+    sel.append(el('option', {value:'end'}, '⬇ في نهاية الدرس'));
+    sel.value = keepPos != null ? keepPos : 'end';
+    if (sel.value !== String(keepPos) && keepPos == null) sel.value = 'end';
+  } else {
+    sel.append(el('option', {value:''}, '— اختر عنصر من القائمة أو اضغط عليه في الكتاب —'));
+    l.blocks.forEach(b => sel.append(el('option', {value:b.idx}, `[${b.type}] ${b.text.slice(0,52)}`)));
+    if (keepPos != null && keepPos !== 'start' && keepPos !== 'end') sel.value = String(keepPos);
+  }
+}
+async function loadStructure(keepLesson, keepPos) {
+  const r = await fetch('/api/structure').then(r=>r.json());
+  if (!r.ok) { showMsg(r.error, true); return; }
+  LESSONS = r.lessons; fillLessons(keepLesson, keepPos);
+}
+
+function showMsg(t, err) {
+  const m = currentMode === 'delete' ? $('#msgDel') : $('#msg');
+  $('#msg').className = 'msg'; $('#msgDel').className = 'msg';
+  m.className = 'msg ' + (err ? 'err' : 'ok'); m.textContent = t;
+}
+
+/* ---------------- actions ---------------- */
+function firstText(o) {
+  if (typeof o === 'string') { const s = o.replace(/\*\*/g,'').trim(); return s.length > 3 ? s : null; }
+  if (Array.isArray(o)) { for (const x of o) { const r = firstText(x); if (r) return r; } return null; }
+  if (o && typeof o === 'object') { for (const k of Object.keys(o)) { if (k==='tag'||k==='badge'||k==='label') continue; const r = firstText(o[k]); if (r) return r; } }
+  return null;
+}
+function applyBookSelectMode(d) {
+  if (!d || !d.body) return;
+  d.body.classList.toggle('bb-add-mode', currentMode === 'add');
+  d.body.classList.toggle('bb-pick-mode', currentMode === 'edit' || currentMode === 'delete');
+  if (currentMode === 'add') d.querySelectorAll('.bb-selected').forEach(x=>x.classList.remove('bb-selected'));
+  else d.querySelectorAll('.bb-add-slot-active').forEach(x=>x.classList.remove('bb-add-slot-active'));
+}
+
+function makeAddSlot(d, lIdx, afterVal, labelText) {
+  const slot = d.createElement('div');
+  slot.className = 'bb-add-slot';
+  const btn = d.createElement('button');
+  btn.type = 'button';
+  btn.className = 'bb-add-btn';
+  btn.textContent = '+';
+  btn.title = labelText;
+  btn.addEventListener('click', (ev) => {
+    ev.preventDefault();
+    ev.stopPropagation();
+    d.querySelectorAll('.bb-add-slot-active').forEach(x => {
+      x.classList.remove('bb-add-slot-active');
+      const b = x.querySelector('.bb-add-btn'); if (b) b.textContent = '+';
+    });
+    slot.classList.add('bb-add-slot-active');
+    btn.textContent = '✓ ضيف هنا';
+    $('#lesson').value = String(lIdx);
+    fillPos(afterVal);
+    showMsg('✅ تم تحديد مكان الإضافة: ' + labelText, false);
+  });
+  slot.appendChild(btn);
+  return slot;
+}
+
+function wireBookClicks(d) {
+  if (!d || d.getElementById('builder-click-style')) return;
+  const st = d.createElement('style');
+  st.id = 'builder-click-style';
+  st.textContent = [
+    'body.bb-pick-mode .bb-editable{cursor:pointer;transition:outline .12s;border-radius:10px;}',
+    'body.bb-pick-mode .bb-editable:hover{outline:2.5px dashed #2563eb;outline-offset:3px;}',
+    '.bb-selected{outline:3px solid #22c55e !important;outline-offset:3px;}',
+    '.bb-add-slot{display:none;height:0;position:relative;z-index:40;}',
+    'body.bb-add-mode .bb-add-slot{display:block;}',
+    '.bb-add-slot::before{content:"";position:absolute;left:8px;right:8px;top:0;border-top:2px dashed transparent;pointer-events:none;transition:.12s;}',
+    '.bb-add-slot:hover::before,.bb-add-slot-active::before{border-top-color:#3b82f6;}',
+    '.bb-add-slot-active::before{border-top-color:#16a34a;}',
+    '.bb-add-btn{position:absolute;left:50%;top:0;transform:translate(-50%,-50%);min-width:22px;height:22px;padding:0 6px;border-radius:999px;border:1.5px solid #3b82f6;background:#eff6ff;color:#1d4ed8;font-family:Cairo,sans-serif;font-size:12px;font-weight:900;line-height:19px;cursor:pointer;opacity:.72;box-shadow:0 2px 6px rgba(15,23,42,.15);transition:.12s;}',
+    '.bb-add-slot:hover .bb-add-btn{opacity:1;transform:translate(-50%,-50%) scale(1.12);background:#2563eb;color:#fff;}',
+    '.bb-add-slot-active .bb-add-btn{opacity:1;background:#16a34a;border-color:#15803d;color:#fff;padding:0 10px;}'
+  ].join('\n');
+  d.head.appendChild(st);
+  applyBookSelectMode(d);
+
+  // Group explanation pages into lessons matching server.py's parse_book()
+  const pages = Array.from(d.querySelectorAll('.magazine-spread > .page'));
+  const groups = [];
+  let cur = null, curKey = null;
+  pages.forEach(pg => {
+    const hdr = pg.querySelector(':scope > .page-header');
+    const ftr = pg.querySelector(':scope > .page-footer');
+    if (!hdr || !ftr) { cur = null; curKey = null; return; }
+    const badge = (hdr.querySelector('.badge-unit')?.textContent || '').trim();
+    if (/^(Classwork|Homework)$/i.test(badge)) { cur = null; curKey = null; return; }
+    const spans = hdr.querySelectorAll('span');
+    const lbl = (spans[0]?.textContent || '').trim();
+    const key = pg.className + '||' + lbl + '||' + badge;
+    if (!cur || curKey !== key) { cur = []; curKey = key; groups.push(cur); }
+    cur.push(pg);
+  });
+
+  groups.forEach((pgs, lIdx) => {
+    const srvBlocks = (LESSONS[lIdx] && LESSONS[lIdx].blocks) || [];
+    let srvPtr = 0;
+    let addedStart = false;
+    pgs.forEach(pg => {
+      const ftr = pg.querySelector(':scope > .page-footer');
+      const items = Array.from(pg.children).filter(el => !el.classList.contains('page-header') && !el.classList.contains('page-footer') && !el.classList.contains('bb-add-slot'));
+      items.forEach((el, idxInPg) => {
+        if (!addedStart && idxInPg === 0) {
+          pg.insertBefore(makeAddSlot(d, lIdx, 'start', 'في بداية الدرس'), el);
+          addedStart = true;
+        }
+        const noWs = s => (s || '').replace(/\s+/g,'');
+        const txt = noWs(el.textContent);
+        const keyLong  = txt.slice(0, 75);
+        const keyMid   = txt.slice(0, 36);
+        const keyShort = txt.slice(0, 14);
+        let bIdx = Math.min(srvPtr, Math.max(0, srvBlocks.length - 1));
+        if (srvBlocks.length) {
+          // Search forward from srvPtr first so repeated prefixes match in document order
+          const findMatch = (fromIdx) => {
+            const slice = srvBlocks.slice(fromIdx);
+            return (keyLong  && slice.find(b => noWs(b.text).includes(keyLong)))
+                || (keyMid   && slice.find(b => noWs(b.text).includes(keyMid)))
+                || (keyShort && slice.find(b => noWs(b.text).includes(keyShort)));
+          };
+          const m = findMatch(srvPtr) || findMatch(0);
+          if (m) {
+            bIdx = m.idx;
+            if (m.idx >= srvPtr) srvPtr = m.idx + 1;
+          }
+        }
+        el.classList.add('bb-editable');
+        el.addEventListener('click', (ev) => {
+          if (currentMode === 'add') return;
+          ev.preventDefault();
+          ev.stopPropagation();
+          d.querySelectorAll('.bb-selected').forEach(x=>x.classList.remove('bb-selected'));
+          el.classList.add('bb-selected');
+          if (currentMode === 'edit') {
+            openEditFor(lIdx, bIdx);
+          } else if (currentMode === 'delete') {
+            $('#lesson').value = String(lIdx);
+            fillPos(String(bIdx));
+            showMsg('🗑 تم تحديد العنصر — اضغط "امسح العنصر المحدد" للحذف', false);
+          }
+        });
+        const label = srvBlocks[bIdx] ? `بعد [${srvBlocks[bIdx].type}]` : 'بعد هذا العنصر';
+        pg.insertBefore(makeAddSlot(d, lIdx, String(bIdx), label), el.nextSibling);
+      });
+    });
+  });
+}
+
+function reloadBook(token) {
+  const fr = $('#book'); fr.src = '/files/from_zero_to_hero_book.html?' + Date.now();
+  fr.onload = () => {
+    let tries = 0;
+    const iv = setInterval(() => {
+      tries++;
+      const d = fr.contentDocument; if (!d || !d.body) { if (tries > 60) clearInterval(iv); return; }
+      if (d.body.getAttribute('data-paginated') === 'true' || tries > 60) {
+        clearInterval(iv);
+        wireBookClicks(d);
+        if (!token) return;
+        const w = d.createTreeWalker(d.body, NodeFilter.SHOW_TEXT);
+        let n; const key = token.slice(0, 22);
+        while ((n = w.nextNode())) { if (n.nodeValue && n.nodeValue.includes(key) && n.parentElement && n.parentElement.closest('.page')) {
+          const target = n.parentElement.closest('.note-lightbulb-box,.comparison-section,.concept-card,.egy-reflection-box,.real-world-example-box,.rules-box,.problems-box,.sec-heading,.lead-paragraph') || n.parentElement;
+          target.scrollIntoView({block:'center'}); target.classList.add('bb-selected'); break; } }
+      }
+    }, 150);
+  };
+}
+async function post(url, body) { const r = await fetch(url, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)}); return r; }
+
+function setMode(mode) {
+  currentMode = mode;
+  document.querySelectorAll('.mode-btn').forEach(b => b.classList.toggle('on', b.dataset.m === mode));
+  $('#msg').className = 'msg'; $('#msgDel').className = 'msg';
+  editingTarget = null;
+  if (mode === 'add') {
+    $('#whereTitle').textContent = '١) فين تتحط؟';
+    $('#posLabel').textContent = 'المكان داخل الدرس';
+    $('#modeHint').style.display = '';
+    $('#modeHint').textContent = '👆 اتك على علامة (+) قبل أو بعد أي عنصر في الكتاب على الشمال لتحديد مكان الإضافة.';
+    $('#delActions').style.display = 'none';
+    $('#cardTypes').style.display = '';
+    $('#cardForm').style.display = '';
+    $('#btnAdd').style.display = '';
+    $('#btnSaveEdit').style.display = 'none';
+    $('#formTitle').textContent = '٣) املا القيم';
+    if (currentKind === 'raw') { currentKind = 'notes'; buildTypes(); }
+    renderForm();
+  } else if (mode === 'edit') {
+    $('#whereTitle').textContent = '١) اختار العنصر اللي عايز تعدّله';
+    $('#posLabel').textContent = 'العنصر';
+    $('#modeHint').style.display = '';
+    $('#modeHint').textContent = '👆 اتك على أي عنصر في الكتاب على الشمال، أو اختاره من القائمة تحت، وهيتحمل هنا فوراً.';
+    $('#delActions').style.display = 'none';
+    $('#cardTypes').style.display = '';
+    $('#cardForm').style.display = '';
+    $('#btnAdd').style.display = 'none';
+    $('#btnSaveEdit').style.display = '';
+    $('#formTitle').textContent = '٣) عدّل القيم';
+    $('#form').innerHTML = '<div class="hint">اختر عنصراً من الكتاب أو القائمة لعرض بياناته وتعديلها.</div>';
+  } else {
+    $('#whereTitle').textContent = '١) اختار العنصر اللي عايز تمسحه';
+    $('#posLabel').textContent = 'العنصر';
+    $('#modeHint').style.display = '';
+    $('#modeHint').textContent = '👆 اتك على أي عنصر في الكتاب على الشمال، أو اختاره من القائمة تحت، وبعدين اضغط مسح.';
+    $('#delActions').style.display = '';
+    $('#cardTypes').style.display = 'none';
+    $('#cardForm').style.display = 'none';
+  }
+  if (LESSONS.length) fillPos();
+  const fr = $('#book');
+  if (fr && fr.contentDocument) applyBookSelectMode(fr.contentDocument);
+}
+
+document.querySelectorAll('.mode-btn').forEach(b => b.onclick = () => setMode(b.dataset.m));
+
+async function openEditFor(lesson, blockIdx) {
+  const r = await fetch(`/api/block?lesson=${lesson}&block=${blockIdx}`).then(x=>x.json());
+  if (!r.ok) { showMsg('فشل التحميل: ' + r.error, true); return; }
+  $('#lesson').value = String(lesson);
+  fillPos(String(blockIdx));
+  currentKind = COMPONENTS[r.kind] ? r.kind : 'raw';
+  buildTypes();
+  renderForm(r.data);
+  editingTarget = {lesson, block:blockIdx};
+  $('#btnAdd').style.display = 'none';
+  $('#btnSaveEdit').style.display = '';
+  showMsg('✏️ تم تحميل العنصر — عدّل البيانات واضغط "حفظ التعديل"', false);
+}
+
+$('#btnSaveEdit').onclick = async () => {
+  if (!editingTarget) { showMsg('اختار عنصر من الكتاب أو القائمة الأول', true); return; }
+  const data = collect();
+  const r = await (await post('/api/update', {lesson:editingTarget.lesson, block:editingTarget.block, kind:currentKind, data})).json();
+  if (!r.ok) { showMsg('فشل: ' + r.error, true); return; }
+  const kept = editingTarget;
+  showMsg('💾 تم حفظ التعديل — والصفحات اتظبطت لوحدها', false);
+  await loadStructure(kept.lesson, String(kept.block));
+  reloadBook(firstText(data));
+};
+
+$('#btnAdd').onclick = async () => {
+  const data = collect(); const lesson = +$('#lesson').value; const pos = $('#pos').value;
+  const r = await (await post('/api/insert', {lesson, after:pos, kind:currentKind, data})).json();
+  if (!r.ok) { showMsg('فشل: ' + r.error, true); return; }
+  showMsg('✅ اتضاف في الكتاب — والصفحات اتظبطت لوحدها', false);
+  await loadStructure(lesson, pos === 'end' ? 'end' : pos);
+  reloadBook(firstText(data));
+};
+$('#btnDel').onclick = async () => {
+  const pos = $('#pos').value; if (!pos || pos === 'start' || pos === 'end') { showMsg('اختار العنصر اللي عايز تمسحه الأول', true); return; }
+  if (!confirm('تمسح العنصر ده من الكتاب؟ (تقدر تتراجع)')) return;
+  const lesson = +$('#lesson').value;
+  const r = await (await post('/api/delete', {lesson, block:+pos})).json();
+  if (!r.ok) { showMsg('فشل: ' + r.error, true); return; }
+  showMsg('🗑 اتمسح — الصفحات اتظبطت لوحدها', false); await loadStructure(lesson, null); reloadBook(null);
+};
+$('#btnUndo').onclick = async () => {
+  const r = await (await post('/api/undo', {})).json();
+  if (!r.ok) { showMsg('مفيش حاجة أتراجع عنها: ' + r.error, true); return; }
+  showMsg('↩ رجعت لآخر نسخة', false); await loadStructure(+$('#lesson').value || 0, null); reloadBook(null);
+};
+$('#btnReload').onclick = () => reloadBook(null);
+$('#btnPrev').onclick = async () => {
+  const l = LESSONS[+$('#lesson').value];
+  const r = await post('/api/preview', {kind:currentKind, data:collect(), unit:l ? l.unit : '5'});
+  const html = await r.text(); const pv = $('#pv');
+  pv.srcdoc = html.replace('<head', '<head><base href="/files/"');
+  pv.onload = () => { try { pv.style.height = Math.min(700, pv.contentDocument.body.scrollHeight + 24) + 'px'; } catch(e){} };
+};
+$('#lesson').onchange = () => fillPos();
+$('#pos').onchange = () => {
+  if (currentMode === 'edit' && $('#pos').value !== '') openEditFor(+$('#lesson').value, +$('#pos').value);
+};
+
+/* ---------------- init ---------------- */
+function buildTypes() {
+  const box = $('#types'); box.innerHTML = '';
+  Object.keys(COMPONENTS).forEach(k => {
+    if (k === 'raw' && currentKind !== 'raw') return;
+    const c = COMPONENTS[k];
+    const b = el('div', {class:'type' + (k === currentKind ? ' on' : ''), onclick:()=>{ currentKind = k; buildTypes(); renderForm(); }}, el('span', {class:'ic'}, c.icon), c.label);
+    box.append(b);
+  });
+}
+buildTypes(); renderForm(); loadStructure().then(() => reloadBook(null));
+</script>
+</body>
+</html>

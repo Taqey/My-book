@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>From Zero to Hero — Lesson 1: Methods of Data Collection</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&amp;family=Cairo:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+      /* Default Unit Theme (Unit 5: Blue / Cyan) */
+      --unit-primary: #2563eb;
+      --unit-primary-dark: #1d4ed8;
+      --unit-accent: #0ea5e9;
+      --unit-light: #38bdf8;
+      --unit-soft-bg: #eff6ff;
+      --unit-soft-border: #bfdbfe;
+      --unit-badge-bg: #dbeafe;
+      --unit-gradient: linear-gradient(135deg, #2563eb, #0ea5e9);
+      --dark: #0f172a;
+      --slate: #334155;
+      --slate-light: #64748b;
+    }
+
+    /* Unit 5 Theme: Blue */
+    .theme-unit-5 {
+      --unit-primary: #2563eb;
+      --unit-primary-dark: #1d4ed8;
+      --unit-accent: #0ea5e9;
+      --unit-light: #38bdf8;
+      --unit-soft-bg: #eff6ff;
+      --unit-soft-border: #bfdbfe;
+      --unit-badge-bg: #dbeafe;
+      --unit-gradient: linear-gradient(135deg, #2563eb, #0ea5e9);
+    }
+
+    /* Unit 6 Theme: Purple / Violet */
+    .theme-unit-6 {
+      --unit-primary: #7c3aed;
+      --unit-primary-dark: #6d28d9;
+      --unit-accent: #a855f7;
+      --unit-light: #c084fc;
+      --unit-soft-bg: #f5f3ff;
+      --unit-soft-border: #ddd6fe;
+      --unit-badge-bg: #ede9fe;
+      --unit-gradient: linear-gradient(135deg, #7c3aed, #a855f7);
+    }
+
+    /* Unit 7 Theme: Emerald / Teal */
+    .theme-unit-7 {
+      --unit-primary: #059669;
+      --unit-primary-dark: #047857;
+      --unit-accent: #10b981;
+      --unit-light: #34d399;
+      --unit-soft-bg: #ecfdf5;
+      --unit-soft-border: #a7f3d0;
+      --unit-badge-bg: #d1fae5;
+      --unit-gradient: linear-gradient(135deg, #059669, #10b981);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    img {
+      object-fit: contain;
+      max-width: 100%;
+    }
+    
+    body {
+      font-family: 'Plus Jakarta Sans', 'Cairo', sans-serif;
+      background: #090d16;
+      color: var(--slate);
+      padding: 36px 18px;
+      line-height: 1.55;
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    .container {
+      max-width: none;
+      margin: 0 auto;
+    }
+
+    /* Magazine Two-Page Spread Grid */
+    .magazine-spread {
+      display: grid;
+      grid-template-columns: 210mm 210mm;
+      justify-content: center;
+      gap: 28px;
+      margin-bottom: 38px;
+      align-items: start;
+    }
+
+    @media (max-width: 1100px) {
+      .magazine-spread { grid-template-columns: 210mm; }
+    }
+
+    /* Standard Page (A4: 210mm x 297mm) */
+    .page {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 28px 28px 22px 28px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.55);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      width: 210mm;
+      height: 297mm;
+      min-height: 297mm;
+      max-height: 297mm;
+      overflow: hidden;
+    }
+
+    /* =========================================================
+       1. LESSON COVER PAGE (VARIATION 6 STYLE - A4)
+       ========================================================= */
+    .lesson-cover-page {
+      border-radius: 22px;
+      padding: 40px 38px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65);
+      border: none;
+      background: #0b132b;
+      color: #fff;
+      width: 210mm;
+      height: 297mm;
+      min-height: 297mm;
+      max-height: 297mm;
+    }
+
+    .banner-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .v6-scrim {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(
+        180deg,
+        rgba(8, 15, 35, 0.92) 0%,
+        rgba(8, 15, 35, 0.65) 36%,
+        rgba(8, 15, 35, 0.08) 65%,
+        rgba(8, 15, 35, 0.25) 100%
+      );
+    }
+
+    .unit-pill {
+      position: relative;
+      z-index: 2;
+      align-self: flex-start;
+      background: rgba(15, 23, 42, 0.55);
+      backdrop-filter: blur(10px);
+      border: 1.5px solid var(--unit-light);
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+
+    .v6-hero {
+      position: relative;
+      z-index: 2;
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .v6-text-col { min-width: 0; }
+
+    .v6-watermark {
+      font-size: 7.2rem;
+      font-weight: 900;
+      line-height: 0.85;
+      color: transparent;
+      -webkit-text-stroke: 2.5px var(--unit-light);
+      opacity: 0.55;
+      pointer-events: none;
+      user-select: none;
+      padding-top: 4px;
+    }
+
+    .v6-num {
+      font-size: 1.2rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--unit-light);
+      margin-bottom: 6px;
+    }
+
+    .v6-title {
+      font-size: 2.45rem;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 14px;
+      color: #fff;
+      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+    }
+
+    .v6-sub {
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: #e2e8f0;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .v6-sub-ar {
+      font-family: 'Cairo', sans-serif;
+      direction: rtl;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #bae6fd;
+      margin-top: 10px;
+      font-weight: 700;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+    }
+
+    /* =========================================================
+       2. LESSON EXPLANATION PAGE ELEMENTS
+       ========================================================= */
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #f1f5f9;
+      padding-bottom: 10px;
+      margin-bottom: 14px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--slate-light);
+    }
+
+    .badge-unit {
+      background: var(--unit-gradient);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    .lesson-title {
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: var(--dark);
+      line-height: 1.25;
+      margin-bottom: 4px;
+    }
+
+    .lesson-title-ar {
+      font-family: 'Cairo', sans-serif;
+      direction: rtl;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--unit-primary-dark);
+      margin-bottom: 10px;
+    }
+
+    .lead-paragraph {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 12px;
+      line-height: 1.55;
+      text-align: justify;
+    }
+
+    .lead-paragraph::first-letter {
+      font-size: 2.7rem;
+      float: left;
+      line-height: 0.78;
+      padding-right: 9px;
+      padding-top: 4px;
+      color: var(--unit-primary);
+      font-weight: 900;
+    }
+
+    .lead-paragraph .ar-line {
+      display: block;
+      direction: rtl;
+      font-family: 'Cairo', sans-serif;
+      color: var(--unit-primary-dark);
+      font-weight: 700;
+      margin-top: 4px;
+      font-size: 0.84rem;
+    }
+
+    /* Section Header */
+    .sec-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #f8fafc;
+      border-left: 4px solid var(--unit-primary);
+      padding: 6px 12px;
+      border-radius: 6px;
+      margin: 8px 0 6px 0;
+    }
+
+    .sec-heading-en {
+      font-size: 0.92rem;
+      font-weight: 900;
+      color: var(--dark);
+    }
+
+    .sec-heading-ar {
+      font-family: 'Cairo', sans-serif;
+      direction: rtl;
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--unit-primary-dark);
+    }
+
+    /* Deconstructed Concept Cards & Grids */
+    .breakdown-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin: 6px 0;
+    }
+
+    .breakdown-grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+      margin: 6px 0;
+    }
+
+    .concept-card {
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-top: 3.5px solid var(--unit-primary);
+      border-radius: 10px;
+      padding: 8px 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .concept-card-tag {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 0.66rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--unit-primary-dark);
+      background: var(--unit-badge-bg);
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin-bottom: 4px;
+    }
+
+    .concept-card-title {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 3px;
+      line-height: 1.3;
+    }
+
+    .concept-card-en {
+      font-size: 0.75rem;
+      color: var(--slate);
+      line-height: 1.38;
+      font-weight: 600;
+    }
+
+    .concept-card-ar {
+      direction: rtl;
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.74rem;
+      color: #334155;
+      font-weight: 700;
+      margin-top: 5px;
+      padding-top: 4px;
+      border-top: 1px dashed #e2e8f0;
+      line-height: 1.45;
+    }
+
+    /* Pill List for Strengths / Constraints / Examples */
+    .structured-points {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-top: 4px;
+    }
+
+    .sp-row {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 4px 7px;
+      font-size: 0.73rem;
+      line-height: 1.35;
+    }
+
+    .sp-label {
+      font-weight: 800;
+      color: var(--unit-primary-dark);
+      text-transform: uppercase;
+      font-size: 0.67rem;
+      margin-right: 4px;
+    }
+
+    .sp-ar {
+      display: block;
+      direction: rtl;
+      font-family: 'Cairo', sans-serif;
+      color: #475569;
+      font-weight: 700;
+      font-size: 0.72rem;
+    }
+
+    /* Short Intro Strip before a Diagram */
+    .flow-intro-strip {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 9px;
+      padding: 6px 11px;
+      margin-bottom: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--dark);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .flow-intro-strip .ar {
+      direction: rtl;
+      font-family: 'Cairo', sans-serif;
+      color: var(--unit-primary-dark);
+      font-size: 0.77rem;
+      font-weight: 800;
+    }
+
+    /* Lightbulb Notes Box (mascot_lightbulb_transparent.png) */
+    .note-lightbulb-box {
+      background: var(--unit-soft-bg);
+      border: 1.5px solid var(--unit-soft-border);
+      border-radius: 14px;
+      padding: 9px 13px;
+      margin: 7px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .mascot-thumb-transparent {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      flex-shrink: 0;
+      filter: drop-shadow(0 4px 8px rgba(15, 23, 42, 0.15));
+    }
+
+    .note-text-area { flex: 1; }
+
+    .note-badge-title {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 900;
+      color: #ffffff;
+      background: var(--unit-primary);
+      padding: 2px 9px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 3px;
+    }
+
+    .note-body {
+      font-size: 0.78rem;
+      color: #1e293b;
+      line-height: 1.4;
+      font-weight: 700;
+    }
+
+    .note-body-ar {
+      direction: rtl;
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.77rem;
+      color: var(--unit-primary-dark);
+      font-weight: 700;
+      margin-top: 2px;
+      line-height: 1.45;
+    }
+
+    /* Multi-line notes: each point on its own line, English | Arabic side by side */
+    .note-text-area:has(.note-body br) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 16px;
+      align-items: start;
+    }
+    .note-text-area:has(.note-body br) .note-badge-title {
+      grid-column: 1 / -1;
+      justify-self: start;
+    }
+    .note-text-area:has(.note-body br) .note-body-ar {
+      margin-top: 0;
+      padding-right: 12px;
+      border-right: 2px solid var(--unit-soft-border);
+    }
+
+    /* Comparison Table Section (mascot_comparison_transparent.png) */
+    .comparison-section {
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 10px 12px;
+      margin: 7px 0;
+    }
+
+    .comparison-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+
+    .comparison-header img {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      flex-shrink: 0;
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
+    }
+
+    .comparison-intro h4 {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    .comparison-intro p {
+      font-size: 0.76rem;
+      color: var(--slate-light);
+      font-family: 'Cairo', sans-serif;
+      font-weight: 700;
+    }
+
+    .styled-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 9px;
+      overflow: hidden;
+      font-size: 0.75rem;
+      border: 1px solid #e2e8f0;
+    }
+
+    .styled-table thead tr {
+      background: #1e293b;
+      color: #ffffff;
+      text-align: left;
+    }
+
+    .styled-table th, .styled-table td {
+      padding: 6px 9px;
+      vertical-align: top;
+    }
+
+    .styled-table td:first-child {
+      color: var(--unit-primary);
+      font-weight: 800;
+    }
+
+    .styled-table tbody tr {
+      background: #ffffff;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .styled-table tbody tr:nth-of-type(even) {
+      background: #f1f5f9;
+    }
+
+    .cell-ar {
+      display: block;
+      direction: rtl;
+      font-family: 'Cairo', sans-serif;
+      color: #475569;
+      font-weight: 700;
+      font-size: 0.73rem;
+      margin-top: 2px;
+    }
+
+    /* Flow & Mechanism Box — Arrow Process Diagram (mascot_reflection_transparent.png) */
+    .egy-reflection-box {
+      direction: rtl;
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(135deg, #fefce8 0%, #fef08a 100%);
+      border: 2px solid #eab308;
+      border-radius: 14px;
+      padding: 9px 12px;
+      margin: 7px 0;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      box-shadow: 0 4px 15px rgba(234, 179, 8, 0.15);
+    }
+
+    .reflection-thumb-transparent {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      flex-shrink: 0;
+      filter: drop-shadow(0 4px 10px rgba(202, 138, 4, 0.3));
+    }
+
+    .egy-reflection-text { flex: 1; min-width: 0; }
+
+    .egy-reflection-header {
+      font-size: 0.8rem;
+      font-weight: 900;
+      color: #854d0e;
+      margin-bottom: 5px;
+    }
+
+    /* Interlocking Chevron Arrow Process Diagram (LTR) */
+    .arrow-process-diagram {
+      display: flex;
+      align-items: stretch;
+      justify-content: space-between;
+      gap: 3px;
+      direction: ltr;
+    }
+
+    .process-step-node {
+      flex: 1;
+      color: #ffffff;
+      padding: 8px 18px 8px 18px;
+      text-align: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      direction: rtl;
+      clip-path: polygon(0% 0%, calc(100% - 12px) 0%, 100% 50%, calc(100% - 12px) 100%, 0% 100%, 12px 50%);
+      margin-right: -4px;
+    }
+
+    .process-step-node:first-child {
+      clip-path: polygon(0% 0%, calc(100% - 12px) 0%, 100% 50%, calc(100% - 12px) 100%, 0% 100%);
+      padding-left: 10px;
+      border-radius: 6px 0 0 6px;
+    }
+
+    .process-step-node:last-child {
+      margin-right: 0;
+    }
+
+    .process-step-node:nth-child(1) { background: linear-gradient(135deg, #1e40af, #1d4ed8); }
+    .process-step-node:nth-child(2) { background: linear-gradient(135deg, #1d4ed8, #2563eb); }
+    .process-step-node:nth-child(3) { background: linear-gradient(135deg, #2563eb, #0284c7); }
+    .process-step-node:nth-child(4) { background: linear-gradient(135deg, #0284c7, #0ea5e9); }
+    .theme-unit-6 .process-step-node:nth-child(1) { background: linear-gradient(135deg, #4c1d95, #5b21b6); }
+    .theme-unit-6 .process-step-node:nth-child(2) { background: linear-gradient(135deg, #5b21b6, #6d28d9); }
+    .theme-unit-6 .process-step-node:nth-child(3) { background: linear-gradient(135deg, #6d28d9, #7c3aed); }
+    .theme-unit-6 .process-step-node:nth-child(4) { background: linear-gradient(135deg, #7c3aed, #a855f7); }
+    .theme-unit-7 .process-step-node:nth-child(1) { background: linear-gradient(135deg, #064e3b, #065f46); }
+    .theme-unit-7 .process-step-node:nth-child(2) { background: linear-gradient(135deg, #065f46, #047857); }
+    .theme-unit-7 .process-step-node:nth-child(3) { background: linear-gradient(135deg, #047857, #059669); }
+    .theme-unit-7 .process-step-node:nth-child(4) { background: linear-gradient(135deg, #059669, #10b981); }
+
+    .process-step-title {
+      font-size: 0.74rem;
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 2px;
+      line-height: 1.2;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .process-step-desc {
+      font-size: 0.65rem;
+      color: rgba(255, 255, 255, 0.94);
+      line-height: 1.25;
+      font-weight: 700;
+    }
+
+    /* Real-World Example Box (mascot_example_transparent.png) */
+    .real-world-example-box {
+      direction: rtl;
+      font-family: 'Cairo', sans-serif;
+      background: #f0fdf4;
+      border: 1.5px solid #86efac;
+      border-radius: 14px;
+      padding: 8px 12px;
+      margin: 6px 0 8px 0;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .example-thumb-transparent {
+      width: 62px;
+      height: 62px;
+      object-fit: contain;
+      flex-shrink: 0;
+      filter: drop-shadow(0 4px 8px rgba(22, 163, 74, 0.2));
+    }
+
+    .real-world-example-text { flex: 1; min-width: 0; }
+
+    .real-world-example-header {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 900;
+      color: #ffffff;
+      background: #16a34a;
+      padding: 2px 9px;
+      border-radius: 6px;
+      margin-bottom: 3px;
+    }
+
+    .real-world-example-body {
+      font-size: 0.77rem;
+      color: #14532d;
+      line-height: 1.45;
+      font-weight: 700;
+    }
+
+    /* =========================================================
+       2G. WORKED PROBLEMS BOX (MATH MASCOT + FORMULAS + STEPS)
+       ========================================================= */
+    .problems-box {
+      background: linear-gradient(135deg, #ffffff 0%, var(--unit-soft-bg) 100%);
+      border: 1.5px solid var(--unit-soft-border);
+      border-left: 5px solid var(--unit-primary);
+      border-radius: 16px;
+      padding: 8px 12px;
+      margin: 6px 0 6px 0;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+    }
+
+    .problems-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+      padding-bottom: 4px;
+      border-bottom: 1px dashed var(--unit-soft-border);
+    }
+
+    .problems-mascot {
+      width: 66px;
+      height: 66px;
+      object-fit: contain;
+      flex-shrink: 0;
+      filter: drop-shadow(0 4px 8px rgba(15, 23, 42, 0.14));
+    }
+
+    .problems-title-wrap {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .problems-badge {
+      display: inline-block;
+      font-size: 0.66rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #ffffff;
+      background: var(--unit-primary);
+      padding: 2px 9px;
+      border-radius: 999px;
+      margin-bottom: 2px;
+    }
+
+    .problems-title-en {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 900;
+      color: #0f172a;
+      line-height: 1.2;
+    }
+
+    .problems-title-ar {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--unit-primary);
+      direction: rtl;
+      text-align: left;
+      margin-top: 1px;
+    }
+
+    .problems-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 7px;
+    }
+
+    .problem-card {
+      background: #ffffff;
+      border: 1px solid var(--unit-soft-border);
+      border-radius: 12px;
+      padding: 7px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .problem-card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--unit-soft-bg);
+      padding-bottom: 4px;
+    }
+
+    .problem-card-name {
+      font-size: 0.80rem;
+      font-weight: 900;
+      color: #0f172a;
+    }
+
+    .problem-card-name-ar {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.76rem;
+      font-weight: 800;
+      color: var(--unit-primary);
+    }
+
+    .problem-given {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #334155;
+      line-height: 1.4;
+    }
+
+    .problem-steps {
+      font-size: 0.74rem;
+      color: #1e293b;
+      line-height: 1.45;
+      background: #f8fafc;
+      border-radius: 10px;
+      padding: 8px 10px;
+      border-left: 3.5px solid var(--unit-primary);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .problem-step-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .problem-step-label {
+      font-weight: 800;
+      color: var(--unit-primary);
+      min-width: 52px;
+    }
+
+    .problem-explain-ar {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.73rem;
+      font-weight: 700;
+      color: #475569;
+      direction: rtl;
+      text-align: right;
+      line-height: 1.45;
+    }
+
+    /* =========================================================
+       2H. RULES & FORMULAS BOX + SCIENTIFIC FRACTIONS
+       ========================================================= */
+    .rules-box {
+      background: linear-gradient(135deg, #ffffff 0%, var(--unit-soft-bg) 100%);
+      border: 1.5px solid var(--unit-soft-border);
+      border-left: 5px solid var(--unit-primary);
+      border-radius: 16px;
+      padding: 8px 12px;
+      margin: 6px 0 6px 0;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+    }
+
+    .rules-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+      padding-bottom: 4px;
+      border-bottom: 1px dashed var(--unit-soft-border);
+    }
+
+    .rules-mascot {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      flex-shrink: 0;
+      filter: drop-shadow(0 4px 8px rgba(15, 23, 42, 0.14));
+    }
+
+    .rules-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .rule-card {
+      background: #ffffff;
+      border: 1px solid var(--unit-soft-border);
+      border-radius: 12px;
+      padding: 8px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      text-align: center;
+    }
+
+    .rule-name {
+      font-size: 0.76rem;
+      font-weight: 900;
+      color: #0f172a;
+    }
+
+    .rule-name-ar {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--unit-primary);
+    }
+
+    .rule-formula-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: var(--unit-soft-bg);
+      border: 1px solid var(--unit-soft-border);
+      border-radius: 10px;
+      padding: 6px 10px;
+      width: 100%;
+      color: #0f172a;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 0.78rem;
+    }
+
+    .rule-note-ar {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.69rem;
+      font-weight: 700;
+      color: #475569;
+      direction: rtl;
+      line-height: 1.35;
+    }
+
+    /* Scientific Fraction (Numerator / Denominator) */
+    .math-expr {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: #0f172a;
+      vertical-align: middle;
+    }
+
+    .math-frac {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      vertical-align: middle;
+      line-height: 1.15;
+      margin: 0 2px;
+    }
+
+    .math-num {
+      display: block;
+      padding: 0 5px 2px 5px;
+      border-bottom: 1.6px solid var(--unit-primary);
+      font-size: 0.74rem;
+      font-weight: 800;
+      color: #0f172a;
+      text-align: center;
+    }
+
+    .math-den {
+      display: block;
+      padding: 2px 5px 0 5px;
+      font-size: 0.74rem;
+      font-weight: 800;
+      color: #0f172a;
+      text-align: center;
+    }
+
+    .math-eq {
+      font-weight: 900;
+      color: var(--unit-primary);
+      margin: 0 2px;
+    }
+
+    .math-result {
+      display: inline-block;
+      background: var(--unit-primary);
+      color: #ffffff;
+      font-weight: 900;
+      font-size: 0.76rem;
+      padding: 1px 8px;
+      border-radius: 6px;
+    }
+
+    /* =========================================================
+       3. CLASSWORK & HOMEWORK PAGES (THINKING MASCOT AT TOP)
+       ========================================================= */
+    .work-hero-banner {
+      background: var(--unit-soft-bg);
+      border: 1.5px solid var(--unit-soft-border);
+      border-radius: 14px;
+      padding: 10px 16px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .work-hero-mascot {
+      width: 78px;
+      height: 78px;
+      object-fit: contain;
+      flex-shrink: 0;
+      filter: drop-shadow(0 6px 12px rgba(15, 23, 42, 0.18));
+    }
+
+    .work-hero-text h3 {
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--unit-primary-dark);
+      letter-spacing: -0.5px;
+      margin-bottom: 2px;
+    }
+
+    .work-hero-text p {
+      font-size: 0.8rem;
+      color: var(--slate);
+      font-weight: 600;
+    }
+
+    .q-type-header {
+      font-size: 0.76rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--unit-primary-dark);
+      background: var(--unit-badge-bg);
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 6px;
+      margin: 6px 0;
+    }
+
+    /* Compact 2-column MCQ Grid for pages with many questions */
+    
+    .mcq-masonry {
+      column-count: 2;
+      column-gap: 10px;
+      margin-bottom: 6px;
+    }
+    .mcq-masonry > .mcq-item {
+      break-inside: avoid;
+      margin-bottom: 8px;
+    }
+
+    .questions-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      align-items: start;
+    }
+
+    .quiz-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 8px 10px;
+      margin-bottom: 6px;
+    }
+
+    .questions-two-col .quiz-card {
+      margin-bottom: 0;
+    }
+
+    .q-prompt-text {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.35;
+      margin-bottom: 5px;
+    }
+
+    .mcq-options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+    }
+
+    .mcq-options-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .mcq-choice-item {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      padding: 4px 7px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      line-height: 1.25;
+    }
+
+    .circle-letter {
+      width: 19px;
+      height: 19px;
+      min-width: 19px;
+      border-radius: 50%;
+      background: var(--unit-soft-bg);
+      color: var(--unit-primary-dark);
+      font-weight: 800;
+      font-size: 0.68rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--unit-soft-border);
+    }
+
+    .tf-row {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 7px;
+      padding: 4px 9px;
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .tf-btn-pair {
+      display: flex;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .tf-circle-btn {
+      width: 44px;
+      padding: 2px 0;
+      text-align: center;
+      border-radius: 20px;
+      border: 1px solid var(--unit-soft-border);
+      font-size: 0.64rem;
+      font-weight: 800;
+      background: var(--unit-soft-bg);
+      color: var(--unit-primary-dark);
+    }
+
+    .passage-box {
+      background: var(--unit-soft-bg);
+      border: 1px solid var(--unit-soft-border);
+      border-left: 4px solid var(--unit-primary);
+      border-radius: 0 8px 8px 0;
+      padding: 7px 10px;
+      margin-bottom: 6px;
+      font-size: 0.75rem;
+      color: var(--dark);
+      line-height: 1.38;
+    }
+
+    .passage-title {
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      letter-spacing: 0.5px;
+      color: var(--unit-primary-dark);
+      margin-bottom: 2px;
+    }
+
+    .essay-lines {
+      border: 1px dashed #cbd5e1;
+      border-radius: 5px;
+      height: 48px;
+      background: repeating-linear-gradient(
+        #ffffff,
+        #ffffff 15px,
+        #e2e8f0 16px
+      );
+      margin-top: 4px;
+    }
+
+    .page-footer {
+      margin-top: auto;
+      padding-top: 10px;
+      border-top: 2px solid #f1f5f9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--slate-light);
+    }
+
+    .page-num {
+      background: var(--unit-primary-dark);
+      color: #fff;
+      padding: 2px 9px;
+      border-radius: 6px;
+    }
+  </style>
+
+<style>
+  body { margin: 0; background: #0f172a; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 24px; }
+  .cover-wrap-spread {
+    display: flex;
+    gap: 0 !important;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .cover-wrap-spread .lesson-cover-page {
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+  @media print {
+    body { background: none; padding: 0; }
+    .cover-wrap-spread { box-shadow: none; border-radius: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="theme-unit-5">
+  <div class="cover-wrap-spread">
+    <div class="lesson-cover-page" style="justify-content: space-between; padding: 50px 46px 44px;">
+<img alt="From Zero to Hero Back Cover" class="banner-bg" src="book_back_cover_banner.jpg" style="inset: 0; height: 100%; object-fit: cover; object-position: right bottom;"/>
+<div class="v6-scrim"></div>
+<span class="unit-pill">From Zero to Hero — Units 5, 6 &amp; 7</span>
+<div style="position: relative; z-index: 2; margin-top: 28px; display: flex; flex-direction: column; gap: 18px;">
+  <div style="background: rgba(15, 23, 42, 0.58); backdrop-filter: blur(8px); border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 18px; padding: 24px 26px;">
+    <div style="font-size: 11px; font-weight: 800; letter-spacing: 2.2px; text-transform: uppercase; color: #38bdf8; margin-bottom: 6px;">ABOUT THIS BOOKLET</div>
+    <h2 style="margin: 0 0 10px; font-size: 26px; font-weight: 900; color: #ffffff; line-height: 1.2;">Your Complete Step-by-Step Guide to Data &amp; AI</h2>
+    <p style="margin: 0 0 10px; font-size: 13.5px; line-height: 1.65; color: #e2e8f0;">Designed for clarity and mastery, this booklet takes you from raw data collection and cleaning through statistical inference and regression all the way to modern machine learning and generative AI — with bilingual explanations, worked examples, classwork, and homework.</p>
+    <p dir="rtl" style="margin: 0; font-family: 'Cairo', sans-serif; font-size: 13.5px; line-height: 1.75; color: #bae6fd; font-weight: 600;">دليلك المتكامل خطوة بخطوة في علم البيانات والذكاء الاصطناعي — من جمع البيانات وتنظيفها، مرورًا بالاستدلال الإحصائي والانحدار والرسوم البيانية، وصولًا لتعلم الآلة والذكاء الاصطناعي التوليدي بشرح مبسط وأمثلة واقعية وتدريبات شاملة.</p>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
+    <div style="background: rgba(15, 23, 42, 0.62); border: 1px solid rgba(59, 130, 246, 0.45); border-top: 3px solid #3b82f6; border-radius: 14px; padding: 14px 14px;">
+      <div style="font-size: 10.5px; font-weight: 800; letter-spacing: 1.4px; color: #60a5fa; text-transform: uppercase;">Unit 5</div>
+      <div style="font-size: 13.5px; font-weight: 800; color: #ffffff; margin: 4px 0;">Data Foundations</div>
+      <div style="font-size: 11.5px; color: #cbd5e1; line-height: 1.45;">Collection, Cleaning, Transformation &amp; APIs</div>
+    </div>
+    <div style="background: rgba(15, 23, 42, 0.62); border: 1px solid rgba(139, 92, 246, 0.45); border-top: 3px solid #8b5cf6; border-radius: 14px; padding: 14px 14px;">
+      <div style="font-size: 10.5px; font-weight: 800; letter-spacing: 1.4px; color: #c4b5fd; text-transform: uppercase;">Unit 6</div>
+      <div style="font-size: 13.5px; font-weight: 800; color: #ffffff; margin: 4px 0;">Analysis &amp; Insights</div>
+      <div style="font-size: 11.5px; color: #cbd5e1; line-height: 1.45;">Statistical Inference, Regression &amp; Visualization</div>
+    </div>
+    <div style="background: rgba(15, 23, 42, 0.62); border: 1px solid rgba(16, 185, 129, 0.45); border-top: 3px solid #10b981; border-radius: 14px; padding: 14px 14px;">
+      <div style="font-size: 10.5px; font-weight: 800; letter-spacing: 1.4px; color: #6ee7b7; text-transform: uppercase;">Unit 7</div>
+      <div style="font-size: 13.5px; font-weight: 800; color: #ffffff; margin: 4px 0;">Artificial Intelligence</div>
+      <div style="font-size: 11.5px; color: #cbd5e1; line-height: 1.45;">Machine Learning, Deep Learning &amp; LLMs</div>
+    </div>
+  </div>
+</div>
+<div style="position: relative; z-index: 2; margin-top: auto; padding-top: 16px; border-top: 1px solid rgba(148, 163, 184, 0.25); display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-weight: 700; color: #cbd5e1;">
+  <span>From Zero to Hero • Complete Student Booklet</span>
+  <span style="color: #fde68a;">Programming &amp; Artificial Intelligence</span>
+</div>
+</div>
+    <div class="lesson-cover-page">
+<img alt="From Zero to Hero Book Cover" class="banner-bg" src="book_cover_banner_v2.jpg" style="inset: 0; height: 100%; object-fit: cover; object-position: left bottom;"/>
+<div class="v6-scrim"></div>
+<span class="unit-pill">Programming &amp; Artificial Intelligence</span>
+<div class="v6-hero">
+<div class="v6-text-col">
+<div class="v6-num" style="color: #38bdf8;">COMPLETE STUDENT BOOKLET</div>
+<h1 class="v6-title" style="font-size: 58px; line-height: 1.02; letter-spacing: -1px;">From Zero<br/>to <span style="background: linear-gradient(90deg, #fde68a, #f59e0b); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: none;">Hero</span></h1>
+<p class="v6-sub">Data Collection, Statistical Inference, Regression, Visualization &amp; Artificial Intelligence — Units 5, 6 &amp; 7.</p><p class="v6-sub-ar" dir="rtl" style="font-family:'Cairo',sans-serif;font-size:13.5px;color:#e2e8f0;margin-top:6px;opacity:0.92;font-weight:600;">رحلة متكاملة من جمع البيانات وتنظيفها لحد التحليل والذكاء الاصطناعي.</p>
+</div>
+</div>
+
+  </div>
+</div>
+</body>
+</html>
