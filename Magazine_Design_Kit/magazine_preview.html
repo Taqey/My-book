@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>From Zero to Hero — Textbook Template</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>From Zero to Hero — Textbook Template</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&amp;family=Cairo:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<style>
     :root {
       /* Default Unit Theme (Unit 5: Blue / Cyan) */
       --unit-primary: #2563eb;
@@ -270,7 +271,7 @@
       padding: 14px 18px;
       margin: 12px 0;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 16px;
     }
 
@@ -374,32 +375,33 @@
     .egy-reflection-box {
       direction: rtl;
       font-family: 'Cairo', sans-serif;
-      background: linear-gradient(135deg, #fefce8 0%, #fef08a 100%);
-      border: 2px solid #eab308;
-      border-radius: 16px;
-      padding: 14px 16px;
-      margin: 12px 0;
+      background: linear-gradient(135deg, #ffffff 0%, var(--unit-soft-bg) 100%);
+      border: 1.5px solid var(--unit-soft-border);
+      border-right: 4px solid var(--unit-primary);
+      border-radius: 14px;
+      padding: 9px 12px;
+      margin: 7px 0;
       display: flex;
-      gap: 14px;
-      align-items: center;
-      box-shadow: 0 4px 15px rgba(234, 179, 8, 0.15);
+      gap: 12px;
+      align-items: flex-start;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
     }
 
     .reflection-thumb-transparent {
-      width: 76px;
-      height: 76px;
+      width: 64px;
+      height: 64px;
       object-fit: contain;
       flex-shrink: 0;
-      filter: drop-shadow(0 4px 10px rgba(202, 138, 4, 0.3));
+      filter: drop-shadow(0 4px 10px rgba(15, 23, 42, 0.16));
     }
 
     .egy-reflection-text { flex: 1; min-width: 0; }
 
     .egy-reflection-header {
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       font-weight: 900;
-      color: #854d0e;
-      margin-bottom: 10px;
+      color: var(--unit-primary-dark);
+      margin-bottom: 5px;
     }
 
     /* Arrow Process Diagram */
@@ -630,299 +632,269 @@
   </style>
 </head>
 <body>
-
 <div class="container theme-unit-5">
-
-  <!-- ======================================================== -->
-  <!-- SPREAD 1: LESSON COVER + LESSON EXPLANATION              -->
-  <!-- ======================================================== -->
-  <div class="magazine-spread">
-
-    <!-- PAGE 1: LESSON COVER (VARIATION 6) -->
-    <div class="lesson-cover-page">
-      <img class="banner-bg" src="lesson_covers/banner_5_1.jpg" alt="Lesson 1 3D Banner">
-      <div class="v6-scrim"></div>
-      <span class="unit-pill">Data Collection &amp; Cleaning</span>
-      <div class="v6-hero">
-        <div class="v6-text-col">
-          <div class="v6-num">Lesson 1</div>
-          <h2 class="v6-title">Methods of Data Collection</h2>
-          <p class="v6-sub">
+<!-- ======================================================== -->
+<!-- SPREAD 1: LESSON COVER + LESSON EXPLANATION              -->
+<!-- ======================================================== -->
+<div class="magazine-spread">
+<!-- PAGE 1: LESSON COVER (VARIATION 6) -->
+<div class="lesson-cover-page">
+<img alt="Lesson 1 3D Banner" class="banner-bg" src="lesson_covers/banner_5_1.jpg"/>
+<div class="v6-scrim"></div>
+<span class="unit-pill">Data Collection &amp; Cleaning</span>
+<div class="v6-hero">
+<div class="v6-text-col">
+<div class="v6-num">Lesson 1</div>
+<h2 class="v6-title">Methods of Data Collection</h2>
+<p class="v6-sub">
             Discover how primary surveys, IoT sensors, and secondary datasets power modern AI pipelines—and how to spot sampling bias before it breaks your model.
           </p>
-        </div>
-        <div class="v6-watermark">01</div>
-      </div>
-    </div>
-
-    <!-- PAGE 2: LESSON EXPLANATION -->
-    <div class="page">
-      <div class="page-header">
-        <span class="badge-unit">Lesson 1</span>
-        <span>Explanation &amp; Concepts</span>
-      </div>
-
-      <h2 class="lesson-title">Data Gathering &amp; Sampling Bias: Behind the AI Models</h2>
-
-      <div class="lead-paragraph">
+</div>
+<div class="v6-watermark">01</div>
+</div>
+</div>
+<!-- PAGE 2: LESSON EXPLANATION -->
+<div class="page">
+<div class="page-header">
+<span class="badge-unit">Lesson 1</span>
+<span>Explanation &amp; Concepts</span>
+</div>
+<h2 class="lesson-title">Data Gathering &amp; Sampling Bias: Behind the AI Models</h2>
+<div class="lead-paragraph">
         Any intelligent system is only as smart as the raw data you feed into it. If your collection pipeline contains skewed samples, the model will output confident errors.
       </div>
-
-      <div class="magazine-cols">
-        <p class="dropcap">T</p>
-        <p>
+<div class="magazine-cols">
+<p class="dropcap">T</p>
+<p>
           he mechanism of training machine learning systems depends on true representativeness. 
           When we collect <strong>Primary Data</strong> via controlled field studies, we dictate the exact parameters.
         </p>
-        <p>
+<p>
           However, relying purely on <strong>Secondary Data</strong> (e.g. scraped social feeds or uncurated public logs) exposes the model to silent systematic skewing.
         </p>
-      </div>
-
-      <!-- Lightbulb Note Box -->
-      <div class="note-lightbulb-box">
-        <img class="mascot-thumb-transparent" src="mascots_transparent_bg/mascot_lightbulb_transparent.png" alt="Lightbulb Pose">
-        <div class="note-text-area">
-          <div class="note-badge-title">Notes</div>
-          <div class="note-body">
+</div>
+<!-- Lightbulb Note Box -->
+<div class="note-lightbulb-box">
+<img alt="Lightbulb Pose" class="mascot-thumb-transparent" src="mascots_transparent_bg/mascot_lightbulb_transparent.png"/>
+<div class="note-text-area">
+<div class="note-badge-title">Notes</div>
+<div class="note-body">
             "جمع بيانات كتير غلط أسوأ 100 مرة من جمع عينة صغيرة بس دقيقة وممثلة صح للواقع!"
           </div>
+</div>
+</div>
+<!-- Comparison Table Section -->
+<div class="comparison-section">
+<div class="comparison-header">
+<img alt="Comparison Mascot" src="mascots_transparent_bg/mascot_comparison_transparent.png"/>
+<div class="comparison-intro">
+<h4>Primary vs Secondary Data Pipeline</h4>
+<p>مقارنة بين مصادر البيانات الأساسية والثانوية</p>
+</div>
+</div>
+<table class="styled-table">
+<thead>
+<tr>
+<th>Type</th>
+<th>Collection Mechanism</th>
+<th>Advantage</th>
+<th>Primary Limitation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong style="color: #0369a1;">Primary</strong></td>
+<td>Surveys, Sensors, Live Tests</td>
+<td>Targeted &amp; Accurate</td>
+<td>High cost &amp; Time-consuming</td>
+</tr>
+<tr>
+<td><strong style="color: #be185d;">Secondary</strong></td>
+<td>Kaggle, Open APIs, Censuses</td>
+<td>Instant &amp; Free</td>
+<td>Hidden Sampling Biases</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Flow & Mechanism Box (Arrow Process Diagram) -->
+<div class="egy-reflection-box">
+<img alt="Reflection Pose" class="reflection-thumb-transparent" src="mascots_transparent_bg/mascot_reflection_transparent.png"/>
+<div class="egy-reflection-text">
+<div class="egy-reflection-header">
+<span>خطوات الميكانيزم (Process Flow)</span>
+</div>
+<div class="arrow-process-diagram">
+<div class="process-step-node">
+<div class="process-step-title">تحديد الهدف</div>
+<div class="process-step-desc">نحدد المشكلة والسؤال المطلوب إجابته</div>
+</div>
+<div class="process-arrow-connector">
+<svg viewbox="0 0 24 24"><path d="M19 12H5m0 0l6-6m-6 6l6 6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
+<div class="process-step-node">
+<div class="process-step-title">اختيار العينة</div>
+<div class="process-step-desc">عينة عشوائية تمثل كل الفئات بدون تحيز</div>
+</div>
+<div class="process-arrow-connector">
+<svg viewbox="0 0 24 24"><path d="M19 12H5m0 0l6-6m-6 6l6 6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
+<div class="process-step-node">
+<div class="process-step-title">التجميع والفلترة</div>
+<div class="process-step-desc">جمع البيانات ومراجعتها قبل تدريب النموذج</div>
+</div>
+</div>
+</div>
+</div>
+<div class="page-footer">
+<span>Lesson 1: Methods of Data Collection</span>
+<span class="page-num">02</span>
+</div>
+</div>
+</div>
+<!-- ======================================================== -->
+<!-- SPREAD 2: CLASSWORK PAGE + HOMEWORK PAGE                 -->
+<!-- ======================================================== -->
+<div class="magazine-spread">
+<!-- PAGE 3: CLASSWORK -->
+<div class="page">
+<div class="page-header">
+<span>Lesson 1</span>
+<span class="badge-unit">In-Class Practice</span>
+</div>
+<!-- Thinking Mascot beside Classwork Title -->
+<div class="work-hero-banner">
+<img alt="Thinking Mascot" class="work-hero-mascot" src="mascots_transparent_bg/mascot_thinking_transparent.png"/>
+<div class="work-hero-text">
+<h3>Classwork</h3>
+<p>Apply what you just learned through multiple-choice, true/false, case study, and written drills.</p>
+</div>
+</div>
+<!-- 1. MCQ -->
+<div class="q-type-header">1. Choose the Correct Answer (A–D)</div>
+<div class="quiz-card">
+<div class="q-prompt-text">
+<strong>1.</strong> Which scenario represents an example of <strong>Sampling Bias</strong>?
         </div>
-      </div>
-
-      <!-- Comparison Table Section -->
-      <div class="comparison-section">
-        <div class="comparison-header">
-          <img src="mascots_transparent_bg/mascot_comparison_transparent.png" alt="Comparison Mascot">
-          <div class="comparison-intro">
-            <h4>Primary vs Secondary Data Pipeline</h4>
-            <p>مقارنة بين مصادر البيانات الأساسية والثانوية</p>
-          </div>
-        </div>
-        <table class="styled-table">
-          <thead>
-            <tr>
-              <th>Type</th>
-              <th>Collection Mechanism</th>
-              <th>Advantage</th>
-              <th>Primary Limitation</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong style="color: #0369a1;">Primary</strong></td>
-              <td>Surveys, Sensors, Live Tests</td>
-              <td>Targeted &amp; Accurate</td>
-              <td>High cost &amp; Time-consuming</td>
-            </tr>
-            <tr>
-              <td><strong style="color: #be185d;">Secondary</strong></td>
-              <td>Kaggle, Open APIs, Censuses</td>
-              <td>Instant &amp; Free</td>
-              <td>Hidden Sampling Biases</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Flow & Mechanism Box (Arrow Process Diagram) -->
-      <div class="egy-reflection-box">
-        <img class="reflection-thumb-transparent" src="mascots_transparent_bg/mascot_reflection_transparent.png" alt="Reflection Pose">
-        <div class="egy-reflection-text">
-          <div class="egy-reflection-header">
-            <span>خطوات الميكانيزم (Process Flow)</span>
-          </div>
-          <div class="arrow-process-diagram">
-            <div class="process-step-node">
-              <div class="process-step-title">تحديد الهدف</div>
-              <div class="process-step-desc">نحدد المشكلة والسؤال المطلوب إجابته</div>
-            </div>
-            <div class="process-arrow-connector">
-              <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5m0 0l6-6m-6 6l6 6"/></svg>
-            </div>
-            <div class="process-step-node">
-              <div class="process-step-title">اختيار العينة</div>
-              <div class="process-step-desc">عينة عشوائية تمثل كل الفئات بدون تحيز</div>
-            </div>
-            <div class="process-arrow-connector">
-              <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5m0 0l6-6m-6 6l6 6"/></svg>
-            </div>
-            <div class="process-step-node">
-              <div class="process-step-title">التجميع والفلترة</div>
-              <div class="process-step-desc">جمع البيانات ومراجعتها قبل تدريب النموذج</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="page-footer">
-        <span>Lesson 1: Methods of Data Collection</span>
-        <span class="page-num">02</span>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- ======================================================== -->
-  <!-- SPREAD 2: CLASSWORK PAGE + HOMEWORK PAGE                 -->
-  <!-- ======================================================== -->
-  <div class="magazine-spread">
-
-    <!-- PAGE 3: CLASSWORK -->
-    <div class="page">
-      <div class="page-header">
-        <span>Lesson 1</span>
-        <span class="badge-unit">In-Class Practice</span>
-      </div>
-
-      <!-- Thinking Mascot beside Classwork Title -->
-      <div class="work-hero-banner">
-        <img class="work-hero-mascot" src="mascots_transparent_bg/mascot_thinking_transparent.png" alt="Thinking Mascot">
-        <div class="work-hero-text">
-          <h3>Classwork</h3>
-          <p>Apply what you just learned through multiple-choice, true/false, case study, and written drills.</p>
-        </div>
-      </div>
-
-      <!-- 1. MCQ -->
-      <div class="q-type-header">1. Choose the Correct Answer (A–D)</div>
-      <div class="quiz-card">
-        <div class="q-prompt-text">
-          <strong>1.</strong> Which scenario represents an example of <strong>Sampling Bias</strong>?
-        </div>
-        <div class="mcq-options-grid">
-          <div class="mcq-choice-item"><div class="circle-letter">A</div><div>Surveying 100 random students by lottery</div></div>
-          <div class="mcq-choice-item"><div class="circle-letter">B</div><div>Polling AI usage strictly on developer forums</div></div>
-          <div class="mcq-choice-item"><div class="circle-letter">C</div><div>Logging CPU temperature every 60 seconds</div></div>
-          <div class="mcq-choice-item"><div class="circle-letter">D</div><div>Analyzing complete national census records</div></div>
-        </div>
-      </div>
-
-      <!-- 2. True / False -->
-      <div class="q-type-header">2. True or False</div>
-      <div class="tf-row">
-        <span><strong>1.</strong> Secondary data is inherently immune to sampling bias.</span>
-        <div style="display: flex; gap: 6px;"><div class="tf-circle-btn">TRUE</div><div class="tf-circle-btn">FALSE</div></div>
-      </div>
-      <div class="tf-row">
-        <span><strong>2.</strong> Increasing sample size alone does not fix systematic bias.</span>
-        <div style="display: flex; gap: 6px;"><div class="tf-circle-btn">TRUE</div><div class="tf-circle-btn">FALSE</div></div>
-      </div>
-
-      <!-- 3. Case Study (MCQ + T/F + Essay) -->
-      <div class="q-type-header">3. Real-World Case Study</div>
-      <div class="passage-box">
-        <div class="passage-title">Case Study: Smart Traffic AI</div>
+<div class="mcq-options-grid">
+<div class="mcq-choice-item"><div class="circle-letter">A</div><div>Surveying 100 random students by lottery</div></div>
+<div class="mcq-choice-item"><div class="circle-letter">B</div><div>Polling AI usage strictly on developer forums</div></div>
+<div class="mcq-choice-item"><div class="circle-letter">C</div><div>Logging CPU temperature every 60 seconds</div></div>
+<div class="mcq-choice-item"><div class="circle-letter">D</div><div>Analyzing complete national census records</div></div>
+</div>
+</div>
+<!-- 2. True / False -->
+<div class="q-type-header">2. True or False</div>
+<div class="tf-row">
+<span><strong>1.</strong> Secondary data is inherently immune to sampling bias.</span>
+<div style="display: flex; gap: 6px;"><div class="tf-circle-btn">TRUE</div><div class="tf-circle-btn">FALSE</div></div>
+</div>
+<div class="tf-row">
+<span><strong>2.</strong> Increasing sample size alone does not fix systematic bias.</span>
+<div style="display: flex; gap: 6px;"><div class="tf-circle-btn">TRUE</div><div class="tf-circle-btn">FALSE</div></div>
+</div>
+<!-- 3. Case Study (MCQ + T/F + Essay) -->
+<div class="q-type-header">3. Real-World Case Study</div>
+<div class="passage-box">
+<div class="passage-title">Case Study: Smart Traffic AI</div>
         An AI surveillance model trained on 150,000 traffic clips taken exclusively in Alexandria on sunny afternoons experienced a 45% drop in vehicle identification when deployed in rainy winter conditions.
       </div>
-      <div class="quiz-card">
-        <div class="q-prompt-text"><strong>(a) MCQ:</strong> What caused the 45% accuracy drop in winter?</div>
-        <div class="mcq-options-grid" style="margin-bottom: 8px;">
-          <div class="mcq-choice-item"><div class="circle-letter">A</div><div>Environmental sampling bias</div></div>
-          <div class="mcq-choice-item"><div class="circle-letter">B</div><div>Fast network speed</div></div>
+<div class="quiz-card">
+<div class="q-prompt-text"><strong>(a) MCQ:</strong> What caused the 45% accuracy drop in winter?</div>
+<div class="mcq-options-grid" style="margin-bottom: 8px;">
+<div class="mcq-choice-item"><div class="circle-letter">A</div><div>Environmental sampling bias</div></div>
+<div class="mcq-choice-item"><div class="circle-letter">B</div><div>Fast network speed</div></div>
+</div>
+<div class="tf-row" style="margin-bottom: 8px;">
+<span><strong>(b) True/False:</strong> Adding more sunny clips will fix the rain problem.</span>
+<div style="display: flex; gap: 6px;"><div class="tf-circle-btn">TRUE</div><div class="tf-circle-btn">FALSE</div></div>
+</div>
+<div class="q-prompt-text" style="margin-bottom: 4px;"><strong>(c) Essay:</strong> Suggest one way to fix this dataset.</div>
+<div class="essay-lines"></div>
+</div>
+<!-- 4. Essay (Direct & Open-Ended) -->
+<div class="q-type-header">4. Essay Questions (Direct &amp; Open-Ended)</div>
+<div class="quiz-card" style="margin-bottom: 0;">
+<div class="q-prompt-text"><strong>1. [Direct]</strong> Define Primary Data and give one example.</div>
+<div class="essay-lines" style="margin-bottom: 8px;"></div>
+<div class="q-prompt-text"><strong>2. [Open-Ended]</strong> How would you design an unbiased survey for all high-school students in Egypt?</div>
+<div class="essay-lines"></div>
+</div>
+<div class="page-footer">
+<span>Lesson 1 — Classwork</span>
+<span class="page-num">03</span>
+</div>
+</div>
+<!-- PAGE 4: HOMEWORK -->
+<div class="page">
+<div class="page-header">
+<span>Lesson 1</span>
+<span class="badge-unit">Take-Home Assignment</span>
+</div>
+<!-- Thinking Mascot beside Homework Title -->
+<div class="work-hero-banner">
+<img alt="Thinking Mascot" class="work-hero-mascot" src="mascots_transparent_bg/mascot_thinking_transparent.png"/>
+<div class="work-hero-text">
+<h3>Homework</h3>
+<p>Test your mastery independently with these comprehensive review questions.</p>
+</div>
+</div>
+<!-- 1. MCQ -->
+<div class="q-type-header">1. Choose the Correct Answer (A–D)</div>
+<div class="quiz-card">
+<div class="q-prompt-text">
+<strong>1.</strong> Downloading a public Kaggle dataset for your project is considered:
         </div>
-        <div class="tf-row" style="margin-bottom: 8px;">
-          <span><strong>(b) True/False:</strong> Adding more sunny clips will fix the rain problem.</span>
-          <div style="display: flex; gap: 6px;"><div class="tf-circle-btn">TRUE</div><div class="tf-circle-btn">FALSE</div></div>
-        </div>
-        <div class="q-prompt-text" style="margin-bottom: 4px;"><strong>(c) Essay:</strong> Suggest one way to fix this dataset.</div>
-        <div class="essay-lines"></div>
-      </div>
-
-      <!-- 4. Essay (Direct & Open-Ended) -->
-      <div class="q-type-header">4. Essay Questions (Direct &amp; Open-Ended)</div>
-      <div class="quiz-card" style="margin-bottom: 0;">
-        <div class="q-prompt-text"><strong>1. [Direct]</strong> Define Primary Data and give one example.</div>
-        <div class="essay-lines" style="margin-bottom: 8px;"></div>
-        <div class="q-prompt-text"><strong>2. [Open-Ended]</strong> How would you design an unbiased survey for all high-school students in Egypt?</div>
-        <div class="essay-lines"></div>
-      </div>
-
-      <div class="page-footer">
-        <span>Lesson 1 — Classwork</span>
-        <span class="page-num">03</span>
-      </div>
-    </div>
-
-    <!-- PAGE 4: HOMEWORK -->
-    <div class="page">
-      <div class="page-header">
-        <span>Lesson 1</span>
-        <span class="badge-unit">Take-Home Assignment</span>
-      </div>
-
-      <!-- Thinking Mascot beside Homework Title -->
-      <div class="work-hero-banner">
-        <img class="work-hero-mascot" src="mascots_transparent_bg/mascot_thinking_transparent.png" alt="Thinking Mascot">
-        <div class="work-hero-text">
-          <h3>Homework</h3>
-          <p>Test your mastery independently with these comprehensive review questions.</p>
-        </div>
-      </div>
-
-      <!-- 1. MCQ -->
-      <div class="q-type-header">1. Choose the Correct Answer (A–D)</div>
-      <div class="quiz-card">
-        <div class="q-prompt-text">
-          <strong>1.</strong> Downloading a public Kaggle dataset for your project is considered:
-        </div>
-        <div class="mcq-options-grid">
-          <div class="mcq-choice-item"><div class="circle-letter">A</div><div>Primary Data</div></div>
-          <div class="mcq-choice-item"><div class="circle-letter">B</div><div>Secondary Data</div></div>
-          <div class="mcq-choice-item"><div class="circle-letter">C</div><div>Experimental Data</div></div>
-          <div class="mcq-choice-item"><div class="circle-letter">D</div><div>Live Sensor Data</div></div>
-        </div>
-      </div>
-
-      <!-- 2. True / False -->
-      <div class="q-type-header">2. True or False</div>
-      <div class="tf-row">
-        <span><strong>1.</strong> Primary data usually costs more time and money than secondary data.</span>
-        <div style="display: flex; gap: 6px;"><div class="tf-circle-btn">TRUE</div><div class="tf-circle-btn">FALSE</div></div>
-      </div>
-      <div class="tf-row">
-        <span><strong>2.</strong> Self-selection in online polls can introduce severe bias.</span>
-        <div style="display: flex; gap: 6px;"><div class="tf-circle-btn">TRUE</div><div class="tf-circle-btn">FALSE</div></div>
-      </div>
-
-      <!-- 3. Case Study -->
-      <div class="q-type-header">3. Real-World Case Study</div>
-      <div class="passage-box">
-        <div class="passage-title">Case Study: Hospital Health App</div>
+<div class="mcq-options-grid">
+<div class="mcq-choice-item"><div class="circle-letter">A</div><div>Primary Data</div></div>
+<div class="mcq-choice-item"><div class="circle-letter">B</div><div>Secondary Data</div></div>
+<div class="mcq-choice-item"><div class="circle-letter">C</div><div>Experimental Data</div></div>
+<div class="mcq-choice-item"><div class="circle-letter">D</div><div>Live Sensor Data</div></div>
+</div>
+</div>
+<!-- 2. True / False -->
+<div class="q-type-header">2. True or False</div>
+<div class="tf-row">
+<span><strong>1.</strong> Primary data usually costs more time and money than secondary data.</span>
+<div style="display: flex; gap: 6px;"><div class="tf-circle-btn">TRUE</div><div class="tf-circle-btn">FALSE</div></div>
+</div>
+<div class="tf-row">
+<span><strong>2.</strong> Self-selection in online polls can introduce severe bias.</span>
+<div style="display: flex; gap: 6px;"><div class="tf-circle-btn">TRUE</div><div class="tf-circle-btn">FALSE</div></div>
+</div>
+<!-- 3. Case Study -->
+<div class="q-type-header">3. Real-World Case Study</div>
+<div class="passage-box">
+<div class="passage-title">Case Study: Hospital Health App</div>
         A developer surveyed only gym members to predict average daily step counts for a city-wide health app.
       </div>
-      <div class="quiz-card">
-        <div class="q-prompt-text"><strong>(a) MCQ:</strong> The resulting prediction for the general public will likely be:</div>
-        <div class="mcq-options-grid" style="margin-bottom: 8px;">
-          <div class="mcq-choice-item"><div class="circle-letter">A</div><div>Too high (Overestimated)</div></div>
-          <div class="mcq-choice-item"><div class="circle-letter">B</div><div>Perfectly accurate</div></div>
-        </div>
-        <div class="tf-row" style="margin-bottom: 8px;">
-          <span><strong>(b) True/False:</strong> Gym members represent the entire city population fairly.</span>
-          <div style="display: flex; gap: 6px;"><div class="tf-circle-btn">TRUE</div><div class="tf-circle-btn">FALSE</div></div>
-        </div>
-        <div class="q-prompt-text" style="margin-bottom: 4px;"><strong>(c) Essay:</strong> Who is missing from this sample?</div>
-        <div class="essay-lines"></div>
-      </div>
-
-      <!-- 4. Essay (Direct & Open-Ended) -->
-      <div class="q-type-header">4. Essay Questions (Direct &amp; Open-Ended)</div>
-      <div class="quiz-card" style="margin-bottom: 0;">
-        <div class="q-prompt-text"><strong>1. [Direct]</strong> Mention two advantages of using Secondary Data.</div>
-        <div class="essay-lines" style="margin-bottom: 8px;"></div>
-        <div class="q-prompt-text"><strong>2. [Open-Ended]</strong> When would you refuse to use free secondary data and collect primary data instead?</div>
-        <div class="essay-lines"></div>
-      </div>
-
-      <div class="page-footer">
-        <span>Lesson 1 — Homework</span>
-        <span class="page-num">04</span>
-      </div>
-    </div>
-
-  </div>
-
+<div class="quiz-card">
+<div class="q-prompt-text"><strong>(a) MCQ:</strong> The resulting prediction for the general public will likely be:</div>
+<div class="mcq-options-grid" style="margin-bottom: 8px;">
+<div class="mcq-choice-item"><div class="circle-letter">A</div><div>Too high (Overestimated)</div></div>
+<div class="mcq-choice-item"><div class="circle-letter">B</div><div>Perfectly accurate</div></div>
 </div>
-
+<div class="tf-row" style="margin-bottom: 8px;">
+<span><strong>(b) True/False:</strong> Gym members represent the entire city population fairly.</span>
+<div style="display: flex; gap: 6px;"><div class="tf-circle-btn">TRUE</div><div class="tf-circle-btn">FALSE</div></div>
+</div>
+<div class="q-prompt-text" style="margin-bottom: 4px;"><strong>(c) Essay:</strong> Who is missing from this sample?</div>
+<div class="essay-lines"></div>
+</div>
+<!-- 4. Essay (Direct & Open-Ended) -->
+<div class="q-type-header">4. Essay Questions (Direct &amp; Open-Ended)</div>
+<div class="quiz-card" style="margin-bottom: 0;">
+<div class="q-prompt-text"><strong>1. [Direct]</strong> Mention two advantages of using Secondary Data.</div>
+<div class="essay-lines" style="margin-bottom: 8px;"></div>
+<div class="q-prompt-text"><strong>2. [Open-Ended]</strong> When would you refuse to use free secondary data and collect primary data instead?</div>
+<div class="essay-lines"></div>
+</div>
+<div class="page-footer">
+<span>Lesson 1 — Homework</span>
+<span class="page-num">04</span>
+</div>
+</div>
+</div>
+</div>
 </body>
 </html>
