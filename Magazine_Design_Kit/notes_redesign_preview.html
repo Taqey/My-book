@@ -1,0 +1,2383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>From Zero to Hero — Lesson 1: Methods of Data Collection</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&amp;family=Cairo:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+      /* Default Unit Theme (Unit 5: Blue / Cyan) */
+      --unit-primary: #2563eb;
+      --unit-primary-dark: #1d4ed8;
+      --unit-accent: #0ea5e9;
+      --unit-light: #38bdf8;
+      --unit-soft-bg: #eff6ff;
+      --unit-soft-border: #bfdbfe;
+      --unit-badge-bg: #dbeafe;
+      --unit-gradient: linear-gradient(135deg, #2563eb, #0ea5e9);
+      --dark: #0f172a;
+      --slate: #334155;
+      --slate-light: #64748b;
+    }
+
+    /* Unit 5 Theme: Blue */
+    .theme-unit-5 {
+      --unit-primary: #2563eb;
+      --unit-primary-dark: #1d4ed8;
+      --unit-accent: #0ea5e9;
+      --unit-light: #38bdf8;
+      --unit-soft-bg: #eff6ff;
+      --unit-soft-border: #bfdbfe;
+      --unit-badge-bg: #dbeafe;
+      --unit-gradient: linear-gradient(135deg, #2563eb, #0ea5e9);
+    }
+
+    /* Unit 6 Theme: Purple / Violet */
+    .theme-unit-6 {
+      --unit-primary: #7c3aed;
+      --unit-primary-dark: #6d28d9;
+      --unit-accent: #a855f7;
+      --unit-light: #c084fc;
+      --unit-soft-bg: #f5f3ff;
+      --unit-soft-border: #ddd6fe;
+      --unit-badge-bg: #ede9fe;
+      --unit-gradient: linear-gradient(135deg, #7c3aed, #a855f7);
+    }
+
+    /* Unit 7 Theme: Emerald / Teal */
+    .theme-unit-7 {
+      --unit-primary: #059669;
+      --unit-primary-dark: #047857;
+      --unit-accent: #10b981;
+      --unit-light: #34d399;
+      --unit-soft-bg: #ecfdf5;
+      --unit-soft-border: #a7f3d0;
+      --unit-badge-bg: #d1fae5;
+      --unit-gradient: linear-gradient(135deg, #059669, #10b981);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    img {
+      object-fit: contain;
+      max-width: 100%;
+    }
+    
+    body {
+      font-family: 'Plus Jakarta Sans', 'Cairo', sans-serif;
+      background: #090d16;
+      color: var(--slate);
+      padding: 36px 18px;
+      line-height: 1.55;
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    .container {
+      max-width: none;
+      margin: 0 auto;
+    }
+
+    /* Magazine Two-Page Spread Grid */
+    .magazine-spread {
+      display: grid;
+      grid-template-columns: 210mm 210mm;
+      justify-content: center;
+      gap: 28px;
+      margin-bottom: 38px;
+      align-items: start;
+    }
+
+    @media (max-width: 1100px) {
+      .magazine-spread { grid-template-columns: 210mm; }
+    }
+
+    /* Standard Page (A4: 210mm x 297mm) */
+    .page {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 28px 28px 22px 28px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.55);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      width: 210mm;
+      height: 297mm;
+      min-height: 297mm;
+      max-height: 297mm;
+      overflow: hidden;
+    }
+
+    /* =========================================================
+       1. LESSON COVER PAGE (VARIATION 6 STYLE - A4)
+       ========================================================= */
+    .lesson-cover-page {
+      border-radius: 22px;
+      padding: 40px 38px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65);
+      border: none;
+      background: #0b132b;
+      color: #fff;
+      width: 210mm;
+      height: 297mm;
+      min-height: 297mm;
+      max-height: 297mm;
+    }
+
+    .banner-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .v6-scrim {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(
+        180deg,
+        rgba(8, 15, 35, 0.92) 0%,
+        rgba(8, 15, 35, 0.65) 36%,
+        rgba(8, 15, 35, 0.08) 65%,
+        rgba(8, 15, 35, 0.25) 100%
+      );
+    }
+
+    .unit-pill {
+      position: relative;
+      z-index: 2;
+      align-self: flex-start;
+      background: rgba(15, 23, 42, 0.55);
+      backdrop-filter: blur(10px);
+      border: 1.5px solid var(--unit-light);
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+
+    .v6-hero {
+      position: relative;
+      z-index: 2;
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .v6-text-col { min-width: 0; }
+
+    .v6-watermark {
+      font-size: 7.2rem;
+      font-weight: 900;
+      line-height: 0.85;
+      color: transparent;
+      -webkit-text-stroke: 2.5px var(--unit-light);
+      opacity: 0.55;
+      pointer-events: none;
+      user-select: none;
+      padding-top: 4px;
+    }
+
+    .v6-num {
+      font-size: 1.2rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--unit-light);
+      margin-bottom: 6px;
+    }
+
+    .v6-title {
+      font-size: 2.45rem;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 14px;
+      color: #fff;
+      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+    }
+
+    .v6-sub {
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: #e2e8f0;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .v6-sub-ar {
+      font-family: 'Cairo', sans-serif;
+      direction: rtl;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #bae6fd;
+      margin-top: 10px;
+      font-weight: 700;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+    }
+
+    /* =========================================================
+       2. LESSON EXPLANATION PAGE ELEMENTS
+       ========================================================= */
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #f1f5f9;
+      padding-bottom: 10px;
+      margin-bottom: 14px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--slate-light);
+    }
+
+    .badge-unit {
+      background: var(--unit-gradient);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    .lesson-title {
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: var(--dark);
+      line-height: 1.25;
+      margin-bottom: 4px;
+    }
+
+    .lesson-title-ar {
+      font-family: 'Cairo', sans-serif;
+      direction: rtl;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--unit-primary-dark);
+      margin-bottom: 10px;
+    }
+
+    .lead-paragraph {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 12px;
+      line-height: 1.55;
+      text-align: justify;
+    }
+
+    .lead-paragraph::first-letter {
+      font-size: 2.7rem;
+      float: left;
+      line-height: 0.78;
+      padding-right: 9px;
+      padding-top: 4px;
+      color: var(--unit-primary);
+      font-weight: 900;
+    }
+
+    .lead-paragraph-ar {
+      font-size: 0.8rem;
+      font-weight: 600;
+      line-height: 1.6;
+      color: #334155;
+      direction: rtl;
+      text-align: right;
+      margin-bottom: 12px;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    .key-hl {
+      background: var(--unit-soft-bg);
+      color: var(--unit-primary-dark);
+      padding: 1px 5px;
+      border-radius: 4px;
+      font-weight: 800;
+    }
+
+    .lead-paragraph .ar-line {
+      display: block;
+      direction: rtl;
+      font-family: 'Cairo', sans-serif;
+      color: var(--unit-primary-dark);
+      font-weight: 700;
+      margin-top: 4px;
+      font-size: 0.84rem;
+    }
+
+    /* Section Header */
+    .sec-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #f8fafc;
+      border-left: 4px solid var(--unit-primary);
+      padding: 6px 12px;
+      border-radius: 6px;
+      margin: 8px 0 6px 0;
+    }
+
+    .sec-heading-en {
+      font-size: 0.92rem;
+      font-weight: 900;
+      color: var(--dark);
+    }
+
+    .sec-heading-ar {
+      font-family: 'Cairo', sans-serif;
+      direction: rtl;
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--unit-primary-dark);
+    }
+
+    /* Standalone Part A / Part B Divider Banner */
+    .part-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--unit-soft-bg) 0%, #ffffff 100%);
+      border: 1.5px solid var(--unit-soft-border);
+      border-left: 5px solid var(--unit-primary);
+      border-radius: 10px;
+      padding: 6px 12px;
+      margin: 9px 0 5px 0;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    }
+
+    .part-banner-left {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      min-width: 0;
+    }
+
+    .part-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--unit-gradient);
+      color: #ffffff;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.7px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 999px;
+      flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
+    }
+
+    .part-title-en {
+      font-size: 0.90rem;
+      font-weight: 900;
+      color: var(--dark);
+      line-height: 1.25;
+    }
+
+    .part-title-ar {
+      font-family: 'Cairo', sans-serif;
+      direction: rtl;
+      font-size: 0.80rem;
+      font-weight: 800;
+      color: var(--unit-primary-dark);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* Deconstructed Concept Cards & Grids */
+    .breakdown-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin: 6px 0;
+    }
+
+    .breakdown-grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+      margin: 6px 0;
+    }
+
+    .concept-card {
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-top: 3.5px solid var(--unit-primary);
+      border-radius: 10px;
+      padding: 8px 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .concept-card-tag {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 0.66rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--unit-primary-dark);
+      background: var(--unit-badge-bg);
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin-bottom: 4px;
+    }
+
+    .concept-card-title {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 3px;
+      line-height: 1.3;
+    }
+
+    .concept-card-en {
+      font-size: 0.75rem;
+      color: var(--slate);
+      line-height: 1.38;
+      font-weight: 600;
+    }
+
+    .concept-card-ar {
+      direction: rtl;
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.74rem;
+      color: #334155;
+      font-weight: 700;
+      margin-top: 5px;
+      padding-top: 4px;
+      border-top: 1px dashed #e2e8f0;
+      line-height: 1.45;
+    }
+
+    /* Pill List for Strengths / Constraints / Examples */
+    .structured-points {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-top: 4px;
+    }
+
+    .sp-row {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 4px 7px;
+      font-size: 0.73rem;
+      line-height: 1.35;
+    }
+
+    .sp-label {
+      font-weight: 800;
+      color: var(--unit-primary-dark);
+      text-transform: uppercase;
+      font-size: 0.67rem;
+      margin-right: 4px;
+    }
+
+    .sp-ar {
+      display: block;
+      direction: rtl;
+      font-family: 'Cairo', sans-serif;
+      color: #475569;
+      font-weight: 700;
+      font-size: 0.72rem;
+    }
+
+    /* Short Intro Strip before a Diagram */
+    .flow-intro-strip {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 9px;
+      padding: 6px 11px;
+      margin-bottom: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--dark);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .flow-intro-strip .ar {
+      direction: rtl;
+      font-family: 'Cairo', sans-serif;
+      color: var(--unit-primary-dark);
+      font-size: 0.77rem;
+      font-weight: 800;
+    }
+
+    /* Lightbulb Notes Box (mascot_lightbulb_transparent.png) */
+    .note-lightbulb-box {
+      background: var(--unit-soft-bg);
+      border: 1.5px solid var(--unit-soft-border);
+      border-radius: 14px;
+      padding: 9px 13px;
+      margin: 7px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .mascot-thumb-transparent {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      flex-shrink: 0;
+      filter: drop-shadow(0 4px 8px rgba(15, 23, 42, 0.15));
+    }
+
+    .note-text-area { flex: 1; }
+
+    .note-badge-title {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 900;
+      color: #ffffff;
+      background: var(--unit-primary);
+      padding: 2px 9px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 3px;
+    }
+
+    .note-body {
+      font-size: 0.78rem;
+      color: #1e293b;
+      line-height: 1.4;
+      font-weight: 700;
+    }
+
+    .note-body-ar {
+      direction: rtl;
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.77rem;
+      color: var(--unit-primary-dark);
+      font-weight: 700;
+      margin-top: 2px;
+      line-height: 1.45;
+    }
+
+    /* Multi-line notes: each point on its own line, English | Arabic side by side */
+    .note-text-area:has(.note-body br) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 16px;
+      align-items: start;
+    }
+    .note-text-area:has(.note-body br) .note-badge-title {
+      grid-column: 1 / -1;
+      justify-self: start;
+    }
+    .note-text-area:has(.note-body br) .note-body-ar {
+      margin-top: 0;
+      padding-right: 12px;
+      border-right: 2px solid var(--unit-soft-border);
+    }
+
+    /* Comparison Table Section (mascot_comparison_transparent.png) */
+    .comparison-section {
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 10px 12px;
+      margin: 7px 0;
+    }
+
+    .comparison-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+
+    .comparison-header img {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      flex-shrink: 0;
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
+    }
+
+    .comparison-intro h4 {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    .comparison-intro p {
+      font-size: 0.76rem;
+      color: var(--slate-light);
+      font-family: 'Cairo', sans-serif;
+      font-weight: 700;
+    }
+
+    .styled-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 9px;
+      overflow: hidden;
+      font-size: 0.75rem;
+      border: 1px solid #e2e8f0;
+    }
+
+    .styled-table thead tr {
+      background: #1e293b;
+      color: #ffffff;
+      text-align: left;
+    }
+
+    .styled-table th, .styled-table td {
+      padding: 6px 9px;
+      vertical-align: top;
+    }
+
+    .styled-table tbody th {
+      background: var(--unit-soft-bg);
+      color: var(--unit-primary-dark);
+      font-weight: 800;
+    }
+
+    .styled-table td:first-child {
+      color: var(--unit-primary);
+      font-weight: 800;
+    }
+
+    .styled-table tbody tr {
+      background: #ffffff;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .styled-table tbody tr:nth-of-type(even) {
+      background: #f1f5f9;
+    }
+
+    .problems-box .styled-table,
+    .problem-card .styled-table,
+    .quiz-card .styled-table,
+    .passage-box .styled-table,
+    .egy-example-box .styled-table,
+    .real-world-example-box .styled-table {
+      border-color: var(--unit-soft-border);
+    }
+
+    .problems-box .styled-table thead tr,
+    .problem-card .styled-table thead tr,
+    .quiz-card .styled-table thead tr,
+    .passage-box .styled-table thead tr,
+    .egy-example-box .styled-table thead tr,
+    .real-world-example-box .styled-table thead tr {
+      background: var(--unit-gradient);
+      color: #ffffff;
+    }
+
+    .problems-box .styled-table tbody tr:nth-of-type(even),
+    .problem-card .styled-table tbody tr:nth-of-type(even),
+    .quiz-card .styled-table tbody tr:nth-of-type(even),
+    .passage-box .styled-table tbody tr:nth-of-type(even),
+    .egy-example-box .styled-table tbody tr:nth-of-type(even),
+    .real-world-example-box .styled-table tbody tr:nth-of-type(even) {
+      background: var(--unit-soft-bg);
+    }
+
+    .cell-ar {
+      display: block;
+      direction: rtl;
+      font-family: 'Cairo', sans-serif;
+      color: #475569;
+      font-weight: 700;
+      font-size: 0.73rem;
+      margin-top: 2px;
+    }
+
+    /* Flow & Mechanism Box — Arrow Process Diagram (mascot_reflection_transparent.png) */
+    .egy-reflection-box {
+      direction: rtl;
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(135deg, #ffffff 0%, var(--unit-soft-bg) 100%);
+      border: 1.5px solid var(--unit-soft-border);
+      border-right: 4px solid var(--unit-primary);
+      border-radius: 14px;
+      padding: 9px 12px;
+      margin: 7px 0;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+    }
+
+    .reflection-thumb-transparent {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      flex-shrink: 0;
+      filter: drop-shadow(0 4px 10px rgba(15, 23, 42, 0.16));
+    }
+
+    .egy-reflection-text { flex: 1; min-width: 0; }
+
+    .egy-reflection-header {
+      font-size: 0.8rem;
+      font-weight: 900;
+      color: var(--unit-primary-dark);
+      margin-bottom: 5px;
+    }
+
+    /* Interlocking Chevron Arrow Process Diagram (LTR) */
+    .arrow-process-diagram {
+      display: flex;
+      align-items: stretch;
+      justify-content: space-between;
+      gap: 3px;
+      direction: ltr;
+    }
+
+    .process-step-node {
+      flex: 1;
+      color: #ffffff;
+      padding: 8px 18px 8px 18px;
+      text-align: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      direction: rtl;
+      clip-path: polygon(0% 0%, calc(100% - 12px) 0%, 100% 50%, calc(100% - 12px) 100%, 0% 100%, 12px 50%);
+      margin-right: -4px;
+    }
+
+    .process-step-node:first-child {
+      clip-path: polygon(0% 0%, calc(100% - 12px) 0%, 100% 50%, calc(100% - 12px) 100%, 0% 100%);
+      padding-left: 10px;
+      border-radius: 6px 0 0 6px;
+    }
+
+    .process-step-node:last-child {
+      margin-right: 0;
+    }
+
+    .process-step-node:nth-child(1) { background: linear-gradient(135deg, #1e40af, #1d4ed8); }
+    .process-step-node:nth-child(2) { background: linear-gradient(135deg, #1d4ed8, #2563eb); }
+    .process-step-node:nth-child(3) { background: linear-gradient(135deg, #2563eb, #0284c7); }
+    .process-step-node:nth-child(4) { background: linear-gradient(135deg, #0284c7, #0ea5e9); }
+    .theme-unit-6 .process-step-node:nth-child(1) { background: linear-gradient(135deg, #4c1d95, #5b21b6); }
+    .theme-unit-6 .process-step-node:nth-child(2) { background: linear-gradient(135deg, #5b21b6, #6d28d9); }
+    .theme-unit-6 .process-step-node:nth-child(3) { background: linear-gradient(135deg, #6d28d9, #7c3aed); }
+    .theme-unit-6 .process-step-node:nth-child(4) { background: linear-gradient(135deg, #7c3aed, #a855f7); }
+    .theme-unit-7 .process-step-node:nth-child(1) { background: linear-gradient(135deg, #064e3b, #065f46); }
+    .theme-unit-7 .process-step-node:nth-child(2) { background: linear-gradient(135deg, #065f46, #047857); }
+    .theme-unit-7 .process-step-node:nth-child(3) { background: linear-gradient(135deg, #047857, #059669); }
+    .theme-unit-7 .process-step-node:nth-child(4) { background: linear-gradient(135deg, #059669, #10b981); }
+
+    .process-step-title {
+      font-size: 0.74rem;
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 2px;
+      line-height: 1.2;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .process-step-desc {
+      font-size: 0.65rem;
+      color: rgba(255, 255, 255, 0.94);
+      line-height: 1.25;
+      font-weight: 700;
+    }
+
+    /* Real-World Example Box (mascot_example_transparent.png) */
+    .real-world-example-box {
+      direction: rtl;
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(135deg, #ffffff 0%, var(--unit-soft-bg) 100%);
+      border: 1.5px solid var(--unit-soft-border);
+      border-right: 4px solid var(--unit-primary);
+      border-radius: 14px;
+      padding: 8px 12px;
+      margin: 6px 0 8px 0;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+    }
+
+    .example-thumb-transparent {
+      width: 62px;
+      height: 62px;
+      object-fit: contain;
+      flex-shrink: 0;
+      filter: drop-shadow(0 4px 10px rgba(15, 23, 42, 0.16));
+    }
+
+    .real-world-example-text { flex: 1; min-width: 0; }
+
+    .real-world-example-header {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 900;
+      color: #ffffff;
+      background: var(--unit-primary);
+      padding: 2px 9px;
+      border-radius: 6px;
+      margin-bottom: 3px;
+    }
+
+    .real-world-example-body {
+      font-size: 0.77rem;
+      color: #14532d;
+      line-height: 1.45;
+      font-weight: 700;
+    }
+
+    .real-world-example-box svg,
+    .real-world-example-box svg text,
+    .real-world-example-box svg tspan,
+    .egy-reflection-box svg,
+    .egy-reflection-box svg text,
+    .egy-reflection-box svg tspan {
+      direction: ltr;
+      unicode-bidi: isolate;
+      font-family: 'Plus Jakarta Sans', 'Cairo', sans-serif;
+    }
+
+    /* =========================================================
+       2G. WORKED PROBLEMS BOX (MATH MASCOT + FORMULAS + STEPS)
+       ========================================================= */
+    .problems-box {
+      background: linear-gradient(135deg, #ffffff 0%, var(--unit-soft-bg) 100%);
+      border: 1.5px solid var(--unit-soft-border);
+      border-left: 5px solid var(--unit-primary);
+      border-radius: 16px;
+      padding: 8px 12px;
+      margin: 6px 0 6px 0;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+    }
+
+    .problems-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+      padding-bottom: 4px;
+      border-bottom: 1px dashed var(--unit-soft-border);
+    }
+
+    .problems-mascot {
+      width: 66px;
+      height: 66px;
+      object-fit: contain;
+      flex-shrink: 0;
+      filter: drop-shadow(0 4px 8px rgba(15, 23, 42, 0.14));
+    }
+
+    .problems-title-wrap {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .problems-badge {
+      display: inline-block;
+      font-size: 0.66rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #ffffff;
+      background: var(--unit-primary);
+      padding: 2px 9px;
+      border-radius: 999px;
+      margin-bottom: 2px;
+    }
+
+    .problems-title-en {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 900;
+      color: #0f172a;
+      line-height: 1.2;
+    }
+
+    .problems-title-ar {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--unit-primary);
+      direction: rtl;
+      text-align: left;
+      margin-top: 1px;
+    }
+
+    .problems-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 7px;
+    }
+
+    .problem-card {
+      background: #ffffff;
+      border: 1px solid var(--unit-soft-border);
+      border-radius: 12px;
+      padding: 7px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .problem-card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--unit-soft-bg);
+      padding-bottom: 4px;
+    }
+
+    .problem-card-name {
+      font-size: 0.80rem;
+      font-weight: 900;
+      color: #0f172a;
+    }
+
+    .problem-card-name-ar {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.76rem;
+      font-weight: 800;
+      color: var(--unit-primary);
+    }
+
+    .problem-given {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #334155;
+      line-height: 1.4;
+    }
+
+    .problem-steps {
+      font-size: 0.74rem;
+      color: #1e293b;
+      line-height: 1.45;
+      background: #f8fafc;
+      border-radius: 10px;
+      padding: 8px 10px;
+      border-left: 3.5px solid var(--unit-primary);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .problem-step-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .problem-step-label {
+      font-weight: 800;
+      color: var(--unit-primary);
+      min-width: 52px;
+    }
+
+    .problem-explain-ar {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.69rem;
+      font-weight: 700;
+      color: var(--unit-primary-dark);
+      direction: rtl;
+      text-align: right;
+      line-height: 1.45;
+    }
+
+    /* =========================================================
+       2H. RULES & FORMULAS BOX + SCIENTIFIC FRACTIONS
+       ========================================================= */
+    .rules-box {
+      background: linear-gradient(135deg, #ffffff 0%, var(--unit-soft-bg) 100%);
+      border: 1.5px solid var(--unit-soft-border);
+      border-left: 5px solid var(--unit-primary);
+      border-radius: 16px;
+      padding: 8px 12px;
+      margin: 6px 0 6px 0;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+    }
+
+    .rules-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+      padding-bottom: 4px;
+      border-bottom: 1px dashed var(--unit-soft-border);
+    }
+
+    .rules-mascot {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      flex-shrink: 0;
+      filter: drop-shadow(0 4px 8px rgba(15, 23, 42, 0.14));
+    }
+
+    .rules-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .rule-card {
+      background: #ffffff;
+      border: 1px solid var(--unit-soft-border);
+      border-radius: 12px;
+      padding: 8px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      text-align: center;
+    }
+
+    .rule-name {
+      font-size: 0.76rem;
+      font-weight: 900;
+      color: #0f172a;
+    }
+
+    .rule-name-ar {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--unit-primary);
+    }
+
+    .rule-formula-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: var(--unit-soft-bg);
+      border: 1px solid var(--unit-soft-border);
+      border-radius: 10px;
+      padding: 6px 10px;
+      width: 100%;
+      color: #0f172a;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 0.78rem;
+    }
+
+    .rule-note-ar {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.69rem;
+      font-weight: 700;
+      color: #475569;
+      direction: rtl;
+      line-height: 1.35;
+    }
+
+    /* Scientific Fraction (Numerator / Denominator) */
+    .math-expr {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: #0f172a;
+      vertical-align: middle;
+    }
+
+    .math-frac {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      vertical-align: middle;
+      line-height: 1.15;
+      margin: 0 2px;
+    }
+
+    .math-sqrt {
+      display: inline-flex;
+      align-items: stretch;
+      vertical-align: middle;
+      margin: 0 2px;
+    }
+
+    .math-sqrt-svg {
+      width: 13px;
+      align-self: stretch;
+      flex-shrink: 0;
+      display: block;
+    }
+
+    .math-sqrt-body {
+      border-top: 2px solid var(--unit-primary);
+      padding: 3px 6px 1px 4px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .math-num {
+      display: block;
+      padding: 0 5px 2px 5px;
+      border-bottom: 1.6px solid var(--unit-primary);
+      font-size: 0.74rem;
+      font-weight: 800;
+      color: #0f172a;
+      text-align: center;
+    }
+
+    .math-den {
+      display: block;
+      padding: 2px 5px 0 5px;
+      font-size: 0.74rem;
+      font-weight: 800;
+      color: #0f172a;
+      text-align: center;
+    }
+
+    .math-eq {
+      font-weight: 900;
+      color: var(--unit-primary);
+      margin: 0 2px;
+    }
+
+    .math-result {
+      display: inline-block;
+      background: var(--unit-primary);
+      color: #ffffff;
+      font-weight: 900;
+      font-size: 0.76rem;
+      padding: 1px 8px;
+      border-radius: 6px;
+    }
+
+    /* =========================================================
+       3. CLASSWORK & HOMEWORK PAGES (THINKING MASCOT AT TOP)
+       ========================================================= */
+    .work-hero-banner {
+      background: var(--unit-soft-bg);
+      border: 1.5px solid var(--unit-soft-border);
+      border-radius: 14px;
+      padding: 10px 16px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .work-hero-mascot {
+      width: 78px;
+      height: 78px;
+      object-fit: contain;
+      flex-shrink: 0;
+      filter: drop-shadow(0 6px 12px rgba(15, 23, 42, 0.18));
+    }
+
+    .work-hero-text h3 {
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--unit-primary-dark);
+      letter-spacing: -0.5px;
+      margin-bottom: 2px;
+    }
+
+    .work-hero-text p {
+      font-size: 0.8rem;
+      color: var(--slate);
+      font-weight: 600;
+    }
+
+    .q-type-header {
+      font-size: 0.76rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--unit-primary-dark);
+      background: var(--unit-badge-bg);
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 6px;
+      margin: 10px 0 6px 0;
+    }
+    .page-header + .q-type-header,
+    .work-hero-banner + .q-type-header {
+      margin-top: 4px;
+    }
+
+    /* Compact 2-column MCQ Grid for pages with many questions */
+    
+    .mcq-masonry {
+      column-count: 2;
+      column-gap: 10px;
+      margin-bottom: 6px;
+    }
+    .mcq-masonry > .mcq-item {
+      break-inside: avoid;
+      margin-bottom: 8px;
+    }
+
+    .questions-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      align-items: start;
+    }
+
+    .quiz-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 8px 10px;
+      margin-bottom: 6px;
+    }
+
+    .questions-two-col .quiz-card {
+      margin-bottom: 0;
+    }
+
+    .q-prompt-text {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.35;
+      margin-bottom: 5px;
+    }
+
+    .mcq-options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+    }
+
+    .mcq-options-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .mcq-choice-item {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      padding: 4px 7px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      line-height: 1.25;
+    }
+
+    .circle-letter {
+      width: 19px;
+      height: 19px;
+      min-width: 19px;
+      border-radius: 50%;
+      background: var(--unit-soft-bg);
+      color: var(--unit-primary-dark);
+      font-weight: 800;
+      font-size: 0.68rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--unit-soft-border);
+    }
+
+    .tf-row {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 7px;
+      padding: 4px 9px;
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .tf-btn-pair {
+      display: flex;
+      gap: 6px;
+      flex-shrink: 0;
+      align-items: center;
+    }
+
+    .tf-circle-btn {
+      width: 19px;
+      height: 19px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 1.5px solid var(--unit-primary);
+      font-size: 0.63rem;
+      font-weight: 800;
+      background: #fff;
+      color: var(--unit-primary-dark);
+      line-height: 1;
+    }
+
+    .passage-box {
+      background: var(--unit-soft-bg);
+      border: 1px solid var(--unit-soft-border);
+      border-left: 4px solid var(--unit-primary);
+      border-radius: 0 8px 8px 0;
+      padding: 7px 10px;
+      margin: 9px 0 6px 0;
+      font-size: 0.75rem;
+      color: var(--dark);
+      line-height: 1.38;
+    }
+    .page-header + .passage-box,
+    .q-type-header + .passage-box {
+      margin-top: 4px;
+    }
+
+    .passage-title {
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      letter-spacing: 0.5px;
+      color: var(--unit-primary-dark);
+      margin-bottom: 2px;
+    }
+
+    .essay-lines {
+      border: 1px dashed #cbd5e1;
+      border-radius: 5px;
+      height: 48px;
+      background: repeating-linear-gradient(
+        #ffffff,
+        #ffffff 15px,
+        #e2e8f0 16px
+      );
+      margin-top: 4px;
+    }
+
+    .page-footer {
+      margin-top: auto;
+      padding-top: 10px;
+      border-top: 2px solid #f1f5f9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--slate-light);
+    }
+
+    .page-num {
+      background: var(--unit-primary-dark);
+      color: #fff;
+      padding: 2px 9px;
+      border-radius: 6px;
+    }
+  </style>
+
+<title>Notes Redesign Preview (11 Large / Multi-Item Notes)</title>
+
+    <style id="preview-shell-css">
+      body {
+        background: #f1f5f9 !important;
+        color: #1e293b !important;
+        padding: 0 18px 64px 18px !important;
+        font-family: 'Cairo', 'Plus Jakarta Sans', sans-serif;
+      }
+      .top-bar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(15, 23, 42, 0.96);
+        backdrop-filter: blur(8px);
+        color: #ffffff;
+        margin: 0 -18px 22px -18px;
+        padding: 12px 22px;
+        box-shadow: 0 6px 20px rgba(15, 23, 42, 0.18);
+      }
+      .top-bar-inner {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+      }
+      .top-bar-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+        direction: rtl;
+      }
+      .top-bar-title h1 {
+        font-size: 1.05rem;
+        font-weight: 900;
+        color: #ffffff;
+      }
+      .top-bar-sub {
+        font-size: 0.78rem;
+        color: #cbd5e1;
+        font-weight: 600;
+      }
+      .nav-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        direction: ltr;
+      }
+      .nav-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #f8fafc;
+        text-decoration: none;
+        padding: 3px 9px;
+        border-radius: 999px;
+        font-size: 0.72rem;
+        font-weight: 800;
+        transition: background 0.15s ease;
+      }
+      .nav-pill:hover { background: #2563eb; border-color: #60a5fa; }
+      .nav-pill small { color: #94a3b8; font-weight: 700; }
+
+      .preview-main {
+        max-width: 860px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+      .excluded-banner {
+        direction: rtl;
+        background: #ffffff;
+        border: 1.5px solid #cbd5e1;
+        border-right: 5px solid #0ea5e9;
+        border-radius: 14px;
+        padding: 12px 16px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: #334155;
+        line-height: 1.6;
+        box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+      }
+      .showcase-card {
+        background: #ffffff;
+        border: 1.5px solid #cbd5e1;
+        border-radius: 20px;
+        padding: 18px 20px 22px 20px;
+        box-shadow: 0 8px 26px rgba(15, 23, 42, 0.06);
+        scroll-margin-top: 105px;
+      }
+      .card-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 4px;
+      }
+      .card-head-right {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .note-num-pill {
+        background: #0f172a;
+        color: #ffffff;
+        font-size: 0.78rem;
+        font-weight: 900;
+        padding: 3px 10px;
+        border-radius: 8px;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+      }
+      .unit-pill {
+        background: #e0f2fe;
+        color: #0369a1;
+        font-size: 0.74rem;
+        font-weight: 800;
+        padding: 3px 9px;
+        border-radius: 8px;
+      }
+      .sec-title-chip {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 0.84rem;
+        font-weight: 800;
+        color: #0f172a;
+      }
+      .height-meta {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 0.72rem;
+        font-weight: 800;
+        color: #b91c1c;
+        background: #fef2f2;
+        border: 1px solid #fecaca;
+        padding: 3px 9px;
+        border-radius: 999px;
+      }
+      .context-line {
+        font-size: 0.78rem;
+        color: #475569;
+        font-weight: 700;
+        margin-bottom: 12px;
+        padding-bottom: 10px;
+        border-bottom: 1.5px dashed #e2e8f0;
+      }
+      .variant-block {
+        margin-top: 14px;
+      }
+      .variant-bar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 7px;
+      }
+      .variant-badge {
+        display: inline-block;
+        font-size: 0.74rem;
+        font-weight: 900;
+        padding: 3px 10px;
+        border-radius: 7px;
+      }
+      .before-badge {
+        background: #fee2e2;
+        color: #991b1b;
+        border: 1px solid #fca5a5;
+      }
+      .sol-a {
+        background: #dcfce7;
+        color: #166534;
+        border: 1px solid #86efac;
+      }
+      .sol-b {
+        background: #dbeafe;
+        color: #1e40af;
+        border: 1px solid #93c5fd;
+      }
+      .sol-c {
+        background: #f3e8ff;
+        color: #6b21a8;
+        border: 1px solid #d8b4fe;
+      }
+      .variant-desc {
+        font-size: 0.76rem;
+        color: #475569;
+        font-weight: 700;
+      }
+      .book-stage-wrap {
+        width: 210mm;
+        max-width: 100%;
+        margin: 0 auto;
+        background: #ffffff;
+        border: 1.5px solid #e2e8f0;
+        border-radius: 14px;
+        padding: 12px 28px;
+        box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.02);
+      }
+    </style>
+    
+</head>
+<body>
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <div class="top-bar-title">
+      <h1>معاينة إعادة تصميم الـ Notes الكبيرة ومتعددة النقاط (11 نوت) — فايل معاينة مستقل</h1>
+      <div class="top-bar-sub">كل نوت تحتها المقارنة: <b style="color:#fca5a5;">الحالي (BEFORE)</b> مقابل الحلول المقترحة (<b style="color:#86efac;">A</b> / <b style="color:#93c5fd;">B</b> / <b style="color:#d8b4fe;">C</b>) بنفس عرض صفحة الكتاب A4.</div>
+    </div>
+    <nav class="nav-pills"><a class="nav-pill" href="#note-15"><span>#15</span> <small>Unit 6 • L2</small></a><a class="nav-pill" href="#note-16"><span>#16</span> <small>Unit 7 • L1</small></a><a class="nav-pill" href="#note-03"><span>#03</span> <small>Unit 5 • L1</small></a><a class="nav-pill" href="#note-17"><span>#17</span> <small>Unit 7 • L1</small></a><a class="nav-pill" href="#note-10"><span>#10</span> <small>Unit 5 • L3</small></a><a class="nav-pill" href="#note-14"><span>#14</span> <small>Unit 6 • L1</small></a><a class="nav-pill" href="#note-02"><span>#02</span> <small>Unit 5 • L1</small></a><a class="nav-pill" href="#note-05"><span>#05</span> <small>Unit 5 • L2</small></a><a class="nav-pill" href="#note-20"><span>#20</span> <small>Unit 7 • L3</small></a><a class="nav-pill" href="#note-19"><span>#19</span> <small>Unit 7 • L3</small></a><a class="nav-pill" href="#note-08"><span>#08</span> <small>Unit 5 • L3</small></a></nav>
+  </div>
+</header>
+<main class="preview-main">
+  <div class="excluded-banner">
+    ✅ ملف الكتاب الأصلي <code dir="ltr">from_zero_to_hero_book.html</code> <strong>لم يتم لمسه أو تعديله</strong>.<br/>
+    ⛔ النوتس الـ 5 الحدّية (<bdi>#06</bdi>، <bdi>#09</bdi>، <bdi>#18</bdi>، <bdi>#07</bdi>، <bdi>#12</bdi>) والنوتس الـ 4 القصيرة (<bdi>#01</bdi>، <bdi>#04</bdi>، <bdi>#11</bdi>، <bdi>#13</bdi>) <strong>مستبعدة كما طلبت</strong>.
+  </div>
+<section class="showcase-card" id="note-15">
+  <div class="card-head" dir="rtl">
+    <div class="card-head-right">
+      <span class="note-num-pill">#15</span>
+      <span class="unit-pill">Unit 6 • L2 • ص 93</span>
+      <span class="sec-title-chip" dir="ltr">4. Four Cautions When Using Regression</span>
+    </div>
+    <div class="height-meta" dir="ltr">197px (7L EN + 7L AR)</div>
+  </div>
+  <div class="context-line" dir="rtl">القسم كله في الكتاب مفيهوش غير النوت دي لوحدها</div>
+  <div class="variant-block">
+    <div class="variant-bar" dir="rtl">
+      <span class="variant-badge before-badge">الحالي في الكتاب (BEFORE)</span>
+      <span class="variant-desc">منسوخ حرفياً من الكتاب بنفس العرض والستايل</span>
+    </div>
+    <div class="book-stage-wrap theme-unit-6">
+      <div class="note-lightbulb-box" style="flex-direction:column;align-items:stretch;gap:6px;">
+<div style="display:flex;align-items:center;gap:10px;">
+<img alt="Notes Mascot" class="mascot-thumb-transparent" src="mascots_transparent_bg/mascot_lightbulb_transparent.png" style="width:46px;height:46px;"/>
+<div class="note-badge-title" style="margin-bottom:0;">Notes</div>
+</div>
+<div class="note-text-area" style="width:100%;">
+<div class="note-body"><strong>1. Correlation ≠ Causation:</strong> Cause needs time order, removing other factors, and theory.<br/><strong>2. Stay Inside Data Range:</strong> Never predict far outside fitted data.<br/><strong>3. Don't Use R² Alone:</strong> Check RMSE and MAE too.<br/><strong>4. More Variables ≠ Better:</strong> Extra useless variables cause overfitting.</div>
+<div class="note-body-ar"><strong>1. الارتباط مش سببية:</strong> السببية محتاجة ترتيب زمني واستبعاد العوامل التانية.<br/><strong>2. متخرجش بره النطاق:</strong> متتوقعش لأرقام بعيدة عن بيانات التدريب.<br/><strong>3. متعتمدش على R² لوحده:</strong> بص على RMSE و MAE معاه.<br/><strong>4. كتر المتغيرات مش دايماً أحسن:</strong> اختار المتغيرات المهمة بس عشان النموذج ميبوظش.</div>
+</div>
+</div>
+    </div>
+  </div>
+<div class="variant-block">
+  <div class="variant-bar" dir="rtl">
+    <span class="variant-badge sol-a">الحل A (الأفضل — جدول من 4 صفوف يحل محل النوت)</span>
+    <span class="variant-desc">تنظيم التحذيرات الأربعة في جدول رسمي يوضح اسم التحذير والقاعدة الإنجليزي والشرح العربي بدل تكدس 14 سطر في نوت.</span>
+  </div>
+  <div class="book-stage-wrap theme-unit-6">
+    <div class="comparison-section">
+  <div class="comparison-header">
+    <img alt="Comparison Mascot" src="mascots_transparent_bg/mascot_comparison_transparent.png"/>
+    <div class="comparison-intro"><h4>Four Cautions When Using Regression</h4><p><span dir="rtl" style="display:inline-block;">4 تحذيرات مهمة عند استخدام الـ <bdi>Regression</bdi> (بديل النوت)</span></p></div>
+  </div>
+  <table class="styled-table">
+    <thead><tr><th>Caution</th><th>Rule &amp; Why</th><th>التوضيح بالعربي</th></tr></thead>
+    <tbody>
+<tr><td><strong>1. Correlation ≠ Causation</strong></td><td>Cause requires time order, controlling other factors, and theory.</td><td dir="rtl" style="text-align:right;">الارتباط مش سببية: لازم ترتيب زمني واستبعاد العوامل التانية.</td></tr>
+<tr><td><strong>2. Stay Inside Data Range</strong></td><td>Never predict far outside the fitted data range.</td><td dir="rtl" style="text-align:right;">متخرجش بره النطاق: متتوقعش لأرقام بعيدة عن بيانات التدريب.</td></tr>
+<tr><td><strong>3. Don't Use R² Alone</strong></td><td>Check <bdi>RMSE &amp; MAE</bdi> alongside <bdi>R²</bdi> to verify real error.</td><td dir="rtl" style="text-align:right;">متعتمدش على <bdi>R²</bdi> لوحده: بص على <bdi>RMSE &amp; MAE</bdi> معاه.</td></tr>
+<tr><td><strong>4. More Variables ≠ Better</strong></td><td>Extra useless variables cause overfitting on noise.</td><td dir="rtl" style="text-align:right;">كتر المتغيرات مش دايماً أحسن: اختار المهم بس عشان النموذج ميبوظش.</td></tr>
+    </tbody>
+  </table>
+</div>
+  </div>
+</div>
+<div class="variant-block">
+  <div class="variant-bar" dir="rtl">
+    <span class="variant-badge sol-b">الحل B (شبكة 2×2 — 4 كروت تحذير تحل محل النوت)</span>
+    <span class="variant-desc">تحويل كل تحذير لكارت مستقل بتصميم concept-card للمذاكرة السريعة بالعين.</span>
+  </div>
+  <div class="book-stage-wrap theme-unit-6">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:7px 0;">
+  <div class="concept-card"><span class="concept-card-tag">Caution 1</span><div class="concept-card-title">Correlation ≠ Causation</div><div class="concept-card-en">Cause needs time order, removing other factors, and theory.</div><div class="concept-card-ar">الارتباط مش سببية: السببية محتاجة ترتيب زمني واستبعاد العوامل التانية.</div></div>
+  <div class="concept-card"><span class="concept-card-tag">Caution 2</span><div class="concept-card-title">Stay Inside Data Range</div><div class="concept-card-en">Never predict far outside the range of fitted data.</div><div class="concept-card-ar">متخرجش بره النطاق: متتوقعش لأرقام بعيدة عن بيانات التدريب.</div></div>
+  <div class="concept-card"><span class="concept-card-tag">Caution 3</span><div class="concept-card-title">Don't Use R² Alone</div><div class="concept-card-en">Always inspect <bdi>RMSE &amp; MAE</bdi> together with <bdi>R²</bdi>.</div><div class="concept-card-ar">متعتمدش على <bdi>R²</bdi> لوحده: بص دايماً على <bdi>RMSE &amp; MAE</bdi> معاه.</div></div>
+  <div class="concept-card"><span class="concept-card-tag">Caution 4</span><div class="concept-card-title">More Variables ≠ Better</div><div class="concept-card-en">Extra useless variables increase noise and overfitting.</div><div class="concept-card-ar">كتر المتغيرات مش أحسن: اختار المتغيرات المهمة بس عشان النموذج ميبوظش.</div></div>
+</div>
+  </div>
+</div>
+</section>
+<section class="showcase-card" id="note-16">
+  <div class="card-head" dir="rtl">
+    <div class="card-head-right">
+      <span class="note-num-pill">#16</span>
+      <span class="unit-pill">Unit 7 • L1 • ص 150</span>
+      <span class="sec-title-chip" dir="ltr">1. Conventional Programming vs. Machine Learning</span>
+    </div>
+    <div class="height-meta" dir="ltr">179px (4L EN + 6L AR)</div>
+  </div>
+  <div class="context-line" dir="rtl">تحت جدول المقارنة ومثال الشطرنج</div>
+  <div class="variant-block">
+    <div class="variant-bar" dir="rtl">
+      <span class="variant-badge before-badge">الحالي في الكتاب (BEFORE)</span>
+      <span class="variant-desc">منسوخ حرفياً من الكتاب بنفس العرض والستايل</span>
+    </div>
+    <div class="book-stage-wrap theme-unit-7">
+      <div class="note-lightbulb-box" style="flex-direction:column;align-items:stretch;gap:6px;">
+<div style="display:flex;align-items:center;gap:10px;">
+<img alt="Notes Mascot" class="mascot-thumb-transparent" src="mascots_transparent_bg/mascot_lightbulb_transparent.png" style="width:46px;height:46px;"/>
+<div class="note-badge-title" style="margin-bottom:0;">Notes</div>
+</div>
+<div class="note-text-area" style="width:100%;">
+<div class="note-body"><strong>Two Limits:</strong><br/>(1) <strong>Bias:</strong> Biased training data causes biased answers.<br/>(2) <strong>Black-Box Problem:</strong> Even makers cannot easily see why the model made a choice.</div>
+<div class="note-body-ar"><strong>مشكلتين مهمين:</strong><br/>(1) <strong>الانحياز (Bias):</strong> لو بيانات التدريب منحازة، النتيجة هتطلع منحازة.<br/>(2) <strong>الصندوق الأسود (Black-Box):</strong> ساعات بنبقى مش فاهمين النموذج خد القرار إزاي — عشان كده الـ ML بيساعد الإنسان مش بيبدله.</div>
+</div>
+</div>
+    </div>
+  </div>
+<div class="variant-block">
+  <div class="variant-bar" dir="rtl">
+    <span class="variant-badge sol-a">الحل A (جدول مصغّر من صفّين + نوت سطر واحد)</span>
+    <span class="variant-desc">فصل Bias و Black-Box Problem في جدول صفّين، وتصفية النوت للخلاصة فقط (ML assists humans).</span>
+  </div>
+  <div class="book-stage-wrap theme-unit-7">
+    <div class="comparison-section">
+  <div class="comparison-header">
+    <img alt="Comparison Mascot" src="mascots_transparent_bg/mascot_comparison_transparent.png"/>
+    <div class="comparison-intro"><h4>Two Limits of Machine Learning</h4><p><span dir="rtl" style="display:inline-block;">قيود أساسية في تعلم الآلة لازم ننتبه لها</span></p></div>
+  </div>
+  <table class="styled-table">
+    <thead><tr><th>Limit</th><th>Why It Matters</th><th>الشرح بالعربي</th></tr></thead>
+    <tbody>
+<tr><td><strong>1. Bias</strong></td><td>Biased training data produces biased answers.</td><td dir="rtl" style="text-align:right;">لو بيانات التدريب منحازة، النتيجة هتطلع منحازة.</td></tr>
+<tr><td><strong>2. Black-Box Problem</strong></td><td>Even makers cannot easily see why a model made a choice.</td><td dir="rtl" style="text-align:right;">ساعات بنبقى مش فاهمين النموذج خد القرار إزاي.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="note-lightbulb-box" style="flex-direction:column;align-items:stretch;gap:6px;">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <img alt="Notes Mascot" class="mascot-thumb-transparent" src="mascots_transparent_bg/mascot_lightbulb_transparent.png" style="width:46px;height:46px;"/>
+    <div class="note-badge-title" style="margin-bottom:0;">Notes</div>
+  </div>
+  <div class="note-text-area" style="width:100%;">
+    <div class="note-body">Because of <strong>Bias</strong> &amp; the <strong>Black-Box Problem</strong>, ML assists humans rather than replacing them.</div>
+    <div class="note-body-ar">بسبب <bdi>Bias &amp; Black-Box Problem</bdi>، الـ <bdi>ML</bdi> بيساعد الإنسان ومش بيبدله.</div>
+  </div>
+</div>
+  </div>
+</div>
+<div class="variant-block">
+  <div class="variant-bar" dir="rtl">
+    <span class="variant-badge sol-b">الحل B (كارتين جنب بعض + نوت سطر واحد)</span>
+    <span class="variant-desc">وضع المشكلتين في كارتين concept-card جنب بعض، مع نوت الخلاصة السطر الواحد تحتهم.</span>
+  </div>
+  <div class="book-stage-wrap theme-unit-7">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:7px 0;">
+  <div class="concept-card"><span class="concept-card-tag">Limit 1</span><div class="concept-card-title">Bias in Training Data</div><div class="concept-card-en">Biased training data directly leads to biased model answers.</div><div class="concept-card-ar"><strong>الانحياز (Bias):</strong> لو بيانات التدريب منحازة، النتيجة هتطلع منحازة.</div></div>
+  <div class="concept-card"><span class="concept-card-tag">Limit 2</span><div class="concept-card-title">Black-Box Problem</div><div class="concept-card-en">Even creators cannot easily trace why the model picked a choice.</div><div class="concept-card-ar"><strong>الصندوق الأسود (Black-Box):</strong> مش دايماً بنفهم النموذج خد القرار إزاي.</div></div>
+</div>
+<div class="note-lightbulb-box" style="flex-direction:column;align-items:stretch;gap:6px;">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <img alt="Notes Mascot" class="mascot-thumb-transparent" src="mascots_transparent_bg/mascot_lightbulb_transparent.png" style="width:46px;height:46px;"/>
+    <div class="note-badge-title" style="margin-bottom:0;">Notes</div>
+  </div>
+  <div class="note-text-area" style="width:100%;">
+    <div class="note-body">Because of <strong>Bias</strong> &amp; the <strong>Black-Box Problem</strong>, ML assists humans rather than replacing them.</div>
+    <div class="note-body-ar">بسبب <bdi>Bias &amp; Black-Box Problem</bdi>، الـ <bdi>ML</bdi> بيساعد الإنسان ومش بيبدله.</div>
+  </div>
+</div>
+  </div>
+</div>
+</section>
+<section class="showcase-card" id="note-03">
+  <div class="card-head" dir="rtl">
+    <div class="card-head-right">
+      <span class="note-num-pill">#03</span>
+      <span class="unit-pill">Unit 5 • L1 • ص 06</span>
+      <span class="sec-title-chip" dir="ltr">3. Sampling</span>
+    </div>
+    <div class="height-meta" dir="ltr">161px (5L EN + 5L AR)</div>
+  </div>
+  <div class="context-line" dir="rtl">قبل ميكانيزم ومثال Stratified Sampling</div>
+  <div class="variant-block">
+    <div class="variant-bar" dir="rtl">
+      <span class="variant-badge before-badge">الحالي في الكتاب (BEFORE)</span>
+      <span class="variant-desc">منسوخ حرفياً من الكتاب بنفس العرض والستايل</span>
+    </div>
+    <div class="book-stage-wrap theme-unit-5">
+      <div class="note-lightbulb-box" style="flex-direction:column;align-items:stretch;gap:6px;"><div style="display:flex;align-items:center;gap:10px;"><img alt="Notes Mascot" class="mascot-thumb-transparent" src="mascots_transparent_bg/mascot_lightbulb_transparent.png" style="width:46px;height:46px;"/><div class="note-badge-title" style="margin-bottom:0;">Notes</div></div>
+<div class="note-text-area" style="width:100%;">
+<div class="note-body">Population = everyone<br/>Sample = the part you ask<br/>Census = ask everyone<br/>Strata = subgroups of the population (plural)<br/>Stratum = one single subgroup (singular)</div>
+<div class="note-body-ar">المجتمع (Population) = الجميع<br/>العيّنة (Sample) = الجزء اللي بتسأله<br/>التعداد (Census) = تسأل الجميع<br/>الطبقات (Strata) = المجموعات الفرعية للمجتمع (جمع)<br/>الطبقة (Stratum) = مجموعة واحدة فقط منهم (مفرد)</div>
+</div>
+</div>
+    </div>
+  </div>
+<div class="variant-block">
+  <div class="variant-bar" dir="rtl">
+    <span class="variant-badge sol-a">الحل A (جدول مصطلحات — 5 صفوف يحل محل النوت)</span>
+    <span class="variant-desc">تحويل القائمة إلى جدول مصطلحات واضح (Term | Meaning | المعنى بالعربي) لأنها قاموس تعريفات مش نوت.</span>
+  </div>
+  <div class="book-stage-wrap theme-unit-5">
+    <div class="comparison-section">
+  <div class="comparison-header">
+    <img alt="Comparison Mascot" src="mascots_transparent_bg/mascot_comparison_transparent.png"/>
+    <div class="comparison-intro"><h4>Key Sampling Terms (قاموس مصطلحات العيّنات)</h4><p><span dir="rtl" style="display:inline-block;">5 مصطلحات أساسية لازم تفرّق بينهم في أسئلة الامتحان</span></p></div>
+  </div>
+  <table class="styled-table">
+    <thead><tr><th>Term</th><th>Meaning</th><th>المعنى بالعربي</th></tr></thead>
+    <tbody>
+<tr><td><strong>Population</strong></td><td>Everyone in the entire target group</td><td dir="rtl" style="text-align:right;">المجتمع: الجميع (كل الفئة المستهدفة)</td></tr>
+<tr><td><strong>Sample</strong></td><td>The selected part you actually ask</td><td dir="rtl" style="text-align:right;">العيّنة: الجزء المختار اللي بتسأله</td></tr>
+<tr><td><strong>Census</strong></td><td>Ask everyone in the whole population</td><td dir="rtl" style="text-align:right;">التعداد: تسأل الجميع بدون استثناء</td></tr>
+<tr><td><strong>Strata <small>(plural)</small></strong></td><td>Subgroups that divide the population</td><td dir="rtl" style="text-align:right;">الطبقات (جمع): المجموعات الفرعية للمجتمع</td></tr>
+<tr><td><strong>Stratum <small>(singular)</small></strong></td><td>One single subgroup on its own</td><td dir="rtl" style="text-align:right;">الطبقة (مفرد): مجموعة فرعية واحدة فقط</td></tr>
+    </tbody>
+  </table>
+</div>
+  </div>
+</div>
+<div class="variant-block">
+  <div class="variant-bar" dir="rtl">
+    <span class="variant-badge sol-b">الحل B (جدول مضغوط — 4 صفوف بدمج Strata / Stratum)</span>
+    <span class="variant-desc">نفس الجدول بصفّ أقل توفيراً للمساحة عن طريق جمع المفرد والجمع في صف واحد.</span>
+  </div>
+  <div class="book-stage-wrap theme-unit-5">
+    <div class="comparison-section">
+  <div class="comparison-header">
+    <img alt="Comparison Mascot" src="mascots_transparent_bg/mascot_comparison_transparent.png"/>
+    <div class="comparison-intro"><h4>Key Sampling Terms — Compact (4 Rows)</h4><p><span dir="rtl" style="display:inline-block;">نفس المصطلحات في 4 صفوف مضغوطة (دمج <bdi>Strata / Stratum</bdi>)</span></p></div>
+  </div>
+  <table class="styled-table">
+    <thead><tr><th>Term</th><th>Meaning</th><th>المعنى بالعربي</th></tr></thead>
+    <tbody>
+<tr><td><strong>Population</strong></td><td>Everyone in the entire target group</td><td dir="rtl" style="text-align:right;">المجتمع: الجميع (كل الفئة المستهدفة)</td></tr>
+<tr><td><strong>Sample</strong></td><td>The selected part you actually ask</td><td dir="rtl" style="text-align:right;">العيّنة: الجزء المختار اللي بتسأله</td></tr>
+<tr><td><strong>Census</strong></td><td>Ask everyone in the whole population</td><td dir="rtl" style="text-align:right;">التعداد: تسأل الجميع بدون استثناء</td></tr>
+<tr><td><strong>Strata / Stratum</strong></td><td>Subgroups of population (plural) / one single subgroup (singular)</td><td dir="rtl" style="text-align:right;">الطبقات (جمع) / الطبقة الواحدة فقط (مفرد)</td></tr>
+    </tbody>
+  </table>
+</div>
+  </div>
+</div>
+</section>
+<section class="showcase-card" id="note-17">
+  <div class="card-head" dir="rtl">
+    <div class="card-head-right">
+      <span class="note-num-pill">#17</span>
+      <span class="unit-pill">Unit 7 • L1 • ص 152</span>
+      <span class="sec-title-chip" dir="ltr">5. How Classification Learns &amp; Human-in-the-Loop</span>
+    </div>
+    <div class="height-meta" dir="ltr">159px (5L EN + 4L AR)</div>
+  </div>
+  <div class="context-line" dir="rtl">مفهوم Human-in-the-Loop جزء من عنوان القسم ومش مشروح غير جوا النوت دي</div>
+  <div class="variant-block">
+    <div class="variant-bar" dir="rtl">
+      <span class="variant-badge before-badge">الحالي في الكتاب (BEFORE)</span>
+      <span class="variant-desc">منسوخ حرفياً من الكتاب بنفس العرض والستايل</span>
+    </div>
+    <div class="book-stage-wrap theme-unit-7">
+      <div class="note-lightbulb-box" style="flex-direction:column;align-items:stretch;gap:6px;">
+<div style="display:flex;align-items:center;gap:10px;">
+<img alt="Notes Mascot" class="mascot-thumb-transparent" src="mascots_transparent_bg/mascot_lightbulb_transparent.png" style="width:46px;height:46px;"/>
+<div class="note-badge-title" style="margin-bottom:0;">Notes</div>
+</div>
+<div class="note-text-area" style="width:100%;">
+<div class="note-body"><strong>Human-in-the-Loop:</strong><br/>(1) A person checks or approves the model's output before the final decision.<br/>(2) Essential in high-stakes cases where mistakes cost a lot (e.g., medical diagnosis or bank loan approval).</div>
+<div class="note-body-ar"><strong>المراجعة البشرية (Human-in-the-Loop):</strong><br/>(1) الإنسان يراجع قرار الـ ML أو يعتمده قبل التنفيذ النهائي.<br/>(2) ضروري في القرارات المصيرية اللي الغلطة فيها تكلفتها عالية (مثل التشخيص الطبي أو الموافقة على قرض بنكي).</div>
+</div>
+</div>
+    </div>
+  </div>
+<div class="variant-block">
+  <div class="variant-bar" dir="rtl">
+    <span class="variant-badge sol-a">الحل A (ميكانيزم مصغّر SVG — يحل محل النوت)</span>
+    <span class="variant-desc">تحويل الفكرة لخطوات بصرية مرسومة (ML Output → Human Review → Safe Decision ✓) بأمثلة الطب والبنوك.</span>
+  </div>
+  <div class="book-stage-wrap theme-unit-7">
+    <div class="egy-reflection-box" style="flex-direction:column;align-items:stretch;gap:6px;">
+  <div class="egy-reflection-text" style="width:100%;">
+    <div class="egy-reflection-header"><span>ميكانيزم المراجعة البشرية (<bdi>Human-in-the-Loop</bdi>) — في القرارات المصيرية</span></div>
+    <svg dir="ltr" viewBox="0 0 680 98" width="100%" style="display:block;font-family:'Plus Jakarta Sans','Cairo',sans-serif;">
+  <!-- Step 1: ML Model Output -->
+  <rect x="4" y="8" width="192" height="82" rx="10" fill="#ffffff" stroke="#a7f3d0" stroke-width="1.5"/>
+  <rect x="4" y="8" width="192" height="22" rx="10" fill="#047857"/>
+  <rect x="4" y="20" width="192" height="10" fill="#047857"/>
+  <text x="100" y="23" text-anchor="middle" fill="#ffffff" font-size="9.5" font-weight="800">1. ML Model Output</text>
+  <!-- Chip icon -->
+  <rect x="22" y="42" width="22" height="22" rx="4" fill="#ecfdf5" stroke="#059669" stroke-width="1.6"/>
+  <rect x="28" y="48" width="10" height="10" rx="2" fill="#059669"/>
+  <text x="54" y="51" fill="#0f172a" font-size="9" font-weight="800">Suggests Prediction</text>
+  <text x="54" y="64" fill="#475569" font-size="8" font-weight="600">e.g. Risk Score / Class</text>
+  <text x="100" y="81" text-anchor="middle" fill="#047857" font-size="8.5" font-weight="700">توقع أو اقتراح أولي من النموذج</text>
+  <!-- Arrow 1->2 -->
+  <line x1="201" y1="49" x2="229" y2="49" stroke="#059669" stroke-width="2.4"/>
+  <polygon points="236,49 226,43.5 226,54.5" fill="#059669"/>
+  <!-- Step 2: Human Review -->
+  <rect x="240" y="8" width="200" height="82" rx="10" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+  <rect x="240" y="8" width="200" height="22" rx="10" fill="#059669"/>
+  <rect x="240" y="20" width="200" height="10" fill="#059669"/>
+  <text x="340" y="23" text-anchor="middle" fill="#ffffff" font-size="9.5" font-weight="800">2. Human Review &amp; Approval</text>
+  <!-- Human icon -->
+  <circle cx="268" cy="46" r="5.5" fill="#059669"/>
+  <path d="M258,64 C258,56 278,56 278,64" fill="#059669"/>
+  <text x="288" y="51" fill="#0f172a" font-size="9" font-weight="800">Person Checks Output</text>
+  <text x="288" y="64" fill="#475569" font-size="8" font-weight="600">Approves or Overrides</text>
+  <text x="340" y="81" text-anchor="middle" fill="#047857" font-size="8.5" font-weight="700">إنسان يراجع القرار قبل الاعتماد</text>
+  <!-- Arrow 2->3 -->
+  <line x1="445" y1="49" x2="473" y2="49" stroke="#059669" stroke-width="2.4"/>
+  <polygon points="480,49 470,43.5 470,54.5" fill="#059669"/>
+  <!-- Step 3: High-Stakes Decision -->
+  <rect x="484" y="8" width="192" height="82" rx="10" fill="#ffffff" stroke="#a7f3d0" stroke-width="1.5"/>
+  <rect x="484" y="8" width="192" height="22" rx="10" fill="#0f172a"/>
+  <rect x="484" y="20" width="192" height="10" fill="#0f172a"/>
+  <text x="580" y="23" text-anchor="middle" fill="#ffffff" font-size="9.5" font-weight="800">3. Safe Final Decision ✓</text>
+  <!-- Medical cross & Check badge -->
+  <rect x="500" y="42" width="20" height="20" rx="5" fill="#d1fae5" stroke="#059669" stroke-width="1.3"/>
+  <path d="M510,46 V58 M504,52 H516" stroke="#047857" stroke-width="2.4" stroke-linecap="round"/>
+  <text x="528" y="51" fill="#0f172a" font-size="8.8" font-weight="800">High-Stakes Cases</text>
+  <text x="528" y="64" fill="#475569" font-size="8" font-weight="600">Medical / Bank Loans</text>
+  <text x="580" y="81" text-anchor="middle" fill="#047857" font-size="8.5" font-weight="700">قرار آمن في الطب والقروض البنكية</text>
+</svg>
+    <div dir="rtl" style="font-size:0.74rem;color:#065f46;font-weight:700;margin-top:4px;text-align:center;">ضروري في الحالات اللي الغلطة فيها تكلفتها عالية جداً (زي <strong>التشخيص الطبي</strong> أو <strong>الموافقة على قرض بنكي</strong>).</div>
+  </div>
+</div>
+  </div>
+</div>
+<div class="variant-block">
+  <div class="variant-bar" dir="rtl">
+    <span class="variant-badge sol-b">الحل B (فقرة تمهيدية صغيرة + نوت سطر واحد)</span>
+    <span class="variant-desc">شرح المعنى في lead-paragraph مختصرة، وحصر النوت في سطر واحد عن القرارات المصيرية.</span>
+  </div>
+  <div class="book-stage-wrap theme-unit-7">
+    <div class="lead-paragraph">In <span class="key-hl">Human-in-the-Loop</span> systems, a person reviews or approves the model's output before the final decision is taken.</div>
+<div class="lead-paragraph-ar"><span class="key-hl"><bdi>Human-in-the-Loop</bdi></span> معناها إن الإنسان يراجع قرار الـ <bdi>ML</bdi> أو يعتمده قبل التنفيذ النهائي.</div>
+<div class="note-lightbulb-box" style="flex-direction:column;align-items:stretch;gap:6px;">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <img alt="Notes Mascot" class="mascot-thumb-transparent" src="mascots_transparent_bg/mascot_lightbulb_transparent.png" style="width:46px;height:46px;"/>
+    <div class="note-badge-title" style="margin-bottom:0;">Notes</div>
+  </div>
+  <div class="note-text-area" style="width:100%;">
+    <div class="note-body">Essential in <strong>high-stakes cases</strong> (e.g., <strong>medical diagnosis</strong> or <strong>bank loan approval</strong>).</div>
+    <div class="note-body-ar">ضروري في <strong>القرارات المصيرية</strong> زي التشخيص الطبي أو الموافقة على قرض بنكي.</div>
+  </div>
+</div>
+  </div>
+</div>
+</section>
+<section class="showcase-card" id="note-10">
+  <div class="card-head" dir="rtl">
+    <div class="card-head-right">
+      <span class="note-num-pill">#10</span>
+      <span class="unit-pill">Unit 5 • L3 • ص 50</span>
+      <span class="sec-title-chip" dir="ltr">3. Obtaining Data via APIs</span>
+    </div>
+    <div class="height-meta" dir="ltr">143px (4L EN + 4L AR)</div>
+  </div>
+  <div class="context-line" dir="rtl">بين مثال الموبايل/JSON ومثال Rate Limiter 429</div>
+  <div class="variant-block">
+    <div class="variant-bar" dir="rtl">
+      <span class="variant-badge before-badge">الحالي في الكتاب (BEFORE)</span>
+      <span class="variant-desc">منسوخ حرفياً من الكتاب بنفس العرض والستايل</span>
+    </div>
+    <div class="book-stage-wrap theme-unit-5">
+      <div class="note-lightbulb-box" style="flex-direction:column;align-items:stretch;gap:6px;"><div style="display:flex;align-items:center;gap:10px;"><img alt="Notes Mascot" class="mascot-thumb-transparent" src="mascots_transparent_bg/mascot_lightbulb_transparent.png" style="width:46px;height:46px;"/><div class="note-badge-title" style="margin-bottom:0;">Notes</div></div>
+<div class="note-text-area" style="width:100%;">
+<div class="note-body"><strong>When using an API:</strong><br/>1) Follow the <strong>terms of use</strong>.<br/>2) Do not send <strong>excessive requests</strong> in a short time.<br/>3) Confirm the allowed <strong>scope of use</strong>.</div>
+<div class="note-body-ar"><strong>لما تستخدم API:</strong><br/>1) التزم بشروط الاستخدام (Terms of Use).<br/>2) متبعتش طلبات كتير في وقت قصير.<br/>3) اتأكد من نطاق الاستخدام المسموح للبيانات.</div>
+</div>
+</div>
+    </div>
+  </div>
+<div class="variant-block">
+  <div class="variant-bar" dir="rtl">
+    <span class="variant-badge sol-a">الحل A (جدول من 3 صفوف يحل محل النوت)</span>
+    <span class="variant-desc">عرض ضوابط الـ API الثلاثة في جدول مصغّر واضح وسريع المراجعة.</span>
+  </div>
+  <div class="book-stage-wrap theme-unit-5">
+    <div class="comparison-section">
+  <div class="comparison-header">
+    <img alt="Comparison Mascot" src="mascots_transparent_bg/mascot_comparison_transparent.png"/>
+    <div class="comparison-intro"><h4>API Usage Rules (قواعد استخدام الـ API)</h4><p><span dir="rtl" style="display:inline-block;">3 ضوابط أساسية لازم تلتزم بيها عند سحب البيانات بالـ <bdi>API</bdi></span></p></div>
+  </div>
+  <table class="styled-table">
+    <thead><tr><th>Rule</th><th>Requirement</th><th>القاعدة بالعربي</th></tr></thead>
+    <tbody>
+<tr><td><strong>1. Terms of Use</strong></td><td>Follow the API provider's official terms</td><td dir="rtl" style="text-align:right;">الالتزام بشروط الاستخدام الرسمية</td></tr>
+<tr><td><strong>2. Rate Limits</strong></td><td>Do not send excessive requests in a short time</td><td dir="rtl" style="text-align:right;">متبعتش طلبات كتير في وقت قصير</td></tr>
+<tr><td><strong>3. Allowed Scope</strong></td><td>Confirm the allowed scope of data usage</td><td dir="rtl" style="text-align:right;">اتأكد من نطاق الاستخدام المسموح للبيانات</td></tr>
+    </tbody>
+  </table>
+</div>
+  </div>
+</div>
+<div class="variant-block">
+  <div class="variant-bar" dir="rtl">
+    <span class="variant-badge sol-b">الحل B (3 كروت أفقية مضغوطة — يحل محل النوت)</span>
+    <span class="variant-desc">توزيع القواعد الثلاثة كـ 3 كروت متساوية في صف واحد.</span>
+  </div>
+  <div class="book-stage-wrap theme-unit-5">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:7px 0;">
+  <div class="concept-card"><span class="concept-card-tag">Rule 1</span><div class="concept-card-title">Terms of Use</div><div class="concept-card-en">Follow the API provider's official terms of use.</div><div class="concept-card-ar">التزم بشروط الاستخدام (<bdi>Terms of Use</bdi>).</div></div>
+  <div class="concept-card"><span class="concept-card-tag">Rule 2</span><div class="concept-card-title">No Excessive Requests</div><div class="concept-card-en">Avoid sending too many requests in a short time.</div><div class="concept-card-ar">متبعتش طلبات كتير في وقت قصير.</div></div>
+  <div class="concept-card"><span class="concept-card-tag">Rule 3</span><div class="concept-card-title">Allowed Scope</div><div class="concept-card-en">Confirm the permitted scope for using the data.</div><div class="concept-card-ar">اتأكد من نطاق الاستخدام المسموح للبيانات.</div></div>
+</div>
+  </div>
+</div>
+<div class="variant-block">
+  <div class="variant-bar" dir="rtl">
+    <span class="variant-badge sol-c">الحل C (إبقاءها نوت مضغوطة في سطر واحد بفاصل •)</span>
+    <span class="variant-desc">اختصار النقاط الثلاثة في سطر EN واحد + سطر AR واحد (~109px بدل 143px).</span>
+  </div>
+  <div class="book-stage-wrap theme-unit-5">
+    <div class="note-lightbulb-box" style="flex-direction:column;align-items:stretch;gap:6px;">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <img alt="Notes Mascot" class="mascot-thumb-transparent" src="mascots_transparent_bg/mascot_lightbulb_transparent.png" style="width:46px;height:46px;"/>
+    <div class="note-badge-title" style="margin-bottom:0;">Notes</div>
+  </div>
+  <div class="note-text-area" style="width:100%;">
+    <div class="note-body"><strong>API Rules:</strong> (1) Follow <strong>Terms of Use</strong> • (2) Avoid <strong>excessive requests</strong> • (3) Check <strong>allowed scope</strong>.</div>
+    <div class="note-body-ar"><strong>قواعد الـ <bdi>API</bdi>:</strong> (1) التزم بالشروط • (2) تجنّب الطلبات الكتير فجأة • (3) اتأكد من النطاق المسموح.</div>
+  </div>
+</div>
+  </div>
+</div>
+</section>
+<section class="showcase-card" id="note-14">
+  <div class="card-head" dir="rtl">
+    <div class="card-head-right">
+      <span class="note-num-pill">#14</span>
+      <span class="unit-pill">Unit 6 • L1 • ص 72</span>
+      <span class="sec-title-chip" dir="ltr">5. Cautions: Type I/II Errors &amp; Practical Importance</span>
+    </div>
+    <div class="height-meta" dir="ltr">128px (3L AR فقط بدون EN)</div>
+  </div>
+  <div class="context-line" dir="rtl">حاليًا عربي فقط داخل النوت بعنوان Notes — 3 أخطاء لازم تتجنبها</div>
+  <div class="variant-block">
+    <div class="variant-bar" dir="rtl">
+      <span class="variant-badge before-badge">الحالي في الكتاب (BEFORE)</span>
+      <span class="variant-desc">منسوخ حرفياً من الكتاب بنفس العرض والستايل</span>
+    </div>
+    <div class="book-stage-wrap theme-unit-6">
+      <div class="note-lightbulb-box" style="flex-direction:column;align-items:stretch;gap:6px;"><div style="display:flex;align-items:center;gap:10px;"><img alt="Notes Mascot" class="mascot-thumb-transparent" src="mascots_transparent_bg/mascot_lightbulb_transparent.png" style="width:46px;height:46px;"/><div class="note-badge-title" style="margin-bottom:0;">Notes — 3 أخطاء لازم تتجنبها</div></div>
+<div class="note-text-area" style="width:100%;">
+<div class="note-body-ar" dir="rtl">
+1. الـ <bdi>p-value</bdi> مش احتمال إن <bdi>H0</bdi> صح، هو احتمال النتيجة لو <bdi>H0</bdi> صح.<br/>
+2. <bdi>p</bdi> صغير مش معناه إن الفرق كبير، معناه بس إن الدليل على وجود فرق قوي.<br/>
+3. الرقم <bdi>0.05</bdi> دليل مساعد مش حكم مطلق.
+</div>
+</div>
+</div>
+    </div>
+  </div>
+<div class="variant-block">
+  <div class="variant-bar" dir="rtl">
+    <span class="variant-badge sol-a">الحل A (جدول أخطاء شائعة — 3 صفوف: ✗ vs ✓)</span>
+    <span class="variant-desc">مقارنة الغلط الشائع بالصح الإحصائي مع إنجليزي مختصر وشرح عربي نظيف.</span>
+  </div>
+  <div class="book-stage-wrap theme-unit-6">
+    <div class="comparison-section">
+  <div class="comparison-header">
+    <img alt="Comparison Mascot" src="mascots_transparent_bg/mascot_comparison_transparent.png"/>
+    <div class="comparison-intro"><h4>3 Common <bdi>p-value</bdi> Misconceptions (<span dir="rtl">3 أخطاء لازم تتجنبها</span>)</h4><p><span dir="rtl" style="display:inline-block;">الخلط الشائع في تفسير الـ <bdi>p-value</bdi> ومستوى الدلالة <bdi>0.05</bdi></span></p></div>
+  </div>
+  <table class="styled-table">
+    <thead><tr><th>Common Mistake (✗)</th><th>Statistical Reality (✓)</th><th>الصح بالعربي</th></tr></thead>
+    <tbody>
+<tr><td><strong>✗ <bdi>p-value</bdi> = <bdi>P(H0 is true)</bdi></strong></td><td>✓ <bdi>P(Result | H0 is true)</bdi></td><td dir="rtl" style="text-align:right;">الـ <bdi>p-value</bdi> مش احتمال إن <bdi>H0</bdi> صح؛ هو احتمال النتيجة لو <bdi>H0</bdi> صح.</td></tr>
+<tr><td><strong>✗ Small <bdi>p</bdi> = Huge effect size</strong></td><td>✓ Small <bdi>p</bdi> = Strong evidence only</td><td dir="rtl" style="text-align:right;"><bdi>p</bdi> صغير معناه الدليل قوي بس، مش معناه إن الفرق كبير عملياً.</td></tr>
+<tr><td><strong>✗ <bdi>0.05</bdi> = Absolute rigid law</strong></td><td>✓ <bdi>0.05</bdi> = Helpful guideline only</td><td dir="rtl" style="text-align:right;">الرقم <bdi>0.05</bdi> دليل مساعد مش حكم مطلق لا يقبل النقاش.</td></tr>
+    </tbody>
+  </table>
+</div>
+  </div>
+</div>
+<div class="variant-block">
+  <div class="variant-bar" dir="rtl">
+    <span class="variant-badge sol-b">الحل B (3 كروت مقارنة أفقية في صف واحد)</span>
+    <span class="variant-desc">3 كروت سريعة جنب بعض تقابل كل فكرة غلط بالصحيح بتاعها.</span>
+  </div>
+  <div class="book-stage-wrap theme-unit-6">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:7px 0;">
+  <div class="concept-card"><span class="concept-card-tag">Mistake 1</span><div class="concept-card-title" style="font-size:0.75rem;"><span style="color:#dc2626;">✗ P(H0 is true)</span><br/><span style="color:#15803d;">✓ P(Result | H0 is true)</span></div><div class="concept-card-ar">الـ <bdi>p-value</bdi> احتمال النتيجة لو <bdi>H0</bdi> صح، مش احتمال إن <bdi>H0</bdi> صح.</div></div>
+  <div class="concept-card"><span class="concept-card-tag">Mistake 2</span><div class="concept-card-title" style="font-size:0.75rem;"><span style="color:#dc2626;">✗ Small p = Big Effect</span><br/><span style="color:#15803d;">✓ Strong Evidence Only</span></div><div class="concept-card-ar"><bdi>p</bdi> صغير معناه دليل على وجود فرق، مش إن الفرق كبير.</div></div>
+  <div class="concept-card"><span class="concept-card-tag">Mistake 3</span><div class="concept-card-title" style="font-size:0.75rem;"><span style="color:#dc2626;">✗ 0.05 = Absolute Law</span><br/><span style="color:#15803d;">✓ Helpful Guideline</span></div><div class="concept-card-ar">الرقم <bdi>0.05</bdi> دليل مساعد للتقييم مش حكم مطلق.</div></div>
+</div>
+  </div>
+</div>
+</section>
+<section class="showcase-card" id="note-02">
+  <div class="card-head" dir="rtl">
+    <div class="card-head-right">
+      <span class="note-num-pill">#02</span>
+      <span class="unit-pill">Unit 5 • L1 • ص 04</span>
+      <span class="sec-title-chip" dir="ltr">2. Primary Data and Secondary Data</span>
+    </div>
+    <div class="height-meta" dir="ltr">126px (3L EN + 3L AR)</div>
+  </div>
+  <div class="context-line" dir="rtl">أول سطرين في النوت مكررين بالكامل من جدول المقارنة اللي فوقها في ص 03</div>
+  <div class="variant-block">
+    <div class="variant-bar" dir="rtl">
+      <span class="variant-badge before-badge">الحالي في الكتاب (BEFORE)</span>
+      <span class="variant-desc">منسوخ حرفياً من الكتاب بنفس العرض والستايل</span>
+    </div>
+    <div class="book-stage-wrap theme-unit-5">
+      <div class="note-lightbulb-box" style="flex-direction:column;align-items:stretch;gap:6px;"><div style="display:flex;align-items:center;gap:10px;"><img alt="Notes Mascot" class="mascot-thumb-transparent" src="mascots_transparent_bg/mascot_lightbulb_transparent.png" style="width:46px;height:46px;"/><div class="note-badge-title" style="margin-bottom:0;">Notes</div></div>
+<div class="note-text-area" style="width:100%;">
+<div class="note-body">Primary = fresh, tailored, costly (serves as core).<br/>Secondary = existing, fast, large-scale.<br/>In real analysis, combine both!</div>
+<div class="note-body-ar">الأولية = جديدة ومفصّلة لكنها مكلفة.<br/>الثانوية = موجودة وسريعة وضخمة.<br/>في التحليل الفعلي بندمج الاتنين حسب الهدف والقيود.</div>
+</div>
+</div>
+    </div>
+  </div>
+<div class="variant-block">
+  <div class="variant-bar" dir="rtl">
+    <span class="variant-badge sol-a">الحل A (نوت سطر واحد — حذف التكرار الموجود في الجدول)</span>
+    <span class="variant-desc">الاحتفاظ بالخلاصة الجديدة فقط (دمج Primary & Secondary) في سطر واحد EN + سطر واحد AR.</span>
+  </div>
+  <div class="book-stage-wrap theme-unit-5">
+    <div class="note-lightbulb-box" style="flex-direction:column;align-items:stretch;gap:6px;">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <img alt="Notes Mascot" class="mascot-thumb-transparent" src="mascots_transparent_bg/mascot_lightbulb_transparent.png" style="width:46px;height:46px;"/>
+    <div class="note-badge-title" style="margin-bottom:0;">Notes</div>
+  </div>
+  <div class="note-text-area" style="width:100%;">
+    <div class="note-body">In real analysis, combine <strong>Primary</strong> (fresh) &amp; <strong>Secondary</strong> (fast/large) data based on your goal!</div>
+    <div class="note-body-ar">في التحليل الفعلي بندمج <bdi>Primary &amp; Secondary Data</bdi> حسب الهدف والقيود!</div>
+  </div>
+</div>
+  </div>
+</div>
+</section>
+<section class="showcase-card" id="note-05">
+  <div class="card-head" dir="rtl">
+    <div class="card-head-right">
+      <span class="note-num-pill">#05</span>
+      <span class="unit-pill">Unit 5 • L2 • ص 25</span>
+      <span class="sec-title-chip" dir="ltr">3. Handling Outliers and Duplicate Data</span>
+    </div>
+    <div class="height-meta" dir="ltr">126px (3L EN + 3L AR)</div>
+  </div>
+  <div class="context-line" dir="rtl">فوقها جدول مقارنة كامل بين Outliers و Duplicates في ص 24</div>
+  <div class="variant-block">
+    <div class="variant-bar" dir="rtl">
+      <span class="variant-badge before-badge">الحالي في الكتاب (BEFORE)</span>
+      <span class="variant-desc">منسوخ حرفياً من الكتاب بنفس العرض والستايل</span>
+    </div>
+    <div class="book-stage-wrap theme-unit-5">
+      <div class="note-lightbulb-box" style="flex-direction:column;align-items:stretch;gap:6px;"><div style="display:flex;align-items:center;gap:10px;"><img alt="Notes Mascot" class="mascot-thumb-transparent" src="mascots_transparent_bg/mascot_lightbulb_transparent.png" style="width:46px;height:46px;"/><div class="note-badge-title" style="margin-bottom:0;">Notes</div></div>
+<div class="note-text-area" style="width:100%;">
+<div class="note-body">Outliers are not always errors: find the cause first.<br/>Duplicates: remove only if genuinely duplicated; two real purchases are separate records.</div>
+<div class="note-body-ar">القيم الشاذة ليست دائماً أخطاء: حدد السبب أولاً.<br/>المكررات: احذف فقط إن كانت مكررة فعلاً؛ عمليتا شراء حقيقيتان سجلان منفصلان.</div>
+</div>
+</div>
+    </div>
+  </div>
+<div class="variant-block">
+  <div class="variant-bar" dir="rtl">
+    <span class="variant-badge sol-a">الحل A (ضغط الفكرتين في نوت سطر واحد بفاصل |)</span>
+    <span class="variant-desc">سطر واحد إنجليزي + سطر واحد عربي على ستايل نوت #13.</span>
+  </div>
+  <div class="book-stage-wrap theme-unit-5">
+    <div class="note-lightbulb-box" style="flex-direction:column;align-items:stretch;gap:6px;">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <img alt="Notes Mascot" class="mascot-thumb-transparent" src="mascots_transparent_bg/mascot_lightbulb_transparent.png" style="width:46px;height:46px;"/>
+    <div class="note-badge-title" style="margin-bottom:0;">Notes</div>
+  </div>
+  <div class="note-text-area" style="width:100%;">
+    <div class="note-body"><strong>Outliers:</strong> check cause first (not always errors) &nbsp;|&nbsp; <strong>Duplicates:</strong> remove only true copies.</div>
+    <div class="note-body-ar"><strong>القيم الشاذة:</strong> حدد السبب أولاً &nbsp;|&nbsp; <strong>المكررات:</strong> احذف النسخ المكررة فعلاً فقط.</div>
+  </div>
+</div>
+  </div>
+</div>
+<div class="variant-block">
+  <div class="variant-bar" dir="rtl">
+    <span class="variant-badge sol-b">الحل B (فصل الفكرتين في كارتين مضغوطين جنب بعض)</span>
+    <span class="variant-desc">تحويل كل قاعدة لكارت مستقل بدل دمج موضوعين في نوت واحدة.</span>
+  </div>
+  <div class="book-stage-wrap theme-unit-5">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:7px 0;">
+  <div class="concept-card"><span class="concept-card-tag">Outliers Rule</span><div class="concept-card-title">Find the Cause First</div><div class="concept-card-en">Outliers are not always mistakes—check the cause before fixing or deleting.</div><div class="concept-card-ar">القيم الشاذة مش دايماً أخطاء: حدد السبب الأول قبل أي قرار.</div></div>
+  <div class="concept-card"><span class="concept-card-tag">Duplicates Rule</span><div class="concept-card-title">Remove Only True Copies</div><div class="concept-card-en">Keep separate real events (e.g., two genuine purchases); drop true repeats.</div><div class="concept-card-ar">احذف المكرر فعلاً فقط؛ عمليتا شراء حقيقيتان سجلان منفصلان.</div></div>
+</div>
+  </div>
+</div>
+</section>
+<section class="showcase-card" id="note-20">
+  <div class="card-head" dir="rtl">
+    <div class="card-head-right">
+      <span class="note-num-pill">#20</span>
+      <span class="unit-pill">Unit 7 • L3 • ص 193</span>
+      <span class="sec-title-chip" dir="ltr">4. Multimodality (Text, Image, Audio, Video)</span>
+    </div>
+    <div class="height-meta" dir="ltr">145px (2L EN + 2L AR — الصورة اللي بعتها)</div>
+  </div>
+  <div class="context-line" dir="rtl">دي النوت اللي بعت صورتها: بتجمع تعريف Generative AI + تحذير Fact-Check</div>
+  <div class="variant-block">
+    <div class="variant-bar" dir="rtl">
+      <span class="variant-badge before-badge">الحالي في الكتاب (BEFORE)</span>
+      <span class="variant-desc">منسوخ حرفياً من الكتاب بنفس العرض والستايل</span>
+    </div>
+    <div class="book-stage-wrap theme-unit-7">
+      <div class="note-lightbulb-box" style="flex-direction:column;align-items:stretch;gap:6px;">
+<div style="display:flex;align-items:center;gap:10px;">
+<img alt="Notes Mascot" class="mascot-thumb-transparent" src="mascots_transparent_bg/mascot_lightbulb_transparent.png" style="width:46px;height:46px;"/>
+<div class="note-badge-title" style="margin-bottom:0;">Notes</div>
+</div>
+<div class="note-text-area" style="width:100%;">
+<div class="note-body"><strong>Generative AI &amp; Fact-Checking:</strong> <strong>Generative AI</strong> creates brand-new content (text, images, audio, video, code). Because <strong>plausible ≠ truth</strong>, always <strong>fact-check</strong> dates, names, places, and critical facts before publishing!</div>
+<div class="note-body-ar"><strong>الذكاء التوليدي والتحقق (Fact-Check):</strong> الـ <strong>Generative AI</strong> بينشئ محتوى جديد تماماً (نصوص، صور، صوت، فيديو، كود). ولأن الكلام المقنع مش دايماً صح، لازم تعمل <strong>Fact-Check</strong> للتواريخ والأسماء والأماكن والحقائق المهمة قبل ما تعتمد عليها!</div>
+</div>
+</div>
+    </div>
+  </div>
+<div class="variant-block">
+  <div class="variant-bar" dir="rtl">
+    <span class="variant-badge sol-a">الحل A (فصل تعريف Generative AI في شريط مستقل + نوت سطر واحد للـ Fact-Check)</span>
+    <span class="variant-desc">بنطلع تعريف Generative AI في passage-box خفيف وتفضل النوت للتحذير فقط في سطر واحد.</span>
+  </div>
+  <div class="book-stage-wrap theme-unit-7">
+    <div class="passage-box" style="margin-bottom:8px;">
+  <div class="passage-title">Generative AI (الذكاء الاصطناعي التوليدي)</div>
+  <div><strong>Generative AI</strong> creates brand-new content—such as <strong>text, images, audio, video, and code</strong>.</div>
+  <div dir="rtl" style="font-family:'Cairo',sans-serif;color:#047857;font-weight:700;margin-top:2px;">الـ <bdi>Generative AI</bdi> بينشئ محتوى جديد تماماً (نصوص، صور، صوت، فيديو، وكود).</div>
+</div>
+<div class="note-lightbulb-box" style="flex-direction:column;align-items:stretch;gap:6px;">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <img alt="Notes Mascot" class="mascot-thumb-transparent" src="mascots_transparent_bg/mascot_lightbulb_transparent.png" style="width:46px;height:46px;"/>
+    <div class="note-badge-title" style="margin-bottom:0;">Notes</div>
+  </div>
+  <div class="note-text-area" style="width:100%;">
+    <div class="note-body"><strong>Plausible ≠ Truth:</strong> always <strong>fact-check</strong> dates, names, places &amp; critical facts before use!</div>
+    <div class="note-body-ar"><strong>المقنع مش دايماً صح:</strong> اعمل <bdi>Fact-Check</bdi> للتواريخ والأسماء قبل الاعتماد!</div>
+  </div>
+</div>
+  </div>
+</div>
+<div class="variant-block">
+  <div class="variant-bar" dir="rtl">
+    <span class="variant-badge sol-b">الحل B (نقل جملة Generative AI لمقدمة الدرس ص 190 + نوت سطر واحد هنا)</span>
+    <span class="variant-desc">تخفيف القسم بنقل التعريف لمقدمة الدرس، وتبقى النوت هنا سطر واحد حاد للـ Fact-Check.</span>
+  </div>
+  <div class="book-stage-wrap theme-unit-7">
+    <div dir="rtl" style="font-size:0.74rem;font-weight:800;color:#047857;margin-bottom:4px;">① الإضافة المقترحة في مقدمة الدرس (ص 190):</div>
+<div class="lead-paragraph">Language models write text by <span class="key-hl">predicting one word at a time</span>. When scaled up to billions of parameters, <span class="key-hl">tuned with human feedback (RLHF)</span>, and made <span class="key-hl">multimodal</span>, they power modern AI assistants. Today's <span class="key-hl">Generative AI</span> creates brand-new text, images, audio, video, and code.</div>
+<div class="lead-paragraph-ar">النماذج اللغوية بتكتب الجمل عن طريق توقع الكلمة اللي جاية كلمة ورا كلمة. ولما تكبر لـ <span class="key-hl">مليارات الـ Parameters</span>، وتتهذّب بتقييم البشر (RLHF)، وتفهم صور وصوت، بتطلع <span class="key-hl">مساعدات ذكية قوية</span>. والـ <span class="key-hl"><bdi>Generative AI</bdi></span> بينشئ محتوى جديد تماماً (نصوص، صور، صوت، فيديو، وكود).</div>
+<div dir="rtl" style="font-size:0.74rem;font-weight:800;color:#047857;margin:8px 0 4px;">② شكل النوت في القسم 4 بعد النقل (سطر واحد فقط):</div>
+<div class="note-lightbulb-box" style="flex-direction:column;align-items:stretch;gap:6px;">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <img alt="Notes Mascot" class="mascot-thumb-transparent" src="mascots_transparent_bg/mascot_lightbulb_transparent.png" style="width:46px;height:46px;"/>
+    <div class="note-badge-title" style="margin-bottom:0;">Notes</div>
+  </div>
+  <div class="note-text-area" style="width:100%;">
+    <div class="note-body"><strong>Plausible ≠ Truth:</strong> always <strong>fact-check</strong> dates, names, places &amp; critical facts before use!</div>
+    <div class="note-body-ar"><strong>المقنع مش دايماً صح:</strong> اعمل <bdi>Fact-Check</bdi> للتواريخ والأسماء قبل الاعتماد!</div>
+  </div>
+</div>
+  </div>
+</div>
+</section>
+<section class="showcase-card" id="note-19">
+  <div class="card-head" dir="rtl">
+    <div class="card-head-right">
+      <span class="note-num-pill">#19</span>
+      <span class="unit-pill">Unit 7 • L3 • ص 191</span>
+      <span class="sec-title-chip" dir="ltr">2. What Makes an LLM “Large”?</span>
+    </div>
+    <div class="height-meta" dir="ltr">145px (2L EN + 2L AR)</div>
+  </div>
+  <div class="context-line" dir="rtl">تحت جدول Comparison: The Two Meanings of “Large” مباشرة</div>
+  <div class="variant-block">
+    <div class="variant-bar" dir="rtl">
+      <span class="variant-badge before-badge">الحالي في الكتاب (BEFORE)</span>
+      <span class="variant-desc">منسوخ حرفياً من الكتاب بنفس العرض والستايل</span>
+    </div>
+    <div class="book-stage-wrap theme-unit-7">
+      <div class="note-lightbulb-box" style="flex-direction:column;align-items:stretch;gap:6px;">
+<div style="display:flex;align-items:center;gap:10px;">
+<img alt="Notes Mascot" class="mascot-thumb-transparent" src="mascots_transparent_bg/mascot_lightbulb_transparent.png" style="width:46px;height:46px;"/>
+<div class="note-badge-title" style="margin-bottom:0;">Notes</div>
+</div>
+<div class="note-text-area" style="width:100%;">
+<div class="note-body"><strong>Qualitatively New Abilities at Scale:</strong> Above a certain scale of data and parameters, LLMs suddenly gain new skills like <strong>complex reasoning, summarizing, translating, and writing code</strong>.</div>
+<div class="note-body-ar"><strong>قدرات نوعية جديدة مع الكبر:</strong> لما عدد الـ <bdi>Parameters</bdi> وبيانات التدريب يعدّي حد معين، بتظهر قدرات جديدة زي <strong>الاستدلال المعقد، التلخيص، الترجمة، وكتابة الأكواد</strong>.</div>
+</div>
+</div>
+    </div>
+  </div>
+<div class="variant-block">
+  <div class="variant-bar" dir="rtl">
+    <span class="variant-badge sol-a">الحل A (إضافة صف جديد في جدول المقارنة اللي فوقها وإلغاء النوت)</span>
+    <span class="variant-desc">دمج فكرة Emergent Abilities كصف رابع بعرض الجدول (colspan=2) والاستغناء عن النوت تماماً.</span>
+  </div>
+  <div class="book-stage-wrap theme-unit-7">
+    <div class="comparison-section">
+<div class="comparison-header">
+<img alt="Comparison Mascot" src="mascots_transparent_bg/mascot_comparison_transparent.png"/>
+<div class="comparison-intro"><h4>Comparison: The Two Meanings of “Large”</h4><p>Scale creates brand new abilities</p></div>
+</div>
+<table class="styled-table">
+<thead><tr><th>Dimension</th><th>Training Data (بيانات التدريب)</th><th>Parameters (الأوزان)</th></tr></thead>
+<tbody>
+<tr><td><strong>Scale &amp; Meaning</strong></td><td>Billions to trillions of words from the web.</td><td>Numerical values equal to neural network <strong>weights</strong> (billions to trillions).</td></tr>
+<tr><td style="direction:rtl;text-align:right;"><strong>الشرح بالعربي</strong></td><td style="direction:rtl;text-align:right;">حجم نصوص ضخم جداً اتدرب عليه من الإنترنت.</td><td style="direction:rtl;text-align:right;">الـ <bdi>Parameters</bdi> هي نفس أوزان (<bdi>Weights</bdi>) الشبكة العصبية بمليارات أو تريليونات.</td></tr>
+<tr><td style="direction:rtl;text-align:right;"><strong>أمثلة خدمات</strong></td><td style="direction:rtl;text-align:right;">قراءة مقالات وكتب الإنترنت كلها أثناء التدريب.</td><td style="direction:rtl;text-align:right;">خدمات مبنية على <bdi>LLMs</bdi> زي <bdi>ChatGPT</bdi> و <bdi>Claude</bdi> و <bdi>Gemini</bdi>.</td></tr>
+<tr><td><strong>Emergent Abilities (At Scale)</strong></td><td colspan="2">Above a massive threshold of <bdi>Training Data &amp; Parameters</bdi>, LLMs unlock qualitatively new skills: <strong>complex reasoning, summarizing, translating, and writing code</strong>.<div dir="rtl" style="font-family:'Cairo',sans-serif;font-size:0.74rem;color:#047857;font-weight:700;margin-top:3px;line-height:1.45;">قدرات نوعية جديدة مع الكبر: لما الـ <bdi>Data &amp; Parameters</bdi> تعدّي حد معين، بتظهر قدرات جديدة زي الاستدلال المعقد، التلخيص، الترجمة، وكتابة الأكواد.</div></td></tr>
+</tbody>
+</table>
+</div>
+  </div>
+</div>
+<div class="variant-block">
+  <div class="variant-bar" dir="rtl">
+    <span class="variant-badge sol-b">الحل B (تقصير النوت لسطر واحد EN + سطر واحد AR)</span>
+    <span class="variant-desc">ترك الجدول كما هو وتقصير صياغة النوت لسطر واحد حاد لكل لغة.</span>
+  </div>
+  <div class="book-stage-wrap theme-unit-7">
+    <div class="note-lightbulb-box" style="flex-direction:column;align-items:stretch;gap:6px;">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <img alt="Notes Mascot" class="mascot-thumb-transparent" src="mascots_transparent_bg/mascot_lightbulb_transparent.png" style="width:46px;height:46px;"/>
+    <div class="note-badge-title" style="margin-bottom:0;">Notes</div>
+  </div>
+  <div class="note-text-area" style="width:100%;">
+    <div class="note-body">At scale, LLMs gain <strong>new abilities</strong>: reasoning, summarizing, translating &amp; writing code.</div>
+    <div class="note-body-ar">مع ضخامة <bdi>Data &amp; Parameters</bdi> بتظهر قدرات جديدة: استدلال، تلخيص، ترجمة، وكود.</div>
+  </div>
+</div>
+  </div>
+</div>
+</section>
+<section class="showcase-card" id="note-08">
+  <div class="card-head" dir="rtl">
+    <div class="card-head-right">
+      <span class="note-num-pill">#08</span>
+      <span class="unit-pill">Unit 5 • L3 • ص 47</span>
+      <span class="sec-title-chip" dir="ltr">1. Using Open Data</span>
+    </div>
+    <div class="height-meta" dir="ltr">145px (2L EN + 2L AR)</div>
+  </div>
+  <div class="context-line" dir="rtl">موجودة تحت الـ lead-paragraph التمهيدية وقبل جدول Open Data Advantages</div>
+  <div class="variant-block">
+    <div class="variant-bar" dir="rtl">
+      <span class="variant-badge before-badge">الحالي في الكتاب (BEFORE)</span>
+      <span class="variant-desc">منسوخ حرفياً من الكتاب بنفس العرض والستايل</span>
+    </div>
+    <div class="book-stage-wrap theme-unit-5">
+      <div class="note-lightbulb-box" style="flex-direction:column;align-items:stretch;gap:6px;"><div style="display:flex;align-items:center;gap:10px;"><img alt="Notes Mascot" class="mascot-thumb-transparent" src="mascots_transparent_bg/mascot_lightbulb_transparent.png" style="width:46px;height:46px;"/><div class="note-badge-title" style="margin-bottom:0;">Notes</div></div>
+<div class="note-text-area" style="width:100%;">
+<div class="note-body">To use open data reliably, know <strong>where</strong> to get it, <strong>how</strong> to get it, and <strong>how</strong> to use it—and always pick <strong>trusted sources</strong> that fit your goal.</div>
+<div class="note-body-ar">عشان تستخدم البيانات المفتوحة بشكل موثوق لازم تعرف: هتجيبها منين، وإزاي هتجيبها، وإزاي تستخدمها (مع اختيار مصادر موثوقة مناسبة لهدف التحليل).</div>
+</div>
+</div>
+    </div>
+  </div>
+<div class="variant-block">
+  <div class="variant-bar" dir="rtl">
+    <span class="variant-badge sol-a">الحل A (تقصير النوت لسطر واحد EN + سطر واحد AR)</span>
+    <span class="variant-desc">تلخيص القاعدة في صياغة مرئية سريعة (Where + How to get + How to use).</span>
+  </div>
+  <div class="book-stage-wrap theme-unit-5">
+    <div class="note-lightbulb-box" style="flex-direction:column;align-items:stretch;gap:6px;">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <img alt="Notes Mascot" class="mascot-thumb-transparent" src="mascots_transparent_bg/mascot_lightbulb_transparent.png" style="width:46px;height:46px;"/>
+    <div class="note-badge-title" style="margin-bottom:0;">Notes</div>
+  </div>
+  <div class="note-text-area" style="width:100%;">
+    <div class="note-body">Reliable Open Data = <strong>Where</strong> to get it + <strong>How</strong> to get it + <strong>How</strong> to use it (trusted sources).</div>
+    <div class="note-body-ar">الاستخدام الموثوق: اعرف تجيب البيانات <strong>منين</strong> و<strong>إزاي</strong> وتستخدمها <strong>إزاي</strong> من مصادر ثقة.</div>
+  </div>
+</div>
+  </div>
+</div>
+<div class="variant-block">
+  <div class="variant-bar" dir="rtl">
+    <span class="variant-badge sol-b">الحل B (دمجها في آخر الـ lead-paragraph اللي فوقها وإلغاء النوت)</span>
+    <span class="variant-desc">السطرين التمهيديين الحقيقيين من ص 47 مضاف في آخرهم الفكرة بشكل طبيعي بدون نوت زائدة.</span>
+  </div>
+  <div class="book-stage-wrap theme-unit-5">
+    <div class="lead-paragraph"><span class="key-hl">Open Data</span> is data made public for anyone to <span class="key-hl">freely access and reuse</span>—published by international organizations, government agencies, researchers, or companies. To use open data reliably, know <span class="key-hl">where</span> to get it, <span class="key-hl">how</span> to get it, and <span class="key-hl">how</span> to use it from trusted sources.</div>
+<div class="lead-paragraph-ar" dir="rtl">البيانات المفتوحة (Open Data) هي بيانات <span class="key-hl">متاحة للعامة مجاناً</span> يقدر أي حد يوصلها ويستخدمها (من منظمات دولية أو حكومات أو باحثين أو شركات) مع <span class="key-hl">الالتزام بشروط الاستخدام</span>. ولاستخدامها بموثوقية لازم تعرف تجيبها <strong>منين وإزاي</strong> وتستخدمها <strong>إزاي</strong> من مصادر موثوقة مناسبة لهدفك.</div>
+  </div>
+</div>
+</section>
+</main>
+</body>
+</html>

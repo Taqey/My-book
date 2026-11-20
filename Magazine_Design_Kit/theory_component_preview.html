@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>تصميمات مخصصة للمميزات والعيوب والاستخدامات — Specialized Theory Components</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --unit-primary: #059669; /* Emerald */
+    --unit-primary-dark: #047857;
+    --unit-accent: #10b981;
+    --unit-light: #34d399;
+    --unit-soft-bg: #ecfdf5;
+    --unit-soft-border: #a7f3d0;
+    --unit-badge-bg: #d1fae5;
+    --dark: #0f172a;
+    --slate: #334155;
+    --slate-light: #64748b;
+    --border-color: #e2e8f0;
+
+    /* Semantic Palettes */
+    --adv-primary: #16a34a;       /* Green for Advantages */
+    --adv-bg: #f0fdf4;
+    --adv-border: #bbf7d0;
+    --adv-badge: #dcfce7;
+    --adv-text: #15803d;
+
+    --dis-primary: #dc2626;       /* Red / Rose for Disadvantages */
+    --dis-bg: #fef2f2;
+    --dis-border: #fecaca;
+    --dis-badge: #fee2e2;
+    --dis-text: #b91c1c;
+
+    --use-primary: #2563eb;       /* Blue / Indigo for Use Cases */
+    --use-bg: #eff6ff;
+    --use-border: #bfdbfe;
+    --use-badge: #dbeafe;
+    --use-text: #1d4ed8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #f8fafc;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--dark);
+    padding: 36px 20px 60px;
+    direction: ltr;
+  }
+
+  .preview-wrapper {
+    max-width: 920px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+
+  /* Header banner */
+  .page-header {
+    background: white;
+    border-radius: 18px;
+    padding: 26px 30px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 18px rgba(0,0,0,0.03);
+    text-align: right;
+    direction: rtl;
+  }
+  .page-header h1 {
+    font-family: 'Cairo', sans-serif;
+    font-size: 1.55rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 8px;
+  }
+  .page-header p {
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.95rem;
+    color: #475569;
+    line-height: 1.65;
+  }
+
+  /* Section Card */
+  .preview-section {
+    background: white;
+    border-radius: 18px;
+    padding: 24px 26px 28px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 18px rgba(0,0,0,0.03);
+  }
+
+  .section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 800;
+    margin-bottom: 14px;
+  }
+  .tag-adv { background: #dcfce7; color: #15803d; }
+  .tag-dis { background: #fee2e2; color: #b91c1c; }
+  .tag-use { background: #dbeafe; color: #1d4ed8; }
+  .tag-combo { background: #fef3c7; color: #92400e; }
+
+  .explainer-text {
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.92rem;
+    color: #475569;
+    line-height: 1.6;
+    margin-bottom: 18px;
+    text-align: right;
+    direction: rtl;
+  }
+
+  /* Common component elements */
+  .comp-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .comp-mascot {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+  .comp-title-en {
+    font-size: 0.96rem;
+    font-weight: 800;
+    color: var(--dark);
+    letter-spacing: -0.01em;
+  }
+  .comp-title-ar {
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--slate-light);
+  }
+
+  /* ========================================================
+     1. ADVANTAGES COMPONENT (المميزات)
+     Green emerald palette, positive icons, clean cards / list
+     ======================================================== */
+  .advantages-box {
+    background: #fbfdfc;
+    border: 1px solid var(--adv-border);
+    border-radius: 14px;
+    padding: 16px 18px;
+  }
+  .adv-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .adv-card {
+    background: white;
+    border: 1px solid var(--adv-border);
+    border-top: 3.5px solid var(--adv-primary);
+    border-radius: 10px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    box-shadow: 0 2px 6px rgba(22, 163, 74, 0.04);
+  }
+  .adv-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .adv-pill {
+    background: var(--adv-badge);
+    color: var(--adv-text);
+    font-size: 0.68rem;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 9999px;
+    letter-spacing: 0.03em;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .adv-title-en {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #0f172a;
+  }
+  .adv-text-en {
+    font-size: 0.76rem;
+    color: #1e293b;
+    line-height: 1.45;
+  }
+  .adv-sep {
+    height: 1px;
+    border-top: 1px dashed #cbd5e1;
+    margin: 3px 0;
+  }
+  .adv-text-ar {
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.76rem;
+    color: #166534;
+    line-height: 1.5;
+    direction: rtl;
+    text-align: right;
+  }
+
+  /* ========================================================
+     2. DISADVANTAGES / LIMITATIONS (العيوب / التحديات)
+     Warm red / rose palette, warning badges, caution feel
+     ======================================================== */
+  .disadvantages-box {
+    background: #fffcfc;
+    border: 1px solid var(--dis-border);
+    border-radius: 14px;
+    padding: 16px 18px;
+  }
+  .dis-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .dis-card {
+    background: white;
+    border: 1px solid var(--dis-border);
+    border-top: 3.5px solid var(--dis-primary);
+    border-radius: 10px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    box-shadow: 0 2px 6px rgba(220, 38, 38, 0.04);
+  }
+  .dis-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .dis-pill {
+    background: var(--dis-badge);
+    color: var(--dis-text);
+    font-size: 0.68rem;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 9999px;
+    letter-spacing: 0.03em;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .dis-title-en {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #0f172a;
+  }
+  .dis-text-en {
+    font-size: 0.76rem;
+    color: #1e293b;
+    line-height: 1.45;
+  }
+  .dis-sep {
+    height: 1px;
+    border-top: 1px dashed #cbd5e1;
+    margin: 3px 0;
+  }
+  .dis-text-ar {
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.76rem;
+    color: #991b1b;
+    line-height: 1.5;
+    direction: rtl;
+    text-align: right;
+  }
+
+  /* ========================================================
+     3. APPLICATIONS & USE CASES (الاستخدامات والتطبيقات)
+     Tech blue palette, practical badges, real-world context
+     ======================================================== */
+  .usecases-box {
+    background: #fafdff;
+    border: 1px solid var(--use-border);
+    border-radius: 14px;
+    padding: 16px 18px;
+  }
+  .use-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .use-card {
+    background: white;
+    border: 1px solid var(--use-border);
+    border-top: 3.5px solid var(--use-primary);
+    border-radius: 10px;
+    padding: 12px 13px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.04);
+  }
+  .use-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .use-pill {
+    background: var(--use-badge);
+    color: var(--use-text);
+    font-size: 0.66rem;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 9999px;
+    letter-spacing: 0.03em;
+  }
+  .use-title-en {
+    font-size: 0.83rem;
+    font-weight: 800;
+    color: #0f172a;
+  }
+  .use-text-en {
+    font-size: 0.74rem;
+    color: #1e293b;
+    line-height: 1.42;
+  }
+  .use-sep {
+    height: 1px;
+    border-top: 1px dashed #cbd5e1;
+    margin: 3px 0;
+  }
+  .use-text-ar {
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.74rem;
+    color: #1e40af;
+    line-height: 1.48;
+    direction: rtl;
+    text-align: right;
+  }
+
+  /* ========================================================
+     4. COMBINED / SPLIT: ADVANTAGES vs DISADVANTAGES (الوجهين معاً)
+     لو عايز تعرض مميزات وعيوب نفس الحاجه في كارت واحد منسق
+     ======================================================== */
+  .combo-box {
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    overflow: hidden;
+    background: white;
+  }
+  .combo-header {
+    background: #0f172a;
+    color: white;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .combo-header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .combo-title {
+    font-size: 0.92rem;
+    font-weight: 800;
+  }
+  .combo-subtitle {
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.78rem;
+    color: #94a3b8;
+  }
+  .combo-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .combo-col-adv {
+    background: #fcfdfc;
+    padding: 16px 18px;
+    border-right: 1px solid #e2e8f0;
+  }
+  .combo-col-dis {
+    background: #fffcfc;
+    padding: 16px 18px;
+  }
+  .combo-col-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.84rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1.5px solid;
+  }
+  .combo-title-adv {
+    color: #16a34a;
+    border-bottom-color: #bbf7d0;
+  }
+  .combo-title-dis {
+    color: #dc2626;
+    border-bottom-color: #fecaca;
+  }
+  .combo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .combo-item {
+    font-size: 0.76rem;
+    line-height: 1.45;
+  }
+  .combo-item strong {
+    color: #0f172a;
+    display: block;
+    margin-bottom: 1px;
+  }
+  .combo-item-ar {
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.74rem;
+    direction: rtl;
+    text-align: right;
+    display: block;
+    margin-top: 2px;
+  }
+  .combo-item-ar.adv-text { color: #15803d; }
+  .combo-item-ar.dis-text { color: #b91c1c; }
+
+</style>
+</head>
+<body>
+
+<div class="preview-wrapper">
+
+  <!-- Header -->
+  <div class="page-header">
+    <h1>🎯 كومبوننتس موحدة: المميزات • العيوب • الاستخدامات</h1>
+    <p>
+      صممنا 3 كومبوننتس نظيفة ومستقلة عشان مفيش حاجة تتحط في جدول مقارنة بالغصب:
+      <strong>كومبوننت للمميزات (Advantages)</strong> بستايل إيجابي مريح،
+      <strong>كومبوننت للعيوب/القيود (Limitations / Disadvantages)</strong> بستايل تحذيري أنيق،
+      <strong>كومبوننت للاستخدامات والتطبيقات العملية (Applications / Use Cases)</strong> بستايل تقني وتطبيقي،
+      بالإضافة لشكل يجمع <strong>الوجهين معاً (Pros &amp; Cons)</strong> في بوكس واحد شيك جداً.
+    </p>
+  </div>
+
+  <!-- 1. ADVANTAGES COMPONENT -->
+  <div class="preview-section">
+    <div class="section-tag tag-adv">1. كومبوننت المميزات (Advantages / Strengths Component)</div>
+    <div class="explainer-text">
+      • <strong>اللون والهوية:</strong> أخضر زمردي إيجابي (Emerald) مع بادج <code>PRO 01</code> وتأكيدات بصرية خضراء.<br/>
+      • <strong>الماسكوت:</strong> ماسكوت اللمبة أو الإنجاز الذكي <code>mascot_lightbulb_transparent.png</code>.<br/>
+      • <strong>الاستخدام:</strong> مميزات خوارزمية معينة، مميزات نوع داتا معين (زي Primary Data)، أو مكاسب تقنية.
+    </div>
+
+    <div class="advantages-box">
+      <div class="comp-header">
+        <img class="comp-mascot" src="mascots_transparent_bg/mascot_lightbulb_transparent.png" alt="Mascot"/>
+        <div>
+          <div class="comp-title-en">Key Advantages of Machine Learning</div>
+          <div class="comp-title-ar">المميزات ونقاط القوة الأساسية للـ ML</div>
+        </div>
+      </div>
+
+      <div class="adv-grid">
+        <!-- Adv 1 -->
+        <div class="adv-card">
+          <div class="adv-card-top">
+            <div class="adv-title-en">Automated Pattern Discovery</div>
+            <span class="adv-pill">STRENGTH 01</span>
+          </div>
+          <div class="adv-text-en">
+            Discovers complex hidden relationships across thousands of variables without hardcoded manual rules.
+          </div>
+          <div class="adv-sep"></div>
+          <div class="adv-text-ar">
+            بيكتشف أنماط وعلاقات معقدة ومخفية بين آلاف المتغيرات أوتوماتيكياً بدون الحاجة لكتابة شروط برمجية يدوية.
+          </div>
+        </div>
+
+        <!-- Adv 2 -->
+        <div class="adv-card">
+          <div class="adv-card-top">
+            <div class="adv-title-en">Continuous Adaptation</div>
+            <span class="adv-pill">STRENGTH 02</span>
+          </div>
+          <div class="adv-text-en">
+            Models can retrain and improve over time as new data flows in, scaling with growing systems.
+          </div>
+          <div class="adv-sep"></div>
+          <div class="adv-text-ar">
+            النماذج بتتعلم وتتطور باستمرار مع تدفق بيانات جديدة، وتقدر تتعامل مع أنظمة ضخمة بسهولة.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. DISADVANTAGES / LIMITATIONS COMPONENT -->
+  <div class="preview-section">
+    <div class="section-tag tag-dis">2. كومبوننت العيوب والقيود (Disadvantages / Limitations Component)</div>
+    <div class="explainer-text">
+      • <strong>اللون والهوية:</strong> روز / أحمر هادئ تحذيري (Crimson/Rose) مع بادجات <code>LIMIT 01</code> وخط علوي تنبيهي.<br/>
+      • <strong>الماسكوت:</strong> ماسكوت القواعد أو التحديات <code>mascot_problems_transparent.png</code> أو <code>mascot_rules</code>.<br/>
+      • <strong>الاستخدام:</strong> عيوب تقنية (زي Two Limits of ML: Bias &amp; Black Box)، مخاطر، أو قيود استخدام.
+    </div>
+
+    <div class="disadvantages-box">
+      <div class="comp-header">
+        <img class="comp-mascot" src="mascots_transparent_bg/mascot_problems_transparent.png" alt="Mascot"/>
+        <div>
+          <div class="comp-title-en">Core Limitations &amp; Risks</div>
+          <div class="comp-title-ar">أبرز العيوب والقيود التي يجب الانتباه لها</div>
+        </div>
+      </div>
+
+      <div class="dis-grid">
+        <!-- Dis 1 -->
+        <div class="dis-card">
+          <div class="dis-card-top">
+            <div class="dis-title-en">Bias &amp; Fairness Risks</div>
+            <span class="dis-pill">LIMIT 01</span>
+          </div>
+          <div class="dis-text-en">
+            If the training data contains human prejudices or gaps, the model will faithfully amplify and repeat those biases.
+          </div>
+          <div class="dis-sep"></div>
+          <div class="dis-text-ar">
+            لو بيانات التدريب كان فيها انحيازات أو أخطاء تاريخية، النموذج هيتعلمها ويكرر نفس الانحياز في قراراته!
+          </div>
+        </div>
+
+        <!-- Dis 2 -->
+        <div class="dis-card">
+          <div class="dis-card-top">
+            <div class="dis-title-en">The Black-Box Problem</div>
+            <span class="dis-pill">LIMIT 02</span>
+          </div>
+          <div class="dis-text-en">
+            Complex deep neural networks lack explainability; it is very hard to audit exactly why a decision was reached.
+          </div>
+          <div class="dis-sep"></div>
+          <div class="dis-text-ar">
+            مشكلة الصندوق الأسود: مع النماذج المعقدة بيكون صعب جداً تفسير ليه النموذج اختار القرار ده تحديداً.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. REAL-WORLD APPLICATIONS COMPONENT -->
+  <div class="preview-section">
+    <div class="section-tag tag-use">3. كومبوننت الاستخدامات والتطبيقات (Real-World Applications Component)</div>
+    <div class="explainer-text">
+      • <strong>اللون والهوية:</strong> أزرق تطبيقي تقني (Tech Blue) وبادجات <code>APP 01</code>، <code>USE 02</code>.<br/>
+      • <strong>الماسكوت:</strong> ماسكوت التفكير/اللابتوب أو التطبيق الواقعي <code>mascot_thinking_transparent.png</code>.<br/>
+      • <strong>الاستخدام:</strong> أمثلة استخدام في الصناعة (الطب، البنوك، السيارات)، أو استخدامات عملية لأداة معينة.
+    </div>
+
+    <div class="usecases-box">
+      <div class="comp-header">
+        <img class="comp-mascot" src="mascots_transparent_bg/mascot_thinking_transparent.png" alt="Mascot"/>
+        <div>
+          <div class="comp-title-en">Real-World Applications &amp; Use Cases</div>
+          <div class="comp-title-ar">أهم الاستخدامات والتطبيقات العملية في الواقع</div>
+        </div>
+      </div>
+
+      <div class="use-grid-3">
+        <!-- Use 1 -->
+        <div class="use-card">
+          <div class="use-card-top">
+            <div class="use-title-en">Healthcare</div>
+            <span class="use-pill">USE CASE 01</span>
+          </div>
+          <div class="use-text-en">
+            Detecting tumors in MRI scans, predicting patient readmissions, and drug discovery.
+          </div>
+          <div class="use-sep"></div>
+          <div class="use-text-ar">
+            اكتشاف الأورام في صور الرنين والأشعة، والتنبؤ بحالات المرضى وتطوير الأدوية.
+          </div>
+        </div>
+
+        <!-- Use 2 -->
+        <div class="use-card">
+          <div class="use-card-top">
+            <div class="use-title-en">Finance &amp; Banking</div>
+            <span class="use-pill">USE CASE 02</span>
+          </div>
+          <div class="use-text-en">
+            Real-time credit card fraud detection, algorithmic trading, and credit scoring.
+          </div>
+          <div class="use-sep"></div>
+          <div class="use-text-ar">
+            كشف عمليات الاحتيال البنكي فورياً، التداول الآلي، وتقييم الجدارة الائتمانية.
+          </div>
+        </div>
+
+        <!-- Use 3 -->
+        <div class="use-card">
+          <div class="use-card-top">
+            <div class="use-title-en">Smart Logistics</div>
+            <span class="use-pill">USE CASE 03</span>
+          </div>
+          <div class="use-text-en">
+            Route optimization, demand forecasting, and automated warehouse management.
+          </div>
+          <div class="use-sep"></div>
+          <div class="use-text-ar">
+            تحديد أسرع مسارات التوصيل، التنبؤ بطلب المنتجات، وإدارة المخازن آلياً.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. COMBINED PROS & CONS SPLIT BOX -->
+  <div class="preview-section">
+    <div class="section-tag tag-combo">4. كومبوننت الوجهين معاً (Pros &amp; Cons Split Box)</div>
+    <div class="explainer-text">
+      • <strong>الميزة:</strong> لو الدرس بيتناول تقنية أو طريقة (زي Regression أو Deep Learning) وعايز تلخص <strong>مميزاتها وعيوبها في نفس البوكس</strong> جنباً إلى جنب بشكل منظم ومريح للعين بدون جداول مزدحمة.
+    </div>
+
+    <div class="combo-box">
+      <div class="combo-header">
+        <div class="combo-header-left">
+          <img style="width: 32px; height: 32px; object-fit: contain;" src="mascots_transparent_bg/mascot_reflection_transparent.png" alt="Mascot"/>
+          <div>
+            <div class="combo-title">Deep Learning: Strengths vs Limitations</div>
+            <div class="combo-subtitle">التعلم العميق: نظرة شاملة على القوة والمحددات</div>
+          </div>
+        </div>
+        <div style="font-size: 0.72rem; background: rgba(255,255,255,0.12); padding: 4px 10px; border-radius: 6px; font-weight: 700;">
+          OVERVIEW
+        </div>
+      </div>
+
+      <div class="combo-body">
+        <!-- Col Advantages -->
+        <div class="combo-col-adv">
+          <div class="combo-col-title combo-title-adv">
+            <span>Advantages (المميزات)</span>
+          </div>
+          <div class="combo-list">
+            <div class="combo-item">
+              <strong>High Accuracy on Unstructured Data</strong>
+              Excels at raw images, audio, and free text where traditional models fail.
+              <span class="combo-item-ar adv-text">دقة خارقة في البيانات غير المهيكلة (صور، صوت، نصوص).</span>
+            </div>
+            <div class="combo-item">
+              <strong>End-to-End Feature Learning</strong>
+              Extracts hierarchical features automatically without human feature engineering.
+              <span class="combo-item-ar adv-text">بيستخرج الخصائص بنفسه طبقة ورا طبقة بدون تدخل بشري.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col Disadvantages -->
+        <div class="combo-col-dis">
+          <div class="combo-col-title combo-title-dis">
+            <span>Limitations (العيوب والقيود)</span>
+          </div>
+          <div class="combo-list">
+            <div class="combo-item">
+              <strong>Extremely Data &amp; Compute Hungry</strong>
+              Requires millions of examples and expensive GPUs/TPUs to train properly.
+              <span class="combo-item-ar dis-text">محتاج ملايين البيانات وعتاد معالجة مكلف جداً عشان يتعلم.</span>
+            </div>
+            <div class="combo-item">
+              <strong>Difficult to Interpret &amp; Audit</strong>
+              Internal weights are mathematically complex, making root-cause diagnosis hard.
+              <span class="combo-item-ar dis-text">صعب جداً تفسير طريقة عمله وسبب وصوله لنتيجة معينة.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
