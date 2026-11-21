@@ -1,0 +1,107 @@
+D:\MY book\Magazine_Design_Kit\README.md
+D:\MY book\Magazine_Design_Kit\book_builder\backups\book_20261114_143300_041979.html
+D:\MY book\Magazine_Design_Kit\book_builder\backups\book_20261114_143330_589016.html
+D:\MY book\Magazine_Design_Kit\book_builder\backups\book_20261114_143423_108654.html
+D:\MY book\Magazine_Design_Kit\book_builder\backups\book_20261114_143455_224844.html
+D:\MY book\Magazine_Design_Kit\book_builder\backups\book_20261114_143532_283338.html
+D:\MY book\Magazine_Design_Kit\book_builder\backups\book_20261114_143546_729832.html
+D:\MY book\Magazine_Design_Kit\book_builder\backups\book_20261114_143604_114951.html
+D:\MY book\Magazine_Design_Kit\book_builder\backups\book_20261114_150352_854770.html
+D:\MY book\Magazine_Design_Kit\book_builder\backups\book_20261114_150516_792528.html
+D:\MY book\Magazine_Design_Kit\book_builder\backups\book_20261114_150537_146114.html
+D:\MY book\Magazine_Design_Kit\book_builder\backups\book_20261114_150610_103837.html
+D:\MY book\Magazine_Design_Kit\book_builder\backups\book_20261114_150700_253099.html
+D:\MY book\Magazine_Design_Kit\book_builder\backups\book_20261114_150815_952362.html
+D:\MY book\Magazine_Design_Kit\book_builder\backups\book_20261115_102607_845247.html
+D:\MY book\Magazine_Design_Kit\book_builder\backups\book_20261115_220027_961589.html
+D:\MY book\Magazine_Design_Kit\book_builder\backups\book_20261115_222756_954515.html
+D:\MY book\Magazine_Design_Kit\book_builder\backups\book_20261115_222954_099426.html
+D:\MY book\Magazine_Design_Kit\book_builder\backups\book_20261115_223227_607501.html
+D:\MY book\Magazine_Design_Kit\book_builder\backups\book_20261115_223630_242186.html
+D:\MY book\Magazine_Design_Kit\book_builder\backups\book_20261116_093652_685771.html
+D:\MY book\Magazine_Design_Kit\book_builder\backups\book_20261116_121830_703845.html
+D:\MY book\Magazine_Design_Kit\book_builder\backups\book_20261116_121853_124970.html
+D:\MY book\Magazine_Design_Kit\book_builder\backups\book_20261116_121909_544416.html
+D:\MY book\Magazine_Design_Kit\book_builder\index.html
+D:\MY book\Magazine_Design_Kit\book_cover.html
+D:\MY book\Magazine_Design_Kit\book_cover_full.html
+D:\MY book\Magazine_Design_Kit\from_zero_to_hero_book.html
+D:\MY book\Magazine_Design_Kit\from_zero_to_hero_model_answer.html
+D:\MY book\Magazine_Design_Kit\laptop_windows_preview.html
+D:\MY book\Magazine_Design_Kit\lesson_covers\all_lesson_covers.html
+D:\MY book\Magazine_Design_Kit\lesson_covers\cover_5_1.html
+D:\MY book\Magazine_Design_Kit\lesson_covers\cover_5_2.html
+D:\MY book\Magazine_Design_Kit\lesson_covers\cover_5_3.html
+D:\MY book\Magazine_Design_Kit\lesson_covers\cover_6_1.html
+D:\MY book\Magazine_Design_Kit\lesson_covers\cover_6_2.html
+D:\MY book\Magazine_Design_Kit\lesson_covers\cover_6_3.html
+D:\MY book\Magazine_Design_Kit\lesson_covers\cover_7_1.html
+D:\MY book\Magazine_Design_Kit\lesson_covers\cover_7_2.html
+D:\MY book\Magazine_Design_Kit\lesson_covers\cover_7_3.html
+D:\MY book\Magazine_Design_Kit\lesson_covers\cover_variations.html
+D:\MY book\Magazine_Design_Kit\magazine_preview.html
+D:\MY book\Magazine_Design_Kit\notes_redesign_preview.html
+D:\MY book\Magazine_Design_Kit\nwp_genai_preview.html
+D:\MY book\Magazine_Design_Kit\real_world_examples_preview.html
+D:\MY book\Magazine_Design_Kit\shared_components_preview.html
+D:\MY book\Magazine_Design_Kit\theory_component_preview.html
+D:\MY book\Magazine_Design_Kit\theory_variations_preview.html
+D:\MY book\Magazine_Design_Kit\from_zero_to_hero_book_preview.pdf
+D:\MY book\Magazine_Design_Kit\new questions\Lesson 1 Methods of Data Collection.pdf
+D:\MY book\Magazine_Design_Kit\new questions\Lesson 2 Data Cleaning & Transformation.pdf
+D:\MY book\Magazine_Design_Kit\new questions\Lesson 3 Open Data and APIs – Classwork & Homework.pdf
+D:\MY book\Magazine_Design_Kit\new questions\Lesson 6-1 Statistical Inference – Classwork & Homework.pdf
+D:\MY book\Magazine_Design_Kit\new questions\Lesson 6-2 Use and Evaluation of Regression Analysis – Classwork & Homework.pdf
+D:\MY book\Magazine_Design_Kit\new questions\Lesson 7-1 The Basics of Machine Learning – Classwork & Homework.pdf
+D:\MY book\Magazine_Design_Kit\new questions\Lesson 7-2 Neural Networks and Deep Learning – Classwork & Homework (1).pdf
+D:\MY book\Magazine_Design_Kit\new questions\Lesson 7-3 Large Language Models (LLM) and Generative AI – Classwork & Homework.pdf
+D:\MY book\Magazine_Design_Kit\new questions\Lesson_6-3_Classwork75_Homework125 (1).pdf
+D:\MY book\Magazine_Design_Kit\new questions\new\Lesson_1_Balanced_Options.pdf
+D:\MY book\Magazine_Design_Kit\new questions\new\Lesson_2_Final_60_110.pdf
+D:\MY book\Magazine_Design_Kit\new questions\new\Lesson_3_Balanced_Options.pdf
+D:\MY book\Magazine_Design_Kit\new questions\new\Regression_Analysis_Lesson2_50_100_equal.pdf
+D:\MY book\Magazine_Design_Kit\new questions\new\Statistical_Inference_Lesson1_50_100_equal.pdf
+D:\MY book\Magazine_Design_Kit\book_back_cover_banner.jpg
+D:\MY book\Magazine_Design_Kit\book_cover_banner.jpg
+D:\MY book\Magazine_Design_Kit\book_cover_banner_v2.jpg
+D:\MY book\Magazine_Design_Kit\book_cover_full_rendered.png
+D:\MY book\Magazine_Design_Kit\book_cover_full_wraparound.jpg
+D:\MY book\Magazine_Design_Kit\book_cover_wraparound_print_300dpi.jpg
+D:\MY book\Magazine_Design_Kit\book_cover_wraparound_v3.jpg
+D:\MY book\Magazine_Design_Kit\illustrations\clipboard_3d.png
+D:\MY book\Magazine_Design_Kit\illustrations\customer_survey_f9ur.svg
+D:\MY book\Magazine_Design_Kit\illustrations\green_salad_3d.png
+D:\MY book\Magazine_Design_Kit\illustrations\interview_rmcf.svg
+D:\MY book\Magazine_Design_Kit\illustrations\man_office_worker_3d.png
+D:\MY book\Magazine_Design_Kit\illustrations\man_raising_hand_3d.png
+D:\MY book\Magazine_Design_Kit\illustrations\motor_scooter_3d.png
+D:\MY book\Magazine_Design_Kit\illustrations\package_3d.png
+D:\MY book\Magazine_Design_Kit\illustrations\scooter_aia8.svg
+D:\MY book\Magazine_Design_Kit\illustrations\stopwatch_3d.png
+D:\MY book\Magazine_Design_Kit\illustrations\street_survey_editorial.svg
+D:\MY book\Magazine_Design_Kit\illustrations\studio_microphone_3d.png
+D:\MY book\Magazine_Design_Kit\laptop_mascots\laptop_glasses_smart.jpg
+D:\MY book\Magazine_Design_Kit\lesson_covers\banner_5_1.jpg
+D:\MY book\Magazine_Design_Kit\lesson_covers\banner_5_2.jpg
+D:\MY book\Magazine_Design_Kit\lesson_covers\banner_5_3.jpg
+D:\MY book\Magazine_Design_Kit\lesson_covers\banner_6_1.jpg
+D:\MY book\Magazine_Design_Kit\lesson_covers\banner_6_2.jpg
+D:\MY book\Magazine_Design_Kit\lesson_covers\banner_6_3.jpg
+D:\MY book\Magazine_Design_Kit\lesson_covers\banner_7_1.jpg
+D:\MY book\Magazine_Design_Kit\lesson_covers\banner_7_2.jpg
+D:\MY book\Magazine_Design_Kit\lesson_covers\banner_7_3.jpg
+D:\MY book\Magazine_Design_Kit\mascot_comparison.jpg
+D:\MY book\Magazine_Design_Kit\mascot_cover.jpg
+D:\MY book\Magazine_Design_Kit\mascot_lightbulb.jpg
+D:\MY book\Magazine_Design_Kit\mascot_reflection.jpg
+D:\MY book\Magazine_Design_Kit\mascot_thinking.jpg
+D:\MY book\Magazine_Design_Kit\mascots_transparent_bg\mascot_comparison_transparent.png
+D:\MY book\Magazine_Design_Kit\mascots_transparent_bg\mascot_cover_transparent.png
+D:\MY book\Magazine_Design_Kit\mascots_transparent_bg\mascot_example_transparent.png
+D:\MY book\Magazine_Design_Kit\mascots_transparent_bg\mascot_lightbulb_transparent.png
+D:\MY book\Magazine_Design_Kit\mascots_transparent_bg\mascot_problems_transparent.png
+D:\MY book\Magazine_Design_Kit\mascots_transparent_bg\mascot_reflection_transparent.png
+D:\MY book\Magazine_Design_Kit\mascots_transparent_bg\mascot_rules_transparent.png
+D:\MY book\Magazine_Design_Kit\mascots_transparent_bg\mascot_thinking_transparent.png
+D:\MY book\Magazine_Design_Kit\neuron_how_it_works_infographic.png
+D:\MY book\Magazine_Design_Kit\preview_transparent_edges.png

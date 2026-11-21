@@ -1,0 +1,656 @@
+{
+  "Build_InDesign_Template.jsx": {
+    "mtime": 1794558295.1132343,
+    "seen": 1795251081.5466864,
+    "ast_hash": "42886c4216acc5427933a8cfb72dafd2",
+    "semantic_hash": "42886c4216acc5427933a8cfb72dafd2"
+  },
+  "book_builder/server.py": {
+    "mtime": 1794730809.4198968,
+    "seen": 1795251081.5466933,
+    "ast_hash": "af5cfd35c89a057fa14bcabd940c830a",
+    "semantic_hash": "af5cfd35c89a057fa14bcabd940c830a"
+  },
+  "README.md": {
+    "mtime": 1794558333.8630445,
+    "seen": 1795251081.5466964,
+    "ast_hash": "35177e6c9857573fdae7ef46a079f46f",
+    "semantic_hash": "35177e6c9857573fdae7ef46a079f46f"
+  },
+  "book_builder/backups/book_20261114_143300_041979.html": {
+    "mtime": 1794659580.050355,
+    "seen": 1795251081.546698,
+    "ast_hash": "caf67c18bc9ad60eb32a22b968cf9d98",
+    "semantic_hash": "caf67c18bc9ad60eb32a22b968cf9d98"
+  },
+  "book_builder/backups/book_20261114_143330_589016.html": {
+    "mtime": 1794659610.5896387,
+    "seen": 1795251081.5466993,
+    "ast_hash": "5d08eb4b1b5003522be73d85150c2fba",
+    "semantic_hash": "5d08eb4b1b5003522be73d85150c2fba"
+  },
+  "book_builder/backups/book_20261114_143423_108654.html": {
+    "mtime": 1794659663.1088786,
+    "seen": 1795251081.5467005,
+    "ast_hash": "ffcb94a1a137ddde5aab72c380f7b88d",
+    "semantic_hash": "ffcb94a1a137ddde5aab72c380f7b88d"
+  },
+  "book_builder/backups/book_20261114_143455_224844.html": {
+    "mtime": 1794659695.2255323,
+    "seen": 1795251081.5467021,
+    "ast_hash": "b0bfeec7a29f8747d0e5b7e5c982085c",
+    "semantic_hash": "b0bfeec7a29f8747d0e5b7e5c982085c"
+  },
+  "book_builder/backups/book_20261114_143532_283338.html": {
+    "mtime": 1794659732.286136,
+    "seen": 1795251081.546703,
+    "ast_hash": "089a1374fc2acd89ea0f7165bf2da0e6",
+    "semantic_hash": "089a1374fc2acd89ea0f7165bf2da0e6"
+  },
+  "book_builder/backups/book_20261114_143546_729832.html": {
+    "mtime": 1794659746.7319572,
+    "seen": 1795251081.5467043,
+    "ast_hash": "991f26129af7ec330a8cd030e2fc66d3",
+    "semantic_hash": "991f26129af7ec330a8cd030e2fc66d3"
+  },
+  "book_builder/backups/book_20261114_143604_114951.html": {
+    "mtime": 1794659764.1151958,
+    "seen": 1795251081.5467055,
+    "ast_hash": "425f30f8b6c73dee92af376d4c7f352a",
+    "semantic_hash": "425f30f8b6c73dee92af376d4c7f352a"
+  },
+  "book_builder/backups/book_20261114_150352_854770.html": {
+    "mtime": 1794661432.8582065,
+    "seen": 1795251081.546707,
+    "ast_hash": "3b4b92fa2f0571092bc74bce473f6c14",
+    "semantic_hash": "3b4b92fa2f0571092bc74bce473f6c14"
+  },
+  "book_builder/backups/book_20261114_150516_792528.html": {
+    "mtime": 1794661516.7928605,
+    "seen": 1795251081.5467093,
+    "ast_hash": "5dce80cea6b52d52ce6450b908544df8",
+    "semantic_hash": "5dce80cea6b52d52ce6450b908544df8"
+  },
+  "book_builder/backups/book_20261114_150537_146114.html": {
+    "mtime": 1794661537.1492777,
+    "seen": 1795251081.5467107,
+    "ast_hash": "7c52df01f11b04bd3f78be1f2064c40e",
+    "semantic_hash": "7c52df01f11b04bd3f78be1f2064c40e"
+  },
+  "book_builder/backups/book_20261114_150610_103837.html": {
+    "mtime": 1794661570.1056247,
+    "seen": 1795251081.546712,
+    "ast_hash": "99a761b8f0e72c298a6e6afe71d61816",
+    "semantic_hash": "99a761b8f0e72c298a6e6afe71d61816"
+  },
+  "book_builder/backups/book_20261114_150700_253099.html": {
+    "mtime": 1794661620.2537346,
+    "seen": 1795251081.5467317,
+    "ast_hash": "7c52df01f11b04bd3f78be1f2064c40e",
+    "semantic_hash": "7c52df01f11b04bd3f78be1f2064c40e"
+  },
+  "book_builder/backups/book_20261114_150815_952362.html": {
+    "mtime": 1794661695.9523737,
+    "seen": 1795251081.5467331,
+    "ast_hash": "a4c585cea3f9eae5cafb5e5f0be900fc",
+    "semantic_hash": "a4c585cea3f9eae5cafb5e5f0be900fc"
+  },
+  "book_builder/backups/book_20261115_102607_845247.html": {
+    "mtime": 1794731167.8542583,
+    "seen": 1795251081.546734,
+    "ast_hash": "4033e7bb4930bcbd77f380d8664ea4c7",
+    "semantic_hash": "4033e7bb4930bcbd77f380d8664ea4c7"
+  },
+  "book_builder/backups/book_20261115_220027_961589.html": {
+    "mtime": 1794772827.9653955,
+    "seen": 1795251081.546735,
+    "ast_hash": "97ff4f37b5d6d4632018e89b541d5131",
+    "semantic_hash": "97ff4f37b5d6d4632018e89b541d5131"
+  },
+  "book_builder/backups/book_20261115_222756_954515.html": {
+    "mtime": 1794774476.9554203,
+    "seen": 1795251081.5467367,
+    "ast_hash": "790fb3def06cd7cc882b32b3bdb80cb2",
+    "semantic_hash": "790fb3def06cd7cc882b32b3bdb80cb2"
+  },
+  "book_builder/backups/book_20261115_222954_099426.html": {
+    "mtime": 1794774594.100719,
+    "seen": 1795251081.546738,
+    "ast_hash": "1ca7f93c867a76f5988473c4067f81bc",
+    "semantic_hash": "1ca7f93c867a76f5988473c4067f81bc"
+  },
+  "book_builder/backups/book_20261115_223227_607501.html": {
+    "mtime": 1794774747.6081886,
+    "seen": 1795251081.5467389,
+    "ast_hash": "1c1dbfb0256f5497a09ca00af0b03258",
+    "semantic_hash": "1c1dbfb0256f5497a09ca00af0b03258"
+  },
+  "book_builder/backups/book_20261115_223630_242186.html": {
+    "mtime": 1794774990.245011,
+    "seen": 1795251081.5467405,
+    "ast_hash": "a1d01d025911dd65244787e5dbb654e7",
+    "semantic_hash": "a1d01d025911dd65244787e5dbb654e7"
+  },
+  "book_builder/backups/book_20261116_093652_685771.html": {
+    "mtime": 1794814612.6898367,
+    "seen": 1795251081.546742,
+    "ast_hash": "677564e3c00231bfdcfbd692b2122074",
+    "semantic_hash": "677564e3c00231bfdcfbd692b2122074"
+  },
+  "book_builder/backups/book_20261116_121830_703845.html": {
+    "mtime": 1794824310.7077107,
+    "seen": 1795251081.5467434,
+    "ast_hash": "6334ebf89524b65152323ca7c221f231",
+    "semantic_hash": "6334ebf89524b65152323ca7c221f231"
+  },
+  "book_builder/backups/book_20261116_121853_124970.html": {
+    "mtime": 1794824333.125943,
+    "seen": 1795251081.5467443,
+    "ast_hash": "ece7116c8c020d25617bbbd52f32b9ad",
+    "semantic_hash": "ece7116c8c020d25617bbbd52f32b9ad"
+  },
+  "book_builder/backups/book_20261116_121909_544416.html": {
+    "mtime": 1794824349.5455296,
+    "seen": 1795251081.5467458,
+    "ast_hash": "af63dde9e8900a63f4f8a933814d03d8",
+    "semantic_hash": "af63dde9e8900a63f4f8a933814d03d8"
+  },
+  "book_builder/index.html": {
+    "mtime": 1794730945.6251495,
+    "seen": 1795251081.5467472,
+    "ast_hash": "c1ec47fa460612601699d9b9ea28a637",
+    "semantic_hash": "c1ec47fa460612601699d9b9ea28a637"
+  },
+  "book_cover.html": {
+    "mtime": 1794571694.0752778,
+    "seen": 1795251081.5467484,
+    "ast_hash": "39c3bd425ebb690b7a9cd65b5ec55234",
+    "semantic_hash": "39c3bd425ebb690b7a9cd65b5ec55234"
+  },
+  "book_cover_full.html": {
+    "mtime": 1794678551.9856753,
+    "seen": 1795251081.5467494,
+    "ast_hash": "181f51f5cc107f89d9e47900ec4d4604",
+    "semantic_hash": "181f51f5cc107f89d9e47900ec4d4604"
+  },
+  "from_zero_to_hero_book.html": {
+    "mtime": 1795250014.5458262,
+    "seen": 1795251081.5467508,
+    "ast_hash": "1c098b79db625c6df76ea1ffec3abf83",
+    "semantic_hash": "1c098b79db625c6df76ea1ffec3abf83"
+  },
+  "from_zero_to_hero_model_answer.html": {
+    "mtime": 1795186456.8681936,
+    "seen": 1795251081.546752,
+    "ast_hash": "c136fd0abd5306da5d829687f6fa22fb",
+    "semantic_hash": "c136fd0abd5306da5d829687f6fa22fb"
+  },
+  "laptop_windows_preview.html": {
+    "mtime": 1795125342.6668973,
+    "seen": 1795251081.546753,
+    "ast_hash": "0ffa010123194af5ff1c77dcfc7fc7a7",
+    "semantic_hash": "0ffa010123194af5ff1c77dcfc7fc7a7"
+  },
+  "lesson_covers/all_lesson_covers.html": {
+    "mtime": 1794584981.0636299,
+    "seen": 1795251081.5467544,
+    "ast_hash": "1cd0457988d13512e8ce3e148eb9da0d",
+    "semantic_hash": "1cd0457988d13512e8ce3e148eb9da0d"
+  },
+  "lesson_covers/cover_5_1.html": {
+    "mtime": 1794570611.2116332,
+    "seen": 1795251081.5467556,
+    "ast_hash": "6cf234b7eb5b267e77abf2ce80984f18",
+    "semantic_hash": "6cf234b7eb5b267e77abf2ce80984f18"
+  },
+  "lesson_covers/cover_5_2.html": {
+    "mtime": 1794570611.2116332,
+    "seen": 1795251081.5467565,
+    "ast_hash": "ca5b16eeb8a7fab3b822f0eb0edd78da",
+    "semantic_hash": "ca5b16eeb8a7fab3b822f0eb0edd78da"
+  },
+  "lesson_covers/cover_5_3.html": {
+    "mtime": 1794570611.212178,
+    "seen": 1795251081.546758,
+    "ast_hash": "a8c2d419bb95a7683f62d5a3573b1131",
+    "semantic_hash": "a8c2d419bb95a7683f62d5a3573b1131"
+  },
+  "lesson_covers/cover_6_1.html": {
+    "mtime": 1794570611.212178,
+    "seen": 1795251081.546759,
+    "ast_hash": "8b440ad05960abf02ac2de0a44d2cf50",
+    "semantic_hash": "8b440ad05960abf02ac2de0a44d2cf50"
+  },
+  "lesson_covers/cover_6_2.html": {
+    "mtime": 1794570611.2127118,
+    "seen": 1795251081.54676,
+    "ast_hash": "e4849d3c81a2c7d205f78e30f1b4a4dc",
+    "semantic_hash": "e4849d3c81a2c7d205f78e30f1b4a4dc"
+  },
+  "lesson_covers/cover_6_3.html": {
+    "mtime": 1794570611.2127118,
+    "seen": 1795251081.5467613,
+    "ast_hash": "99a864ce43991a54b5f6db591b63d6a2",
+    "semantic_hash": "99a864ce43991a54b5f6db591b63d6a2"
+  },
+  "lesson_covers/cover_7_1.html": {
+    "mtime": 1794570611.2132423,
+    "seen": 1795251081.5467625,
+    "ast_hash": "4728fe117412afc52c18fb02a3affe1f",
+    "semantic_hash": "4728fe117412afc52c18fb02a3affe1f"
+  },
+  "lesson_covers/cover_7_2.html": {
+    "mtime": 1794570611.2132423,
+    "seen": 1795251081.5467634,
+    "ast_hash": "9e91a14ce1304ec7f6191da7b71d83da",
+    "semantic_hash": "9e91a14ce1304ec7f6191da7b71d83da"
+  },
+  "lesson_covers/cover_7_3.html": {
+    "mtime": 1794570611.2132423,
+    "seen": 1795251081.5467646,
+    "ast_hash": "53d1647ae9c0a8be08073670a453e9c1",
+    "semantic_hash": "53d1647ae9c0a8be08073670a453e9c1"
+  },
+  "lesson_covers/cover_variations.html": {
+    "mtime": 1794569461.8581161,
+    "seen": 1795251081.5467658,
+    "ast_hash": "ade669048febc467c4bb5d790106e3d8",
+    "semantic_hash": "ade669048febc467c4bb5d790106e3d8"
+  },
+  "magazine_preview.html": {
+    "mtime": 1794926171.706114,
+    "seen": 1795251081.5467677,
+    "ast_hash": "f14d6c83018eda82e958bc1a62552abe",
+    "semantic_hash": "f14d6c83018eda82e958bc1a62552abe"
+  },
+  "notes_redesign_preview.html": {
+    "mtime": 1795129914.3106263,
+    "seen": 1795251081.5467687,
+    "ast_hash": "d184ab29832b3c1392be5c305a9f16b5",
+    "semantic_hash": "d184ab29832b3c1392be5c305a9f16b5"
+  },
+  "nwp_genai_preview.html": {
+    "mtime": 1795125342.6678965,
+    "seen": 1795251081.5467699,
+    "ast_hash": "ccd206031fdf270aa4da685fce9a7a2c",
+    "semantic_hash": "ccd206031fdf270aa4da685fce9a7a2c"
+  },
+  "real_world_examples_preview.html": {
+    "mtime": 1795126412.9012318,
+    "seen": 1795251081.5467713,
+    "ast_hash": "2fea8205ec08229f56b93b473f0fc84f",
+    "semantic_hash": "2fea8205ec08229f56b93b473f0fc84f"
+  },
+  "shared_components_preview.html": {
+    "mtime": 1795115873.4605503,
+    "seen": 1795251081.5467722,
+    "ast_hash": "80a9abce63d7e78c1b9ccb06a9f00db4",
+    "semantic_hash": "80a9abce63d7e78c1b9ccb06a9f00db4"
+  },
+  "theory_component_preview.html": {
+    "mtime": 1795164406.895881,
+    "seen": 1795251081.5467734,
+    "ast_hash": "ff3b8b64053264ff9fca8c422775e14e",
+    "semantic_hash": "ff3b8b64053264ff9fca8c422775e14e"
+  },
+  "theory_variations_preview.html": {
+    "mtime": 1795165107.5821998,
+    "seen": 1795251081.5467746,
+    "ast_hash": "72c170c263e3e379b380d783b297d457",
+    "semantic_hash": "72c170c263e3e379b380d783b297d457"
+  },
+  "from_zero_to_hero_book_preview.pdf": {
+    "mtime": 1794601014.9436574,
+    "seen": 1795251081.5467758,
+    "ast_hash": "41f6a046a77e637da1aed724ab37e76d",
+    "semantic_hash": "41f6a046a77e637da1aed724ab37e76d"
+  },
+  "new questions/Lesson 1 Methods of Data Collection.pdf": {
+    "mtime": 1794680397.4968755,
+    "seen": 1795251081.5467768,
+    "ast_hash": "6176804b42570001de242c64c26eadf5",
+    "semantic_hash": "6176804b42570001de242c64c26eadf5"
+  },
+  "new questions/Lesson 2 Data Cleaning & Transformation.pdf": {
+    "mtime": 1794680050.233966,
+    "seen": 1795251081.5467782,
+    "ast_hash": "441dfbde213d9ad6fa039681bb7d9ff9",
+    "semantic_hash": "441dfbde213d9ad6fa039681bb7d9ff9"
+  },
+  "new questions/Lesson 3 Open Data and APIs \u2013 Classwork & Homework.pdf": {
+    "mtime": 1794686450.3641212,
+    "seen": 1795251081.5467813,
+    "ast_hash": "2d268d87e4e48674f45816fb2b7c3cae",
+    "semantic_hash": "2d268d87e4e48674f45816fb2b7c3cae"
+  },
+  "new questions/Lesson 6-1 Statistical Inference \u2013 Classwork & Homework.pdf": {
+    "mtime": 1794688691.4277647,
+    "seen": 1795251081.5467827,
+    "ast_hash": "cd27c5499ef647633de1f36676386b6e",
+    "semantic_hash": "cd27c5499ef647633de1f36676386b6e"
+  },
+  "new questions/Lesson 6-2 Use and Evaluation of Regression Analysis \u2013 Classwork & Homework.pdf": {
+    "mtime": 1794689342.200308,
+    "seen": 1795251081.5467849,
+    "ast_hash": "9d1e7fd886c0d87f2c50357514b075ee",
+    "semantic_hash": "9d1e7fd886c0d87f2c50357514b075ee"
+  },
+  "new questions/Lesson 7-1 The Basics of Machine Learning \u2013 Classwork & Homework.pdf": {
+    "mtime": 1794693325.9776635,
+    "seen": 1795251081.5467863,
+    "ast_hash": "7b2893554e8b3d51e979b1abc7d79251",
+    "semantic_hash": "7b2893554e8b3d51e979b1abc7d79251"
+  },
+  "new questions/Lesson 7-2 Neural Networks and Deep Learning \u2013 Classwork & Homework (1).pdf": {
+    "mtime": 1794693578.6596324,
+    "seen": 1795251081.546788,
+    "ast_hash": "452e5bd4135d52f58141b2cd59da022a",
+    "semantic_hash": "452e5bd4135d52f58141b2cd59da022a"
+  },
+  "new questions/Lesson 7-3 Large Language Models (LLM) and Generative AI \u2013 Classwork & Homework.pdf": {
+    "mtime": 1794694106.5276554,
+    "seen": 1795251081.5467894,
+    "ast_hash": "f1098d9483d142f3c5f4a9f263eb51d5",
+    "semantic_hash": "f1098d9483d142f3c5f4a9f263eb51d5"
+  },
+  "new questions/Lesson_6-3_Classwork75_Homework125 (1).pdf": {
+    "mtime": 1794691980.804116,
+    "seen": 1795251081.5467906,
+    "ast_hash": "ba5c54a48f645ab4a164ddd7275d7639",
+    "semantic_hash": "ba5c54a48f645ab4a164ddd7275d7639"
+  },
+  "new questions/new/Lesson_1_Balanced_Options.pdf": {
+    "mtime": 1794779196.9141998,
+    "seen": 1795251081.5467918,
+    "ast_hash": "c0ebaa9559c8baf27d5325b64a13b8ee",
+    "semantic_hash": "c0ebaa9559c8baf27d5325b64a13b8ee"
+  },
+  "new questions/new/Lesson_2_Final_60_110.pdf": {
+    "mtime": 1794769767.1931493,
+    "seen": 1795251081.5467932,
+    "ast_hash": "e09b187eec6ed6ffe5b4cdc66131856c",
+    "semantic_hash": "e09b187eec6ed6ffe5b4cdc66131856c"
+  },
+  "new questions/new/Lesson_3_Balanced_Options.pdf": {
+    "mtime": 1794774216.701936,
+    "seen": 1795251081.5467942,
+    "ast_hash": "8828c799d8685816da00d651b4ff82a2",
+    "semantic_hash": "8828c799d8685816da00d651b4ff82a2"
+  },
+  "new questions/new/Regression_Analysis_Lesson2_50_100_equal.pdf": {
+    "mtime": 1794854230.5060205,
+    "seen": 1795251081.5467956,
+    "ast_hash": "f018f78d381a03da4d3498112bf285c1",
+    "semantic_hash": "f018f78d381a03da4d3498112bf285c1"
+  },
+  "new questions/new/Statistical_Inference_Lesson1_50_100_equal.pdf": {
+    "mtime": 1794831191.0607812,
+    "seen": 1795251081.5467968,
+    "ast_hash": "79fbb2dc727c8274ba2cf8dbda198b85",
+    "semantic_hash": "79fbb2dc727c8274ba2cf8dbda198b85"
+  },
+  "book_back_cover_banner.jpg": {
+    "mtime": 1794678543.4505777,
+    "seen": 1795251081.5467978,
+    "ast_hash": "71e966c72a5acb999b6912f52c5ae139",
+    "semantic_hash": "71e966c72a5acb999b6912f52c5ae139"
+  },
+  "book_cover_banner.jpg": {
+    "mtime": 1794571459.3525963,
+    "seen": 1795251081.5467992,
+    "ast_hash": "695ce4fcfc77aa3c5eef9cb3d06ec107",
+    "semantic_hash": "695ce4fcfc77aa3c5eef9cb3d06ec107"
+  },
+  "book_cover_banner_v2.jpg": {
+    "mtime": 1794678543.4543786,
+    "seen": 1795251081.5468004,
+    "ast_hash": "60e6ebea947eeee5f3085f006576124b",
+    "semantic_hash": "60e6ebea947eeee5f3085f006576124b"
+  },
+  "book_cover_full_rendered.png": {
+    "mtime": 1794678563.2047377,
+    "seen": 1795251081.5468016,
+    "ast_hash": "d0b0977937a426ea5fd77f8f1fc44f66",
+    "semantic_hash": "d0b0977937a426ea5fd77f8f1fc44f66"
+  },
+  "book_cover_full_wraparound.jpg": {
+    "mtime": 1794678543.446064,
+    "seen": 1795251081.5468028,
+    "ast_hash": "98f0987c9d50d0797080059f9b08cd2c",
+    "semantic_hash": "98f0987c9d50d0797080059f9b08cd2c"
+  },
+  "book_cover_wraparound_print_300dpi.jpg": {
+    "mtime": 1794765479.522928,
+    "seen": 1795251081.546804,
+    "ast_hash": "208374923e115dd0ab22959ad5bca30f",
+    "semantic_hash": "208374923e115dd0ab22959ad5bca30f"
+  },
+  "book_cover_wraparound_v3.jpg": {
+    "mtime": 1794765030.5181775,
+    "seen": 1795251081.546805,
+    "ast_hash": "b2db30f1e51fc78d66947631e32cf1c9",
+    "semantic_hash": "b2db30f1e51fc78d66947631e32cf1c9"
+  },
+  "illustrations/clipboard_3d.png": {
+    "mtime": 1795089320.50312,
+    "seen": 1795251081.5468063,
+    "ast_hash": "4597de6485fcc9cd22446623e38b2c04",
+    "semantic_hash": "4597de6485fcc9cd22446623e38b2c04"
+  },
+  "illustrations/customer_survey_f9ur.svg": {
+    "mtime": 1795090867.4858491,
+    "seen": 1795251081.5468078,
+    "ast_hash": "ef199fc904e97e7b6d27e0be9db32c58",
+    "semantic_hash": "ef199fc904e97e7b6d27e0be9db32c58"
+  },
+  "illustrations/green_salad_3d.png": {
+    "mtime": 1795089322.0534387,
+    "seen": 1795251081.5468087,
+    "ast_hash": "107e93d7fb7c226862a62aa205d58a8b",
+    "semantic_hash": "107e93d7fb7c226862a62aa205d58a8b"
+  },
+  "illustrations/interview_rmcf.svg": {
+    "mtime": 1795090866.6354327,
+    "seen": 1795251081.5468104,
+    "ast_hash": "6683a3ef638d80028b2f8664f5bf848b",
+    "semantic_hash": "6683a3ef638d80028b2f8664f5bf848b"
+  },
+  "illustrations/man_office_worker_3d.png": {
+    "mtime": 1795089322.9238765,
+    "seen": 1795251081.5468116,
+    "ast_hash": "3b5529ecfc5e24880030ebaa1cde6eb5",
+    "semantic_hash": "3b5529ecfc5e24880030ebaa1cde6eb5"
+  },
+  "illustrations/man_raising_hand_3d.png": {
+    "mtime": 1795089323.2871368,
+    "seen": 1795251081.546813,
+    "ast_hash": "55e85b6abf83b0004e4a0f378ab22daa",
+    "semantic_hash": "55e85b6abf83b0004e4a0f378ab22daa"
+  },
+  "illustrations/motor_scooter_3d.png": {
+    "mtime": 1795089318.4123602,
+    "seen": 1795251081.546814,
+    "ast_hash": "214204fc783ab62c127951cf209d9e3e",
+    "semantic_hash": "214204fc783ab62c127951cf209d9e3e"
+  },
+  "illustrations/package_3d.png": {
+    "mtime": 1795089320.1617708,
+    "seen": 1795251081.546815,
+    "ast_hash": "f250d83eab0a51319e5d25d55b1ea8c4",
+    "semantic_hash": "f250d83eab0a51319e5d25d55b1ea8c4"
+  },
+  "illustrations/scooter_aia8.svg": {
+    "mtime": 1795090869.362654,
+    "seen": 1795251081.5468163,
+    "ast_hash": "257a705260c9726f04cb5bc365f47726",
+    "semantic_hash": "257a705260c9726f04cb5bc365f47726"
+  },
+  "illustrations/stopwatch_3d.png": {
+    "mtime": 1795089319.1222174,
+    "seen": 1795251081.5468175,
+    "ast_hash": "4e5ef1494b769c164c6bc8cedd5f4b1d",
+    "semantic_hash": "4e5ef1494b769c164c6bc8cedd5f4b1d"
+  },
+  "illustrations/street_survey_editorial.svg": {
+    "mtime": 1795090866.6354327,
+    "seen": 1795251081.5468187,
+    "ast_hash": "6683a3ef638d80028b2f8664f5bf848b",
+    "semantic_hash": "6683a3ef638d80028b2f8664f5bf848b"
+  },
+  "illustrations/studio_microphone_3d.png": {
+    "mtime": 1795089321.3424911,
+    "seen": 1795251081.54682,
+    "ast_hash": "e6961cf6be112476ccf4474a8cbb46d7",
+    "semantic_hash": "e6961cf6be112476ccf4474a8cbb46d7"
+  },
+  "laptop_mascots/laptop_glasses_smart.jpg": {
+    "mtime": 1795022267.3695233,
+    "seen": 1795251081.5468209,
+    "ast_hash": "13deba6539a524df57211471ea60bda4",
+    "semantic_hash": "13deba6539a524df57211471ea60bda4"
+  },
+  "lesson_covers/banner_5_1.jpg": {
+    "mtime": 1794567981.9438994,
+    "seen": 1795251081.546822,
+    "ast_hash": "67e6e590280eb3e71f6eb862842fb2cc",
+    "semantic_hash": "67e6e590280eb3e71f6eb862842fb2cc"
+  },
+  "lesson_covers/banner_5_2.jpg": {
+    "mtime": 1794569814.190845,
+    "seen": 1795251081.5468245,
+    "ast_hash": "a73e04056429b625db98e7793c005872",
+    "semantic_hash": "a73e04056429b625db98e7793c005872"
+  },
+  "lesson_covers/banner_5_3.jpg": {
+    "mtime": 1794569824.7215219,
+    "seen": 1795251081.5468256,
+    "ast_hash": "df4060e00e14aacf20af30319c88921b",
+    "semantic_hash": "df4060e00e14aacf20af30319c88921b"
+  },
+  "lesson_covers/banner_6_1.jpg": {
+    "mtime": 1794569835.1705241,
+    "seen": 1795251081.546827,
+    "ast_hash": "3f539c8e037462fdcba6049a7959381e",
+    "semantic_hash": "3f539c8e037462fdcba6049a7959381e"
+  },
+  "lesson_covers/banner_6_2.jpg": {
+    "mtime": 1794581857.5548928,
+    "seen": 1795251081.546828,
+    "ast_hash": "34ac143ca744597fe1efa1d7fa7ff8e8",
+    "semantic_hash": "34ac143ca744597fe1efa1d7fa7ff8e8"
+  },
+  "lesson_covers/banner_6_3.jpg": {
+    "mtime": 1794581868.4202986,
+    "seen": 1795251081.546829,
+    "ast_hash": "b4d34e3c2e0600281161544442ea1dcb",
+    "semantic_hash": "b4d34e3c2e0600281161544442ea1dcb"
+  },
+  "lesson_covers/banner_7_1.jpg": {
+    "mtime": 1794581942.3731816,
+    "seen": 1795251081.5468304,
+    "ast_hash": "1e7bce5a4e9aab20a3f8215ae3d4523b",
+    "semantic_hash": "1e7bce5a4e9aab20a3f8215ae3d4523b"
+  },
+  "lesson_covers/banner_7_2.jpg": {
+    "mtime": 1794581888.532656,
+    "seen": 1795251081.5468316,
+    "ast_hash": "3e620b05839ceff0ee7317757c36b50c",
+    "semantic_hash": "3e620b05839ceff0ee7317757c36b50c"
+  },
+  "lesson_covers/banner_7_3.jpg": {
+    "mtime": 1794581899.2419872,
+    "seen": 1795251081.5468326,
+    "ast_hash": "3efc77f8daca3f0bce4745307f13b106",
+    "semantic_hash": "3efc77f8daca3f0bce4745307f13b106"
+  },
+  "mascot_comparison.jpg": {
+    "mtime": 1794559411.252735,
+    "seen": 1795251081.546834,
+    "ast_hash": "e9ebaa2eb511c1b9a8efab93f9eca858",
+    "semantic_hash": "e9ebaa2eb511c1b9a8efab93f9eca858"
+  },
+  "mascot_cover.jpg": {
+    "mtime": 1794559341.7871857,
+    "seen": 1795251081.5468352,
+    "ast_hash": "a2eccfcd19aea5bccfc734b75cf09f86",
+    "semantic_hash": "a2eccfcd19aea5bccfc734b75cf09f86"
+  },
+  "mascot_lightbulb.jpg": {
+    "mtime": 1794559387.2089505,
+    "seen": 1795251081.5468361,
+    "ast_hash": "e22017af98b0a7a0cf9bb56380119963",
+    "semantic_hash": "e22017af98b0a7a0cf9bb56380119963"
+  },
+  "mascot_reflection.jpg": {
+    "mtime": 1794559440.0211804,
+    "seen": 1795251081.5468376,
+    "ast_hash": "1ce5345bdf2b89d996af4fb511dc1a6b",
+    "semantic_hash": "1ce5345bdf2b89d996af4fb511dc1a6b"
+  },
+  "mascot_thinking.jpg": {
+    "mtime": 1794559361.8298233,
+    "seen": 1795251081.5468385,
+    "ast_hash": "4d88e97aab5cb6317d202caf2894010e",
+    "semantic_hash": "4d88e97aab5cb6317d202caf2894010e"
+  },
+  "mascots_transparent_bg/mascot_comparison_transparent.png": {
+    "mtime": 1794611430.2037075,
+    "seen": 1795251081.5468397,
+    "ast_hash": "f7360dcb78607c2203058b0c7a5114dd",
+    "semantic_hash": "f7360dcb78607c2203058b0c7a5114dd"
+  },
+  "mascots_transparent_bg/mascot_cover_transparent.png": {
+    "mtime": 1794562567.093408,
+    "seen": 1795251081.546841,
+    "ast_hash": "a2e7173cea15dc44c31df8d087758767",
+    "semantic_hash": "a2e7173cea15dc44c31df8d087758767"
+  },
+  "mascots_transparent_bg/mascot_example_transparent.png": {
+    "mtime": 1794580338.764094,
+    "seen": 1795251081.546842,
+    "ast_hash": "d28f5813cd3cb9598f9796b2855b8312",
+    "semantic_hash": "d28f5813cd3cb9598f9796b2855b8312"
+  },
+  "mascots_transparent_bg/mascot_lightbulb_transparent.png": {
+    "mtime": 1794562569.0953891,
+    "seen": 1795251081.546843,
+    "ast_hash": "fd4aba7dda7c890cd3e26392a7bcdd29",
+    "semantic_hash": "fd4aba7dda7c890cd3e26392a7bcdd29"
+  },
+  "mascots_transparent_bg/mascot_problems_transparent.png": {
+    "mtime": 1794610484.9867601,
+    "seen": 1795251081.5468445,
+    "ast_hash": "35fb3e6076c106b47fdf3988059e1076",
+    "semantic_hash": "35fb3e6076c106b47fdf3988059e1076"
+  },
+  "mascots_transparent_bg/mascot_reflection_transparent.png": {
+    "mtime": 1794648407.8742146,
+    "seen": 1795251081.5468457,
+    "ast_hash": "3e92c4ef84d7166df3d9d17e6b7f70e9",
+    "semantic_hash": "3e92c4ef84d7166df3d9d17e6b7f70e9"
+  },
+  "mascots_transparent_bg/mascot_rules_transparent.png": {
+    "mtime": 1794611430.1425805,
+    "seen": 1795251081.54685,
+    "ast_hash": "39edec961425e5928d197bb1bf84c8ea",
+    "semantic_hash": "39edec961425e5928d197bb1bf84c8ea"
+  },
+  "mascots_transparent_bg/mascot_thinking_transparent.png": {
+    "mtime": 1794562568.063874,
+    "seen": 1795251081.5468514,
+    "ast_hash": "85d81f5f61f20e7016ee2bf4669594d5",
+    "semantic_hash": "85d81f5f61f20e7016ee2bf4669594d5"
+  },
+  "neuron_how_it_works_infographic.png": {
+    "mtime": 1795006513.4136443,
+    "seen": 1795251081.5468524,
+    "ast_hash": "19ec532b278555c1f2ce0a29d0cfd5fe",
+    "semantic_hash": "19ec532b278555c1f2ce0a29d0cfd5fe"
+  },
+  "preview_transparent_edges.png": {
+    "mtime": 1794563182.1601334,
+    "seen": 1795251081.5468533,
+    "ast_hash": "d6106c2b8c6496904d13f2c0ecdd26a9",
+    "semantic_hash": "d6106c2b8c6496904d13f2c0ecdd26a9"
+  }
+}
