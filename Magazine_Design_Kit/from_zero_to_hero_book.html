@@ -4896,21 +4896,21 @@
 <div class="real-world-example-header" style="margin-bottom:0;">مثال من الواقع بالرسم: روبوت بيتعلم يمشي بالتجربة والخطأ (Reinforcement Learning)</div>
 </div>
 <div class="real-world-example-text" style="width:100%;">
-<div class="real-world-example-body"><div dir="ltr" style="display:grid;grid-template-columns:repeat(3,1fr);column-gap:18px;margin-top:4px;">
+<div class="real-world-example-body"><div style="display:grid;grid-template-columns:repeat(3,1fr);column-gap:18px;margin-top:4px;direction:rtl;">
 <div style="position:relative;display:flex;flex-direction:column;justify-content:space-between;background:#fff;border:1px solid #bfdbfe;border-radius:8px;padding:6px;text-align:center;">
 <div style="font-size:0.68rem;font-weight:900;color:#1d4ed8;line-height:1.3;display:flex;align-items:center;justify-content:center;gap:5px;flex-wrap:wrap;" dir="rtl"><span style="display:inline-flex;align-items:center;justify-content:center;min-width:17px;height:17px;padding:0 5px;border-radius:999px;background:#1d4ed8;color:#fff;font-size:0.60rem;font-weight:900;">1</span><span>State &amp; Action (بيجرّب حركة)</span></div>
-<svg style="max-width:140px;display:block;margin:auto;" viewbox="0 0 140 68" width="100%">
+<svg dir="ltr" style="max-width:140px;display:block;margin:auto;" viewbox="0 0 140 68" width="100%">
 <line stroke="#94a3b8" stroke-width="1.5" x1="8" x2="132" y1="58" y2="58"></line>
-<rect fill="#2563eb" height="16" rx="3" width="20" x="26" y="18"></rect><circle cx="32" cy="25" fill="#fff" r="2"></circle><circle cx="40" cy="25" fill="#fff" r="2"></circle>
-<rect fill="#60a5fa" height="14" rx="2" width="16" x="28" y="35"></rect>
-<line stroke="#1e293b" stroke-width="2" x1="32" x2="30" y1="49" y2="58"></line><line stroke="#1e293b" stroke-width="2" x1="40" x2="42" y1="49" y2="58"></line>
-<path d="M52,32 Q80,18 112,24" fill="none" stroke="#dc2626" stroke-dasharray="3 2" stroke-width="1.3"></path>
-<text fill="#dc2626" font-size="6.5" font-weight="700" x="86" y="18">Action A?</text>
-<path d="M52,40 Q80,46 112,42" fill="none" stroke="#059669" stroke-width="1.5"></path>
-<text fill="#047857" font-size="6.5" font-weight="700" x="86" y="52">Action B?</text>
+<rect fill="#2563eb" height="16" rx="3" width="20" x="94" y="18"></rect><circle cx="100" cy="25" fill="#fff" r="2"></circle><circle cx="108" cy="25" fill="#fff" r="2"></circle>
+<rect fill="#60a5fa" height="14" rx="2" width="16" x="96" y="35"></rect>
+<line stroke="#1e293b" stroke-width="2" x1="100" x2="98" y1="49" y2="58"></line><line stroke="#1e293b" stroke-width="2" x1="108" x2="110" y1="49" y2="58"></line>
+<path d="M88,32 Q60,18 28,24" fill="none" stroke="#dc2626" stroke-dasharray="3 2" stroke-width="1.3"></path>
+<text fill="#dc2626" font-size="6.5" font-weight="700" x="24" y="18">Action A?</text>
+<path d="M88,40 Q60,46 28,42" fill="none" stroke="#059669" stroke-width="1.5"></path>
+<text fill="#047857" font-size="6.5" font-weight="700" x="24" y="52">Action B?</text>
 </svg>
 <div dir="rtl" style="font-size:0.6rem;color:#334155;margin-top:2px;">واقف في موقف (<bdi>State</bdi>) وبيختار حركة</div>
-<span style="position:absolute;right:-25px;top:50%;margin-top:-16px;width:32px;height:32px;border-radius:50%;background:#ffffff;border:1.5px solid #cbd5e1;display:flex;align-items:center;justify-content:center;z-index:5;box-shadow:0 3px 10px rgba(15,23,42,0.12), 0 0 0 2px #ffffff;"><svg viewBox="0 0 28 28" width="20" height="20" style="display:block;"><defs><linearGradient id="arr_rl3_1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="var(--unit-primary)"/><stop offset="100%" stop-color="var(--unit-accent)"/></linearGradient></defs><path d="M4 11.5 H17 V6.5 L25 14 L17 21.5 V16.5 H4 Z" fill="url(#arr_rl3_1)"/></svg></span></div>
+<span style="position:absolute;left:-25px;top:50%;margin-top:-16px;width:32px;height:32px;border-radius:50%;background:#ffffff;border:1.5px solid #cbd5e1;display:flex;align-items:center;justify-content:center;z-index:5;box-shadow:0 3px 10px rgba(15,23,42,0.12), 0 0 0 2px #ffffff;"><svg viewBox="0 0 28 28" width="20" height="20" style="display:block;"><defs><linearGradient id="arr_rl3_1" x1="100%" y1="0%" x2="0%" y2="0%"><stop offset="0%" stop-color="var(--unit-primary)"/><stop offset="100%" stop-color="var(--unit-accent)"/></linearGradient></defs><path d="M24 11.5 H11 V6.5 L3 14 L11 21.5 V16.5 H24 Z" fill="url(#arr_rl3_1)"/></svg></span></div>
 <div style="position:relative;display:flex;flex-direction:column;justify-content:space-between;background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:6px;text-align:center;">
 <div style="font-size:0.68rem;font-weight:900;color:#b91c1c;line-height:1.3;display:flex;align-items:center;justify-content:center;gap:5px;flex-wrap:wrap;" dir="rtl"><span style="display:inline-flex;align-items:center;justify-content:center;min-width:17px;height:17px;padding:0 5px;border-radius:999px;background:#b91c1c;color:#fff;font-size:0.60rem;font-weight:900;">2</span><span>لو وقع ← عقاب (Penalty)</span></div>
 <svg style="max-width:140px;display:block;margin:auto;" viewbox="0 0 140 68" width="100%">
@@ -4922,7 +4922,7 @@
 <rect fill="#dc2626" height="22" rx="5" width="54" x="78" y="14"></rect><text fill="#fff" font-size="8" font-weight="800" text-anchor="middle" x="105" y="28">-5 Penalty</text>
 </svg>
 <div dir="rtl" style="font-size:0.6rem;color:#7f1d1d;margin-top:2px;">الحركة الغلط بتنقص نقط، فبيتجنبها</div>
-<span style="position:absolute;right:-25px;top:50%;margin-top:-16px;width:32px;height:32px;border-radius:50%;background:#ffffff;border:1.5px solid #cbd5e1;display:flex;align-items:center;justify-content:center;z-index:5;box-shadow:0 3px 10px rgba(15,23,42,0.12), 0 0 0 2px #ffffff;"><svg viewBox="0 0 28 28" width="20" height="20" style="display:block;"><defs><linearGradient id="arr_rl3_2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="var(--unit-primary)"/><stop offset="100%" stop-color="var(--unit-accent)"/></linearGradient></defs><path d="M4 11.5 H17 V6.5 L25 14 L17 21.5 V16.5 H4 Z" fill="url(#arr_rl3_2)"/></svg></span></div>
+<span style="position:absolute;left:-25px;top:50%;margin-top:-16px;width:32px;height:32px;border-radius:50%;background:#ffffff;border:1.5px solid #cbd5e1;display:flex;align-items:center;justify-content:center;z-index:5;box-shadow:0 3px 10px rgba(15,23,42,0.12), 0 0 0 2px #ffffff;"><svg viewBox="0 0 28 28" width="20" height="20" style="display:block;"><defs><linearGradient id="arr_rl3_2" x1="100%" y1="0%" x2="0%" y2="0%"><stop offset="0%" stop-color="var(--unit-primary)"/><stop offset="100%" stop-color="var(--unit-accent)"/></linearGradient></defs><path d="M24 11.5 H11 V6.5 L3 14 L11 21.5 V16.5 H24 Z" fill="url(#arr_rl3_2)"/></svg></span></div>
 <div style="position:relative;display:flex;flex-direction:column;justify-content:space-between;background:#ecfdf5;border:1px solid #a7f3d0;border-radius:8px;padding:6px;text-align:center;">
 <div style="font-size:0.68rem;font-weight:900;color:#047857;line-height:1.3;display:flex;align-items:center;justify-content:center;gap:5px;flex-wrap:wrap;" dir="rtl"><span style="display:inline-flex;align-items:center;justify-content:center;min-width:17px;height:17px;padding:0 5px;border-radius:999px;background:#047857;color:#fff;font-size:0.60rem;font-weight:900;">3</span><span>لو مشي صح ← <bdi>Reward</bdi> (+10)</span></div>
 <svg style="max-width:140px;display:block;margin:auto;" viewbox="0 0 140 68" width="100%">
