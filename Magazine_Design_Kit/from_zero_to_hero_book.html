@@ -5190,9 +5190,9 @@
 <div class="egy-reflection-text" style="width:100%;">
 <div class="egy-reflection-header"><span>إزاي الـ <bdi>Neuron</bdi> بيشتغل خطوة بخطوة بالأرقام</span></div>
 <div>
-<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:4px;">
-<div style="background:#f0fdf4;border:1px solid #a7f3d0;border-radius:10px;padding:6px;text-align:center;">
-<div dir="rtl" style="font-size:0.63rem;font-weight:800;color:#047857;margin-bottom:2px;">1. <bdi>Inputs</bdi> (المدخلات)</div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:18px;row-gap:16px;margin-top:4px;direction:rtl;">
+<div style="position:relative;grid-column:1;grid-row:1;background:#f8fefb;border:1.2px solid #d1fae5;border-radius:10px;padding:6px;text-align:center;display:flex;flex-direction:column;justify-content:space-between;gap:3px;">
+<div style="font-size:0.68rem;font-weight:900;color:#10b981;line-height:1.3;display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:wrap;" dir="rtl"><span style="display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 4px;border-radius:999px;background:#10b981;color:#fff;font-size:0.60rem;font-weight:900;">1</span><span><bdi>Inputs</bdi> (المدخلات)</span></div>
 <svg dir="ltr" style="max-width:210px;display:block;margin:auto;direction:ltr;font-family:'Plus Jakarta Sans',sans-serif;" viewbox="0 0 360 132" width="100%">
 <circle cx="290" cy="20" fill="#ffffff" r="14" stroke="#059669" stroke-width="2"></circle><text fill="#064e3b" font-size="11" font-weight="900" text-anchor="middle" x="290" y="24">4</text>
 <circle cx="290" cy="51" fill="#ffffff" r="14" stroke="#059669" stroke-width="2"></circle><text fill="#064e3b" font-size="11" font-weight="900" text-anchor="middle" x="290" y="55">2</text>
@@ -5211,9 +5211,9 @@
 <text fill="#064e3b" font-size="9.5" font-weight="800" text-anchor="middle" x="52" y="77">4, 2, 5, 1</text>
 </svg>
 <div dir="rtl" style="font-size:0.55rem;color:#1e293b;margin-top:2px;line-height:1.4;">كل خلية بتستقبل أكتر من مدخل في نفس الوقت (<bdi>4, 2, 5, 1</bdi>) عشان تحسب عليهم.</div>
-</div>
-<div style="background:#ecfdf5;border:1px solid #6ee7b7;border-radius:10px;padding:6px;text-align:center;">
-<div dir="rtl" style="font-size:0.63rem;font-weight:800;color:#047857;margin-bottom:2px;">2. <bdi>Weights</bdi> (الأوزان)</div>
+<span style="position:absolute;left:-25px;top:50%;margin-top:-16px;width:32px;height:32px;border-radius:50%;background:#ffffff;border:1.5px solid #cbd5e1;display:flex;align-items:center;justify-content:center;z-index:5;box-shadow:0 3px 10px rgba(15,23,42,0.12), 0 0 0 2px #ffffff;"><svg viewBox="0 0 28 28" width="20" height="20" style="display:block;"><defs><linearGradient id="arr_nr_1" x1="100%" y1="0%" x2="0%" y2="0%"><stop offset="0%" stop-color="var(--unit-primary)"/><stop offset="100%" stop-color="var(--unit-accent)"/></linearGradient></defs><path d="M24 11.5 H11 V6.5 L3 14 L11 21.5 V16.5 H24 Z" fill="url(#arr_nr_1)"/></svg></span></div>
+<div style="position:relative;grid-column:2;grid-row:1;background:#f3fdf8;border:1.2px solid #bbf7d0;border-radius:10px;padding:6px;text-align:center;display:flex;flex-direction:column;justify-content:space-between;gap:3px;">
+<div style="font-size:0.68rem;font-weight:900;color:#059669;line-height:1.3;display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:wrap;" dir="rtl"><span style="display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 4px;border-radius:999px;background:#059669;color:#fff;font-size:0.60rem;font-weight:900;">2</span><span><bdi>Weights</bdi> (الأوزان)</span></div>
 <svg dir="ltr" style="max-width:210px;display:block;margin:auto;direction:ltr;font-family:'Plus Jakarta Sans',sans-serif;" viewbox="0 0 360 132" width="100%">
 <circle cx="326" cy="14" fill="#ffffff" r="12" stroke="#059669" stroke-width="1.8"></circle><text fill="#064e3b" font-size="10.5" font-weight="900" text-anchor="middle" x="326" y="18">4</text>
 <circle cx="326" cy="48" fill="#ffffff" r="12" stroke="#059669" stroke-width="1.8"></circle><text fill="#064e3b" font-size="10.5" font-weight="900" text-anchor="middle" x="326" y="52">2</text>
@@ -5232,9 +5232,9 @@
 <path d="M52,72 Q62,80 72,72" fill="none" stroke="#047857" stroke-linecap="round" stroke-width="2.2"></path>
 </svg>
 <div dir="rtl" style="font-size:0.55rem;color:#1e293b;margin-top:2px;line-height:1.4;">الوزن (موجب أو سالب) يحدد أهمية كل مدخل، ومع التدريب يتعدل عشان الإجابة تطلع صح.</div>
-</div>
-<div style="background:#f0fdfa;border:1px solid #99f6e4;border-radius:10px;padding:6px;text-align:center;">
-<div dir="rtl" style="font-size:0.63rem;font-weight:800;color:#047857;margin-bottom:2px;">3. <bdi>Multiply</bdi> (الضرب)</div>
+<span style="position:absolute;left:-25px;top:50%;margin-top:-16px;width:32px;height:32px;border-radius:50%;background:#ffffff;border:1.5px solid #cbd5e1;display:flex;align-items:center;justify-content:center;z-index:5;box-shadow:0 3px 10px rgba(15,23,42,0.12), 0 0 0 2px #ffffff;"><svg viewBox="0 0 28 28" width="20" height="20" style="display:block;"><defs><linearGradient id="arr_nr_2" x1="100%" y1="0%" x2="0%" y2="0%"><stop offset="0%" stop-color="var(--unit-primary)"/><stop offset="100%" stop-color="var(--unit-accent)"/></linearGradient></defs><path d="M24 11.5 H11 V6.5 L3 14 L11 21.5 V16.5 H24 Z" fill="url(#arr_nr_2)"/></svg></span></div>
+<div style="position:relative;grid-column:3;grid-row:1;padding-bottom:16px;background:#eefcf5;border:1.2px solid #a7f3d0;border-radius:10px;padding:6px;text-align:center;display:flex;flex-direction:column;justify-content:space-between;gap:3px;">
+<div style="font-size:0.68rem;font-weight:900;color:#059669;line-height:1.3;display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:wrap;" dir="rtl"><span style="display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 4px;border-radius:999px;background:#059669;color:#fff;font-size:0.60rem;font-weight:900;">3</span><span><bdi>Multiply</bdi> (الضرب)</span></div>
 <svg dir="ltr" style="max-width:210px;display:block;margin:auto;direction:ltr;font-family:'Plus Jakarta Sans',sans-serif;" viewbox="0 0 360 132" width="100%">
 <rect fill="#059669" height="24" rx="12" width="84" x="28" y="8"></rect><text fill="#fff" font-size="11.5" font-weight="900" text-anchor="middle" x="70" y="24">+4.0</text>
 <line stroke="#10b981" stroke-width="2" x1="170" x2="124" y1="20" y2="20"></line><polygon fill="#10b981" points="118,20 126,16 126,24"></polygon>
@@ -5258,62 +5258,62 @@
 <circle cx="310" cy="113" fill="#ffffff" r="13" stroke="#059669" stroke-width="1.6"></circle><text fill="#064e3b" font-size="11" font-weight="900" text-anchor="middle" x="310" y="117">1</text>
 </svg>
 <div dir="rtl" style="font-size:0.55rem;color:#1e293b;margin-top:2px;line-height:1.4;">نضرب كل مدخل في وزنه (<bdi>4×1 = 4</bdi>، <bdi>2×0.5 = 1</bdi>، <bdi>5×-0.2 = -1</bdi>، <bdi>1×0.5 = 0.5</bdi>).</div>
-</div>
-<div style="background:#ecfdf5;border:1px solid #6ee7b7;border-radius:10px;padding:6px;text-align:center;">
-<div dir="rtl" style="font-size:0.63rem;font-weight:800;color:#047857;margin-bottom:2px;">4. <bdi>Sum</bdi> (الجمع)</div>
+<span style="position:absolute;bottom:-24px;left:50%;margin-left:-16px;width:32px;height:32px;border-radius:50%;background:#ffffff;border:1.5px solid #cbd5e1;display:flex;align-items:center;justify-content:center;z-index:5;box-shadow:0 3px 10px rgba(15,23,42,0.12), 0 0 0 2px #ffffff;"><svg viewBox="0 0 28 28" width="20" height="20" style="display:block;"><defs><linearGradient id="arr_nr_3" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="var(--unit-primary)"/><stop offset="100%" stop-color="var(--unit-accent)"/></linearGradient></defs><path d="M11.5 4 V17 H6.5 L14 25 L21.5 17 H16.5 V4 Z" fill="url(#arr_nr_3)"/></svg></span></div>
+<div style="position:relative;grid-column:3;grid-row:2;padding-top:16px;background:#e7faef;border:1.2px solid #6ee7b7;border-radius:10px;padding:6px;text-align:center;display:flex;flex-direction:column;justify-content:space-between;gap:3px;">
+<div style="font-size:0.68rem;font-weight:900;color:#047857;line-height:1.3;display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:wrap;" dir="rtl"><span style="display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 4px;border-radius:999px;background:#047857;color:#fff;font-size:0.60rem;font-weight:900;">4</span><span><bdi>Sum</bdi> (الجمع)</span></div>
 <svg dir="ltr" style="max-width:210px;display:block;margin:auto;direction:ltr;font-family:'Plus Jakarta Sans',sans-serif;" viewbox="0 0 360 132" width="100%">
-<circle cx="304" cy="20" fill="#ffffff" r="14" stroke="#059669" stroke-width="1.8"></circle><text fill="#047857" font-size="10.5" font-weight="900" text-anchor="middle" x="304" y="24">+4.0</text>
-<circle cx="304" cy="51" fill="#ffffff" r="14" stroke="#059669" stroke-width="1.8"></circle><text fill="#047857" font-size="10.5" font-weight="900" text-anchor="middle" x="304" y="55">+1.0</text>
-<circle cx="304" cy="82" fill="#ffffff" r="14" stroke="#0f766e" stroke-width="1.8"></circle><text fill="#0f766e" font-size="10.5" font-weight="900" text-anchor="middle" x="304" y="86">-1.0</text>
-<circle cx="304" cy="113" fill="#ffffff" r="14" stroke="#059669" stroke-width="1.8"></circle><text fill="#047857" font-size="10.5" font-weight="900" text-anchor="middle" x="304" y="117">+0.5</text>
-<line stroke="#10b981" stroke-width="2.2" x1="286" x2="210" y1="22" y2="54"></line><polygon fill="#10b981" points="204,56.5 213,49 215,57"></polygon>
-<line stroke="#10b981" stroke-width="2.2" x1="286" x2="212" y1="51" y2="62"></line><polygon fill="#10b981" points="205,63 214,58 214,66"></polygon>
-<line stroke="#0f766e" stroke-width="2.2" x1="286" x2="212" y1="82" y2="71"></line><polygon fill="#0f766e" points="205,70 214,67 214,75"></polygon>
-<line stroke="#10b981" stroke-width="2.2" x1="286" x2="210" y1="111" y2="79"></line><polygon fill="#10b981" points="204,76.5 215,76 213,84"></polygon>
-<circle cx="152" cy="66" fill="#059669" r="46" stroke="#047857" stroke-width="2.5"></circle>
-<circle cx="137" cy="51" fill="#fff" r="2.8"></circle><circle cx="167" cy="51" fill="#fff" r="2.8"></circle>
-<path d="M139,62 Q152,71 165,62" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2.2"></path>
-<text fill="#d1fae5" font-size="14" font-weight="900" text-anchor="middle" x="152" y="90">Σ = 4.5</text>
-<line stroke="#10b981" stroke-width="3" x1="102" x2="74" y1="66" y2="66"></line><polygon fill="#10b981" points="67,66 76,61 76,71"></polygon>
-<circle cx="38" cy="66" fill="#d1fae5" r="24" stroke="#059669" stroke-width="2.2"></circle><text fill="#064e3b" font-size="14" font-weight="900" text-anchor="middle" x="38" y="71">4.5</text>
+<circle cx="56" cy="20" fill="#ffffff" r="14" stroke="#059669" stroke-width="1.8"></circle><text fill="#047857" font-size="10.5" font-weight="900" text-anchor="middle" x="56" y="24">+4.0</text>
+<circle cx="56" cy="51" fill="#ffffff" r="14" stroke="#059669" stroke-width="1.8"></circle><text fill="#047857" font-size="10.5" font-weight="900" text-anchor="middle" x="56" y="55">+1.0</text>
+<circle cx="56" cy="82" fill="#ffffff" r="14" stroke="#0f766e" stroke-width="1.8"></circle><text fill="#0f766e" font-size="10.5" font-weight="900" text-anchor="middle" x="56" y="86">-1.0</text>
+<circle cx="56" cy="113" fill="#ffffff" r="14" stroke="#059669" stroke-width="1.8"></circle><text fill="#047857" font-size="10.5" font-weight="900" text-anchor="middle" x="56" y="117">+0.5</text>
+<line stroke="#10b981" stroke-width="2.2" x1="74" x2="150" y1="22" y2="54"></line><polygon fill="#10b981" points="156,56.5 147,49 145,57"></polygon>
+<line stroke="#10b981" stroke-width="2.2" x1="74" x2="148" y1="51" y2="62"></line><polygon fill="#10b981" points="155,63 146,58 146,66"></polygon>
+<line stroke="#0f766e" stroke-width="2.2" x1="74" x2="148" y1="82" y2="71"></line><polygon fill="#0f766e" points="155,70 146,67 146,75"></polygon>
+<line stroke="#10b981" stroke-width="2.2" x1="74" x2="150" y1="111" y2="79"></line><polygon fill="#10b981" points="156,76.5 145,76 147,84"></polygon>
+<circle cx="208" cy="66" fill="#059669" r="46" stroke="#047857" stroke-width="2.5"></circle>
+<circle cx="193" cy="51" fill="#fff" r="2.8"></circle><circle cx="223" cy="51" fill="#fff" r="2.8"></circle>
+<path d="M195,62 Q208,71 221,62" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2.2"></path>
+<text fill="#d1fae5" font-size="14" font-weight="900" text-anchor="middle" x="208" y="90">Σ = 4.5</text>
+<line stroke="#10b981" stroke-width="3" x1="258" x2="286" y1="66" y2="66"></line><polygon fill="#10b981" points="293,66 284,61 284,71"></polygon>
+<circle cx="322" cy="66" fill="#d1fae5" r="24" stroke="#059669" stroke-width="2.2"></circle><text fill="#064e3b" font-size="14" font-weight="900" text-anchor="middle" x="322" y="71">4.5</text>
 </svg>
 <div dir="rtl" style="font-size:0.55rem;color:#1e293b;margin-top:2px;line-height:1.4;">الخلية تجمع كل النواتج في رقم واحد (<bdi>4.0 + 1.0 - 1.0 + 0.5 = 4.5</bdi>).</div>
-</div>
-<div style="background:#f0fdf4;border:1px solid #a7f3d0;border-radius:10px;padding:6px;text-align:center;">
-<div dir="rtl" style="font-size:0.63rem;font-weight:800;color:#047857;margin-bottom:2px;">5. <bdi>Activation Function</bdi> (دالة التفعيل)</div>
+<span style="position:absolute;right:-25px;top:50%;margin-top:-16px;width:32px;height:32px;border-radius:50%;background:#ffffff;border:1.5px solid #cbd5e1;display:flex;align-items:center;justify-content:center;z-index:5;box-shadow:0 3px 10px rgba(15,23,42,0.12), 0 0 0 2px #ffffff;"><svg viewBox="0 0 28 28" width="20" height="20" style="display:block;"><defs><linearGradient id="arr_nr_4" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="var(--unit-primary)"/><stop offset="100%" stop-color="var(--unit-accent)"/></linearGradient></defs><path d="M4 11.5 H17 V6.5 L25 14 L17 21.5 V16.5 H4 Z" fill="url(#arr_nr_4)"/></svg></span></div>
+<div style="position:relative;grid-column:2;grid-row:2;background:#dff8eb;border:1.2px solid #34d399;border-radius:10px;padding:6px;text-align:center;display:flex;flex-direction:column;justify-content:space-between;gap:3px;">
+<div style="font-size:0.68rem;font-weight:900;color:#047857;line-height:1.3;display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:wrap;" dir="rtl"><span style="display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 4px;border-radius:999px;background:#047857;color:#fff;font-size:0.60rem;font-weight:900;">5</span><span><bdi>Activation Function</bdi> (دالة التفعيل)</span></div>
 <svg dir="ltr" style="max-width:210px;display:block;margin:auto;direction:ltr;font-family:'Plus Jakarta Sans',sans-serif;" viewbox="0 0 360 132" width="100%">
-<circle cx="310" cy="66" fill="#d1fae5" r="22" stroke="#059669" stroke-width="2"></circle><text fill="#064e3b" font-size="14" font-weight="900" text-anchor="middle" x="310" y="71">4.5</text>
-<line stroke="#059669" stroke-width="2.6" x1="284" x2="246" y1="66" y2="66"></line><polygon fill="#059669" points="239,66 248,61.5 248,70.5"></polygon>
-<rect fill="#ffffff" height="100" rx="14" stroke="#10b981" stroke-width="2.2" width="112" x="122" y="16"></rect>
-<text fill="#047857" font-size="11" font-weight="800" text-anchor="middle" x="178" y="34">non-linear</text>
-<line stroke="#cbd5e1" stroke-width="1.4" x1="138" x2="218" y1="98" y2="98"></line>
-<line stroke="#cbd5e1" stroke-width="1.4" x1="178" x2="178" y1="42" y2="104"></line>
-<path d="M140,94 Q170,92 178,70 T216,46" fill="none" stroke="#059669" stroke-linecap="round" stroke-width="3.6"></path>
-<line stroke="#10b981" stroke-width="2.8" x1="118" x2="80" y1="66" y2="66"></line><polygon fill="#10b981" points="73,66 82,61 82,71"></polygon>
-<circle cx="44" cy="66" fill="#059669" r="23"></circle><text fill="#ffffff" font-size="14" font-weight="900" text-anchor="middle" x="44" y="71">0.9</text>
+<circle cx="50" cy="66" fill="#d1fae5" r="22" stroke="#059669" stroke-width="2"></circle><text fill="#064e3b" font-size="14" font-weight="900" text-anchor="middle" x="50" y="71">4.5</text>
+<line stroke="#059669" stroke-width="2.6" x1="76" x2="114" y1="66" y2="66"></line><polygon fill="#059669" points="121,66 112,61.5 112,70.5"></polygon>
+<rect fill="#ffffff" height="100" rx="14" stroke="#10b981" stroke-width="2.2" width="112" x="126" y="16"></rect>
+<text fill="#047857" font-size="11" font-weight="800" text-anchor="middle" x="182" y="34">non-linear</text>
+<line stroke="#cbd5e1" stroke-width="1.4" x1="142" x2="222" y1="98" y2="98"></line>
+<line stroke="#cbd5e1" stroke-width="1.4" x1="182" x2="182" y1="42" y2="104"></line>
+<path d="M144,94 Q174,92 182,70 T220,46" fill="none" stroke="#059669" stroke-linecap="round" stroke-width="3.6"></path>
+<line stroke="#10b981" stroke-width="2.8" x1="242" x2="280" y1="66" y2="66"></line><polygon fill="#10b981" points="287,66 278,61 278,71"></polygon>
+<circle cx="316" cy="66" fill="#059669" r="23"></circle><text fill="#ffffff" font-size="14" font-weight="900" text-anchor="middle" x="316" y="71">0.9</text>
 </svg>
 <div dir="rtl" style="font-size:0.55rem;color:#1e293b;margin-top:2px;line-height:1.4;">تحول الـ <bdi>4.5</bdi> لـ <bdi>0.9</bdi> بدالة غير خطية (<bdi>non-linear</bdi>) لتعلّم علاقات معقدة.</div>
-</div>
-<div style="background:#f0fdfa;border:1px solid #99f6e4;border-radius:10px;padding:6px;text-align:center;">
-<div dir="rtl" style="font-size:0.63rem;font-weight:800;color:#047857;margin-bottom:2px;">6. <bdi>Output</bdi> (المخرجات)</div>
+<span style="position:absolute;right:-25px;top:50%;margin-top:-16px;width:32px;height:32px;border-radius:50%;background:#ffffff;border:1.5px solid #cbd5e1;display:flex;align-items:center;justify-content:center;z-index:5;box-shadow:0 3px 10px rgba(15,23,42,0.12), 0 0 0 2px #ffffff;"><svg viewBox="0 0 28 28" width="20" height="20" style="display:block;"><defs><linearGradient id="arr_nr_5" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="var(--unit-primary)"/><stop offset="100%" stop-color="var(--unit-accent)"/></linearGradient></defs><path d="M4 11.5 H17 V6.5 L25 14 L17 21.5 V16.5 H4 Z" fill="url(#arr_nr_5)"/></svg></span></div>
+<div style="position:relative;grid-column:1;grid-row:2;background:#d7f6e6;border:1.2px solid #10b981;border-radius:10px;padding:6px;text-align:center;display:flex;flex-direction:column;justify-content:space-between;gap:3px;">
+<div style="font-size:0.68rem;font-weight:900;color:#065f46;line-height:1.3;display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:wrap;" dir="rtl"><span style="display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 4px;border-radius:999px;background:#065f46;color:#fff;font-size:0.60rem;font-weight:900;">6</span><span><bdi>Output</bdi> (المخرجات)</span></div>
 <svg dir="ltr" style="max-width:210px;display:block;margin:auto;direction:ltr;font-family:'Plus Jakarta Sans',sans-serif;" viewbox="0 0 360 132" width="100%">
-<circle cx="294" cy="66" fill="#059669" r="38" stroke="#047857" stroke-width="2.4"></circle>
-<circle cx="283" cy="57" fill="#ffffff" r="3"></circle><circle cx="305" cy="57" fill="#ffffff" r="3"></circle>
-<path d="M284,71 Q294,79 304,71" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="2.4"></path>
-<line stroke="#10b981" stroke-width="4" x1="250" x2="152" y1="66" y2="66"></line><polygon fill="#10b981" points="143,66 156,59 156,73"></polygon>
-<rect fill="#10b981" height="24" rx="12" width="60" x="170" y="34"></rect>
-<text fill="#ffffff" font-size="13.5" font-weight="900" text-anchor="middle" x="200" y="50.5">0.9</text>
-<rect fill="#ffffff" height="106" rx="16" stroke="#059669" stroke-width="2" width="122" x="14" y="10"></rect>
-<circle cx="48" cy="36" fill="#d1fae5" r="14" stroke="#059669" stroke-width="1.8"></circle>
-<circle cx="44" cy="33" fill="#047857" r="1.4"></circle><circle cx="52" cy="33" fill="#047857" r="1.4"></circle>
-<path d="M44,39 Q48,42 52,39" fill="none" stroke="#047857" stroke-linecap="round" stroke-width="1.3"></path>
-<circle cx="48" cy="76" fill="#d1fae5" r="14" stroke="#059669" stroke-width="1.8"></circle>
-<circle cx="44" cy="73" fill="#047857" r="1.4"></circle><circle cx="52" cy="73" fill="#047857" r="1.4"></circle>
-<path d="M44,79 Q48,82 52,79" fill="none" stroke="#047857" stroke-linecap="round" stroke-width="1.3"></path>
-<circle cx="96" cy="56" fill="#10b981" r="16"></circle>
-<circle cx="91" cy="52" fill="#fff" r="1.7"></circle><circle cx="101" cy="52" fill="#fff" r="1.7"></circle>
-<path d="M91,59 Q96,63 101,59" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="1.5"></path>
-<text fill="#047857" font-size="10.5" font-weight="800" text-anchor="middle" x="75" y="106">To the next layer</text>
+<circle cx="66" cy="66" fill="#059669" r="38" stroke="#047857" stroke-width="2.4"></circle>
+<circle cx="55" cy="57" fill="#ffffff" r="3"></circle><circle cx="77" cy="57" fill="#ffffff" r="3"></circle>
+<path d="M56,71 Q66,79 76,71" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="2.4"></path>
+<line stroke="#10b981" stroke-width="4" x1="110" x2="208" y1="66" y2="66"></line><polygon fill="#10b981" points="217,66 204,59 204,73"></polygon>
+<rect fill="#10b981" height="24" rx="12" width="60" x="130" y="34"></rect>
+<text fill="#ffffff" font-size="13.5" font-weight="900" text-anchor="middle" x="160" y="50.5">0.9</text>
+<rect fill="#ffffff" height="106" rx="16" stroke="#059669" stroke-width="2" width="122" x="224" y="10"></rect>
+<circle cx="258" cy="36" fill="#d1fae5" r="14" stroke="#059669" stroke-width="1.8"></circle>
+<circle cx="254" cy="33" fill="#047857" r="1.4"></circle><circle cx="262" cy="33" fill="#047857" r="1.4"></circle>
+<path d="M254,39 Q258,42 262,39" fill="none" stroke="#047857" stroke-linecap="round" stroke-width="1.3"></path>
+<circle cx="258" cy="76" fill="#d1fae5" r="14" stroke="#059669" stroke-width="1.8"></circle>
+<circle cx="254" cy="73" fill="#047857" r="1.4"></circle><circle cx="262" cy="73" fill="#047857" r="1.4"></circle>
+<path d="M254,79 Q258,82 262,79" fill="none" stroke="#047857" stroke-linecap="round" stroke-width="1.3"></path>
+<circle cx="306" cy="56" fill="#10b981" r="16"></circle>
+<circle cx="301" cy="52" fill="#fff" r="1.7"></circle><circle cx="311" cy="52" fill="#fff" r="1.7"></circle>
+<path d="M301,59 Q306,63 311,59" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="1.5"></path>
+<text fill="#047857" font-size="10.5" font-weight="800" text-anchor="middle" x="285" y="106">To the next layer</text>
 </svg>
 <div dir="rtl" style="font-size:0.55rem;color:#1e293b;margin-top:2px;line-height:1.4;">تبعت النتيجة (<bdi>0.9</bdi>) للطبقة اللي بعدها (<bdi>To the next layer</bdi>) عشان تكمل الحسابات.</div>
 </div>
@@ -5448,9 +5448,9 @@
 <div class="egy-reflection-box" style="flex-direction:column;align-items:stretch;gap:6px;">
 <div class="egy-reflection-text" style="width:100%;">
 <div class="egy-reflection-header"><span>إزاي الـ <bdi>Deep Learning</bdi> بيبني <bdi>Hierarchical Features</bdi>‏؟</span></div>
-<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:4px;">
-<div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:5px;text-align:center;">
-<div dir="ltr" style="font-size:0.65rem;font-weight:800;color:#0f172a;margin-bottom:3px;">1. Raw Pixels</div>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:16px;margin-top:4px;direction:rtl;">
+<div style="position:relative;background:#f8fefb;border:1.2px solid #d1fae5;border-radius:10px;padding:6px;text-align:center;display:flex;flex-direction:column;justify-content:space-between;gap:3px;">
+<div style="font-size:0.68rem;font-weight:900;color:#10b981;line-height:1.3;display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:wrap;" dir="ltr"><span style="display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 4px;border-radius:999px;background:#10b981;color:#fff;font-size:0.60rem;font-weight:900;">1</span><span>Raw Pixels</span></div>
 <svg dir="ltr" style="max-width:86px;display:block;margin:auto;direction:ltr;" viewbox="0 0 80 56" width="100%">
 <rect fill="#fff" height="48" rx="4" stroke="#94a3b8" width="48" x="16" y="4"></rect>
 <rect fill="#1e293b" height="8" width="8" x="20" y="8"></rect><rect fill="#cbd5e1" height="8" width="8" x="28" y="8"></rect><rect fill="#e2e8f0" height="8" width="8" x="36" y="8"></rect><rect fill="#cbd5e1" height="8" width="8" x="44" y="8"></rect><rect fill="#1e293b" height="8" width="8" x="52" y="8"></rect>
@@ -5460,9 +5460,9 @@
 <rect fill="#e2e8f0" height="8" width="8" x="20" y="40"></rect><rect fill="#cbd5e1" height="8" width="8" x="28" y="40"></rect><rect fill="#64748b" height="8" width="8" x="36" y="40"></rect><rect fill="#cbd5e1" height="8" width="8" x="44" y="40"></rect><rect fill="#e2e8f0" height="8" width="8" x="52" y="40"></rect>
 </svg>
 <div dir="rtl" style="font-size:0.58rem;color:#475569;margin-top:2px;">نقط فاتحة وغامقة</div>
-</div>
-<div style="background:#ecfdf5;border:1px solid #a7f3d0;border-radius:8px;padding:5px;text-align:center;">
-<div dir="ltr" style="font-size:0.65rem;font-weight:800;color:#047857;margin-bottom:3px;">2. Shallow Layer</div>
+<span style="position:absolute;left:-23px;top:50%;margin-top:-15px;width:30px;height:30px;border-radius:50%;background:#ffffff;border:1.5px solid #cbd5e1;display:flex;align-items:center;justify-content:center;z-index:5;box-shadow:0 3px 10px rgba(15,23,42,0.12), 0 0 0 2px #ffffff;"><svg viewBox="0 0 28 28" width="19" height="19" style="display:block;"><defs><linearGradient id="arr_hf_1" x1="100%" y1="0%" x2="0%" y2="0%"><stop offset="0%" stop-color="var(--unit-primary)"/><stop offset="100%" stop-color="var(--unit-accent)"/></linearGradient></defs><path d="M24 11.5 H11 V6.5 L3 14 L11 21.5 V16.5 H24 Z" fill="url(#arr_hf_1)"/></svg></span></div>
+<div style="position:relative;background:#f0fdf6;border:1.2px solid #a7f3d0;border-radius:10px;padding:6px;text-align:center;display:flex;flex-direction:column;justify-content:space-between;gap:3px;">
+<div style="font-size:0.68rem;font-weight:900;color:#059669;line-height:1.3;display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:wrap;" dir="ltr"><span style="display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 4px;border-radius:999px;background:#059669;color:#fff;font-size:0.60rem;font-weight:900;">2</span><span>Shallow Layer</span></div>
 <svg dir="ltr" style="max-width:86px;display:block;margin:auto;direction:ltr;" viewbox="0 0 80 56" width="100%">
 <rect fill="#fff" height="48" rx="4" stroke="#6ee7b7" width="48" x="16" y="4"></rect>
 <line stroke="#059669" stroke-linecap="round" stroke-width="2.2" x1="22" x2="32" y1="18" y2="10"></line>
@@ -5472,9 +5472,9 @@
 <path d="M32,40 Q40,46 48,40" fill="none" stroke="#10b981" stroke-linecap="round" stroke-width="2.2"></path>
 </svg>
 <div dir="rtl" style="font-size:0.58rem;color:#065f46;margin-top:2px;">خطوط وحواف بسيطة</div>
-</div>
-<div style="background:#d1fae5;border:1px solid #6ee7b7;border-radius:8px;padding:5px;text-align:center;">
-<div dir="ltr" style="font-size:0.65rem;font-weight:800;color:#065f46;margin-bottom:3px;">3. Middle Layer</div>
+<span style="position:absolute;left:-23px;top:50%;margin-top:-15px;width:30px;height:30px;border-radius:50%;background:#ffffff;border:1.5px solid #cbd5e1;display:flex;align-items:center;justify-content:center;z-index:5;box-shadow:0 3px 10px rgba(15,23,42,0.12), 0 0 0 2px #ffffff;"><svg viewBox="0 0 28 28" width="19" height="19" style="display:block;"><defs><linearGradient id="arr_hf_2" x1="100%" y1="0%" x2="0%" y2="0%"><stop offset="0%" stop-color="var(--unit-primary)"/><stop offset="100%" stop-color="var(--unit-accent)"/></linearGradient></defs><path d="M24 11.5 H11 V6.5 L3 14 L11 21.5 V16.5 H24 Z" fill="url(#arr_hf_2)"/></svg></span></div>
+<div style="position:relative;background:#e6faef;border:1.2px solid #6ee7b7;border-radius:10px;padding:6px;text-align:center;display:flex;flex-direction:column;justify-content:space-between;gap:3px;">
+<div style="font-size:0.68rem;font-weight:900;color:#047857;line-height:1.3;display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:wrap;" dir="ltr"><span style="display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 4px;border-radius:999px;background:#047857;color:#fff;font-size:0.60rem;font-weight:900;">3</span><span>Middle Layer</span></div>
 <svg dir="ltr" style="max-width:86px;display:block;margin:auto;direction:ltr;" viewbox="0 0 80 56" width="100%">
 <rect fill="#fff" height="48" rx="4" stroke="#34d399" width="48" x="16" y="4"></rect>
 <polygon fill="none" points="22,20 26,10 32,18" stroke="#059669" stroke-width="2"></polygon>
@@ -5484,18 +5484,18 @@
 <path d="M34,43 Q40,47 46,43" fill="none" stroke="#047857" stroke-width="1.6"></path>
 </svg>
 <div dir="rtl" style="font-size:0.58rem;color:#064e3b;margin-top:2px;">أجزاء: ودن، عين، مناخير</div>
-</div>
-<div style="background:#059669;border:1px solid #047857;border-radius:8px;padding:5px;text-align:center;">
-<div dir="ltr" style="font-size:0.65rem;font-weight:800;color:#fff;margin-bottom:3px;">4. Deep Output</div>
+<span style="position:absolute;left:-23px;top:50%;margin-top:-15px;width:30px;height:30px;border-radius:50%;background:#ffffff;border:1.5px solid #cbd5e1;display:flex;align-items:center;justify-content:center;z-index:5;box-shadow:0 3px 10px rgba(15,23,42,0.12), 0 0 0 2px #ffffff;"><svg viewBox="0 0 28 28" width="19" height="19" style="display:block;"><defs><linearGradient id="arr_hf_3" x1="100%" y1="0%" x2="0%" y2="0%"><stop offset="0%" stop-color="var(--unit-primary)"/><stop offset="100%" stop-color="var(--unit-accent)"/></linearGradient></defs><path d="M24 11.5 H11 V6.5 L3 14 L11 21.5 V16.5 H24 Z" fill="url(#arr_hf_3)"/></svg></span></div>
+<div style="position:relative;background:#daf7e8;border:1.2px solid #34d399;border-radius:10px;padding:6px;text-align:center;display:flex;flex-direction:column;justify-content:space-between;gap:3px;">
+<div style="font-size:0.68rem;font-weight:900;color:#065f46;line-height:1.3;display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:wrap;" dir="ltr"><span style="display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 4px;border-radius:999px;background:#065f46;color:#065f46;font-size:0.60rem;font-weight:900;">4</span><span>Deep Output</span></div>
 <svg dir="ltr" style="max-width:86px;display:block;margin:auto;direction:ltr;" viewbox="0 0 80 56" width="100%">
-<polygon fill="#fde68a" points="23,22 27,8 35,19" stroke="#fff" stroke-width="1.2"></polygon>
-<polygon fill="#fde68a" points="45,19 53,8 57,22" stroke="#fff" stroke-width="1.2"></polygon>
-<circle cx="40" cy="30" fill="#fde68a" r="16" stroke="#fff" stroke-width="1.4"></circle>
+<polygon fill="#fde68a" points="23,22 27,8 35,19" stroke="#059669" stroke-width="1.2"></polygon>
+<polygon fill="#fde68a" points="45,19 53,8 57,22" stroke="#059669" stroke-width="1.2"></polygon>
+<circle cx="40" cy="30" fill="#fde68a" r="16" stroke="#059669" stroke-width="1.4"></circle>
 <circle cx="34" cy="28" fill="#0f172a" r="2.2"></circle><circle cx="46" cy="28" fill="#0f172a" r="2.2"></circle>
 <polygon fill="#ef4444" points="38,33 42,33 40,36"></polygon>
-<text fill="#fff" font-size="7.5" font-weight="800" text-anchor="middle" x="40" y="53">Cat!</text>
+<text fill="#065f46" font-size="7.5" font-weight="800" text-anchor="middle" x="40" y="53">Cat!</text>
 </svg>
-<div dir="rtl" style="font-size:0.58rem;color:#ecfdf5;margin-top:2px;">الوجه / الشكل كامل!</div>
+<div dir="rtl" style="font-size:0.58rem;color:#065f46;margin-top:2px;">الوجه / الشكل كامل!</div>
 </div>
 </div>
 </div>
